@@ -6,7 +6,7 @@
 # fi
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+  export PATH=/usr/local/bin:$PATH
 fi
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
@@ -45,6 +45,12 @@ zinit light Aloxaf/fzf-tab
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::command-not-found
+zinit snippet OMZP::golang
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  zinit snippet OMZP::brew
+  zinit snippet OMZP::iterm2
+fi
 
 # Load completions
 autoload -U compinit && compinit
@@ -80,8 +86,15 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
+if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+  zstyle :omz:plugins:iterm2 shell-integration yes
+fi
+
 # Aliases
 alias ls='ls --color'
+alias la='ls -a'
+alias ll='ls -l'
+alias lah='ls -lah'
 alias nvim='nvim'
 alias c='clear'
 
