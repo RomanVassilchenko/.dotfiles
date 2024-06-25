@@ -1,12 +1,7 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
-
 if [[ "$OSTYPE" == "darwin"* ]]; then
   export PATH=/usr/local/bin:$PATH
+  export PATH=$PATH:~/.o3-cli/bin
+  export PATH=$PATH:$(go env GOPATH)/bin
 fi
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
@@ -32,9 +27,6 @@ fi
 
 source "${ZINIT_HOME}/zinit.zsh"
 
-# Add in Powerlevel10k
-# zinit ice depth=1; zinit light romkatv/powerlevel10k
-
 # Add in zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
@@ -49,7 +41,6 @@ zinit snippet OMZP::golang
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
   zinit snippet OMZP::brew
-  zinit snippet OMZP::iterm2
 fi
 
 # Load completions
@@ -57,8 +48,6 @@ autoload -U compinit && compinit
 
 zinit cdreplay -q
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
 fi
@@ -66,6 +55,9 @@ fi
 bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
+bindkey '^[[A' history-search-backward
+bindkey '^[[B' history-search-forward
+
 
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
@@ -86,10 +78,6 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
-if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  zstyle :omz:plugins:iterm2 shell-integration yes
-fi
-
 # Aliases
 alias ls='ls --color'
 alias la='ls -a'
@@ -97,6 +85,13 @@ alias ll='ls -l'
 alias lah='ls -lah'
 alias nvim='nvim'
 alias c='clear'
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  # Запускает виртуальную машину для работы docker
+  alias colimastart="colima start --profile ozon --dns 10.25.195.22 --dns 10.25.195.21 --dns 10.21.17.21 --dns 10.21.17.22 --cpu 2 --disk 60"
+  # Останавливает виртуальную машину для docker
+  alias colimastop="colima stop ozon"
+fi
 
 # Shell integrations
 eval "$(fzf --zsh)"
