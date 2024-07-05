@@ -2,6 +2,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   export PATH=/usr/local/bin:$PATH
   export PATH=$PATH:~/.o3-cli/bin
   export PATH=$PATH:$(go env GOPATH)/bin
+  export PATH="/usr/local/sbin:$PATH"
+  export PATH="/Users/rovasilchenko/.config/emacs/bin:$PATH"
 fi
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
@@ -96,3 +98,4 @@ fi
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+
