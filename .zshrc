@@ -57,8 +57,8 @@ fi
 bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
-bindkey '^[[A' history-search-backward
-bindkey '^[[B' history-search-forward
+bindkey '^[[A' history-incremental-search-backward
+bindkey '^[[B' history-incremental-search-forward
 
 
 HISTSIZE=5000
@@ -83,10 +83,51 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 # Aliases
 alias ls='ls --color'
 alias la='ls -a'
-alias ll='ls -l'
+alias ll='ls -la'
 alias lah='ls -lah'
+alias l.='ls -d .* --color=auto'
+
 alias nvim='nvim'
 alias c='clear'
+
+alias cd..='cd ..'
+alias ..='cd ..'
+alias ...='cd ../../../'
+alias ....='cd ../../../../'
+alias .....='cd ../../../../'
+alias .4='cd ../../../../'
+alias .5='cd ../../../../..'
+
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+alias mkdir='mkdir -pv'
+
+alias diff='colordiff'
+
+alias h='history'
+alias j='jobs -l'
+
+alias path='echo -e ${PATH//:/\\n}'
+alias now='date +"%T"'
+alias nowtime=now
+alias nowdate='date +"%d-%m-%Y"'
+
+alias vi=nvim
+alias svi='sudo vi'
+alias vis='vim "+set si"'
+alias edit='nvim'
+
+alias ping='ping -c 5'
+alias fastping='ping -c 100 -s.2'
+
+alias mv='mv -i'
+alias cp='cp -i'
+alias ln='ln -i'
+
+alias root='sudo -i'
+alias su='sudo -i'
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
   # Запускает виртуальную машину для работы docker
