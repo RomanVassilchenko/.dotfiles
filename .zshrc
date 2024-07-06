@@ -29,6 +29,9 @@ fi
 
 source "${ZINIT_HOME}/zinit.zsh"
 
+export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
+export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+
 # Add in zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
@@ -55,14 +58,16 @@ if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
 fi
 
 bindkey -e
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
-bindkey '^[[A' history-incremental-search-backward
-bindkey '^[[B' history-incremental-search-forward
+#bindkey '^p' history-search-backward
+#bindkey '^n' history-search-forward
+#bindkey '^[[A' history-incremental-search-backward
+#bindkey '^[[B' history-incremental-search-forward
+bindkey '^[[A' up-line-or-search
+bindkey '^[[B' down-line-or-search
 
 
 HISTSIZE=5000
-HISTFILE=~/.zsh_history
+HISTFILE="$XDG_STATE_HOME"/zsh/history
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
 setopt appendhistory
@@ -79,6 +84,8 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+
+zstyle ':completion:*' cache-path "$XDG_CACHE_HOME"/zsh/zcompcache
 
 # Aliases
 alias ls='ls --color'
@@ -139,4 +146,3 @@ fi
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
-
