@@ -10,6 +10,8 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Evaluate Homebrew environment
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   export PATH="$PATH:/home/rovassilchenko/.local/share/JetBrains/Toolbox/scripts"
+  export CARGO_HOME="$XDG_DATA_HOME"/cargo
+  eval "rm -rf ~/.gtkrc-2.0 ~/.gnupg"
 fi
 
 export GOPATH=$HOME/go
@@ -48,8 +50,13 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   zinit snippet OMZP::brew
 fi
 
+# Create the directory for zcompdump if it doesn't exist
+if [ ! -d "$XDG_CACHE_HOME/zsh" ]; then
+  mkdir -p "$XDG_CACHE_HOME/zsh"
+fi
+
 # Load completions
-autoload -U compinit && compinit
+autoload -U compinit && compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 
 zinit cdreplay -q
 
