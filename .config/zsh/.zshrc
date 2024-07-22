@@ -3,18 +3,14 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   export PATH=$PATH:~/.o3-cli/bin
   export PATH=$PATH:$(go env GOPATH)/bin
   export PATH="/usr/local/sbin:$PATH"
-  export PATH="/Users/rovasilchenko/.config/emacs/bin:$PATH"
 fi
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Evaluate Homebrew environment
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-  export PATH="$PATH:/home/rovassilchenko/.local/share/JetBrains/Toolbox/scripts"
-  export CARGO_HOME="$XDG_DATA_HOME"/cargo
-  eval "rm -rf ~/.gtkrc-2.0 ~/.gnupg"
 fi
 
-export PATH="$HOME/.go/bin:$PATH"
+# export PATH="$HOME/.go/bin:$PATH"
 
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -30,11 +26,7 @@ fi
 
 source "${ZINIT_HOME}/zinit.zsh"
 
-export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
-export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
-
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
-export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export GOPATH="$XDG_DATA_HOME"/go
 
 
@@ -69,10 +61,6 @@ if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
 fi
 
 bindkey -e
-#bindkey '^p' history-search-backward
-#bindkey '^n' history-search-forward
-#bindkey '^[[A' history-incremental-search-backward
-#bindkey '^[[B' history-incremental-search-forward
 bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
 
