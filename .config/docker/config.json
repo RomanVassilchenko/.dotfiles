@@ -1,0 +1,10 @@
+{
+	"auths": {
+		"gitlab-registry.ozon.ru": {}
+	},
+	"cliPluginsExtraDirs": [
+      		"/usr/local/lib/docker/cli-plugins"
+  	],
+	"credsStore": "osxkeychain",
+	"currentContext": "colima-ozon"
+}

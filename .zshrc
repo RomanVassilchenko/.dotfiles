@@ -12,7 +12,6 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   export PATH="$PATH:/home/rovassilchenko/.local/share/JetBrains/Toolbox/scripts"
 fi
 
-export GOPATH=$HOME/go
 export PATH="$HOME/.go/bin:$PATH"
 
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -31,6 +30,11 @@ source "${ZINIT_HOME}/zinit.zsh"
 
 export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export GOPATH="$XDG_DATA_HOME"/go
+
 
 # Add in zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
