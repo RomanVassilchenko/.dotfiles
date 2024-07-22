@@ -1,72 +1,77 @@
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  export PATH=/usr/local/bin:$PATH
-  export PATH=$PATH:~/.o3-cli/bin
-  export PATH=$PATH:$(go env GOPATH)/bin
-  export PATH="/usr/local/sbin:$PATH"
-fi
-
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-  # Evaluate Homebrew environment
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
-
-# export PATH="$HOME/.go/bin:$PATH"
-
+# Setting up XDG base directories
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CACHE_HOME="$HOME/.cache"
 
+# Export configuration to xdg directories
+export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
+export GOPATH="$XDG_DATA_HOME/go"
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  # macOS specific PATH setup
+  export PATH="/usr/local/bin:$PATH"
+  export PATH="$PATH:~/.o3-cli/bin"
+  export PATH="$PATH:$(go env GOPATH)/bin"
+  export PATH="/usr/local/sbin:$PATH"
+fi
+
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  # Linux specific PATH setup
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
+# Zinit installation and setup
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
 if [ ! -d "$ZINIT_HOME" ]; then
-	mkdir -p "$(dirname $ZINIT_HOME)"
-	git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+  mkdir -p "$(dirname $ZINIT_HOME)"
+  git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 
 source "${ZINIT_HOME}/zinit.zsh"
 
-export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
-export GOPATH="$XDG_DATA_HOME"/go
-
-
-# Add in zsh plugins
+# Adding zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
-# Add in snippets
+# Adding zsh snippets
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::command-not-found
 zinit snippet OMZP::golang
 
+# Adding macOS specific snippets
 if [[ "$OSTYPE" == "darwin"* ]]; then
   zinit snippet OMZP::brew
 fi
 
-# Create the directory for zcompdump if it doesn't exist
+# Creating directory for zcompdump if it doesn't exist
 if [ ! -d "$XDG_CACHE_HOME/zsh" ]; then
   mkdir -p "$XDG_CACHE_HOME/zsh"
 fi
 
-# Load completions
+# Loading completions
 autoload -U compinit && compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 
+# Replaying zinit cd command quietly
 zinit cdreplay -q
 
+# oh-my-posh setup for non-Apple Terminal
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
 fi
 
+# Key bindings
 bindkey -e
 bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
 
-
+# History settings
 HISTSIZE=5000
-HISTFILE="$XDG_STATE_HOME"/zsh/history
+HISTFILE="$XDG_STATE_HOME/zsh/history"
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
 setopt appendhistory
@@ -83,8 +88,7 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
-
-zstyle ':completion:*' cache-path "$XDG_CACHE_HOME"/zsh/zcompcache
+zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
 
 # Aliases
 alias ls='ls --color'
@@ -92,53 +96,41 @@ alias la='ls -a'
 alias ll='ls -la'
 alias lah='ls -lah'
 alias l.='ls -d .* --color=auto'
-
 alias nvim='nvim'
 alias c='clear'
-
 alias cd..='cd ..'
 alias ..='cd ..'
 alias ...='cd ../../../'
 alias ....='cd ../../../../'
-alias .....='cd ../../../../'
+alias .....='cd ../../../../../'
 alias .4='cd ../../../../'
 alias .5='cd ../../../../..'
-
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
-
 alias mkdir='mkdir -pv'
-
 alias diff='colordiff'
-
 alias h='history'
 alias j='jobs -l'
-
 alias path='echo -e ${PATH//:/\\n}'
 alias now='date +"%T"'
 alias nowtime=now
 alias nowdate='date +"%d-%m-%Y"'
-
 alias vi=nvim
 alias svi='sudo vi'
 alias vis='vim "+set si"'
 alias edit='nvim'
-
 alias ping='ping -c 5'
 alias fastping='ping -c 100 -s.2'
-
 alias mv='mv -i'
 alias cp='cp -i'
 alias ln='ln -i'
-
 alias root='sudo -i'
 alias su='sudo -i'
 
+# macOS specific aliases
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  # Запускает виртуальную машину для работы docker
   alias colimastart="colima start --profile ozon --dns 10.25.195.22 --dns 10.25.195.21 --dns 10.21.17.21 --dns 10.21.17.22 --cpu 2 --disk 60"
-  # Останавливает виртуальную машину для docker
   alias colimastop="colima stop ozon"
 fi
 
