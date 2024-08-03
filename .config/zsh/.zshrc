@@ -74,6 +74,10 @@ bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
 
 # History settings
+if [ ! -d "$XDG_STATE_HOME/zsh" ]; then
+  mkdir -p "$XDG_STATE_HOME/zsh"
+fi
+
 HISTSIZE=5000
 HISTFILE="$XDG_STATE_HOME/zsh/history"
 SAVEHIST=$HISTSIZE
