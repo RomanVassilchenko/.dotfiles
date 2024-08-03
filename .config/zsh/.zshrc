@@ -4,12 +4,17 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CACHE_HOME="$HOME/.cache"
 
-# Export configuration to xdg directories
+# Ensure XDG directories exist
+for dir in "$XDG_DATA_HOME" "$XDG_CONFIG_HOME" "$XDG_STATE_HOME" "$XDG_CACHE_HOME"; do
+  [ ! -d "$dir" ] && mkdir -p "$dir"
+done
+
+# Export configuration to XDG directories
 export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
 export GOPATH="$XDG_DATA_HOME/go"
 
+# Platform-specific PATH setup
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  # macOS specific PATH setup
   export PATH="/usr/local/bin:$PATH"
   export PATH="$PATH:~/.o3-cli/bin"
   export PATH="$PATH:$(go env GOPATH)/bin"
@@ -17,7 +22,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-  # Linux specific PATH setup
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
@@ -96,7 +100,6 @@ alias la='ls -a'
 alias ll='ls -la'
 alias lah='ls -lah'
 alias l.='ls -d .* --color=auto'
-alias nvim='nvim'
 alias c='clear'
 alias cd..='cd ..'
 alias ..='cd ..'
@@ -116,10 +119,8 @@ alias path='echo -e ${PATH//:/\\n}'
 alias now='date +"%T"'
 alias nowtime=now
 alias nowdate='date +"%d-%m-%Y"'
-alias vi=nvim
 alias svi='sudo vi'
 alias vis='vim "+set si"'
-alias edit='nvim'
 alias ping='ping -c 5'
 alias fastping='ping -c 100 -s.2'
 alias mv='mv -i'
