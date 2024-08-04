@@ -15,6 +15,7 @@ export GOPATH="$XDG_DATA_HOME/go"
 
 # Platform-specific PATH setup
 if [[ "$OSTYPE" == "darwin"* ]]; then
+  export XDG_RUNTIME_DIR="/run/user/$UID"
   export PATH="/usr/local/bin:$PATH"
   export PATH="$PATH:$HOME/.o3-cli/bin"
   export PATH="$PATH:$(go env GOPATH)/bin"
@@ -142,3 +143,6 @@ fi
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+
+test -e "${ZDOTDIR}/.iterm2_shell_integration.zsh" && source "${ZDOTDIR}/.iterm2_shell_integration.zsh"
+
