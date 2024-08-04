@@ -16,7 +16,7 @@ export GOPATH="$XDG_DATA_HOME/go"
 # Platform-specific PATH setup
 if [[ "$OSTYPE" == "darwin"* ]]; then
   export PATH="/usr/local/bin:$PATH"
-  export PATH="$PATH:~/.o3-cli/bin"
+  export PATH="$PATH:$HOME/.o3-cli/bin"
   export PATH="$PATH:$(go env GOPATH)/bin"
   export PATH="/usr/local/sbin:$PATH"
 fi
