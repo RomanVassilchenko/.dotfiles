@@ -1,1 +1,0 @@
-{"Name":"colima-ozon","Metadata":{"Description":"colima [profile=ozon]"},"Endpoints":{"docker":{"Host":"unix:///Users/rovasilchenko/.colima/ozon/docker.sock","SkipTLSVerify":false}}}
