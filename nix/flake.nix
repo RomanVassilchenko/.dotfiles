@@ -20,7 +20,12 @@
 
     darwinConfigurations = {
       "mbp-rovasilchenko-OZON-W0HDJTC2M5" = nix-darwin.lib.darwinSystem {
-        modules = [ ./../hosts/darwin/configuration.nix ];
+        modules = [
+          ({ pkgs, ... }: {
+            system.configurationRevision = self.rev or "unknown-rev";
+          })
+          ./../hosts/darwin/configuration.nix
+        ];
       };
     };
   };
