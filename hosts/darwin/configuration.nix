@@ -7,9 +7,15 @@
 
   services.nix-daemon.enable = true;
   nix.settings.experimental-features = "nix-command flakes";
+  environment.shellAliases.up = "darwin-rebuild switch --flake /Users/rovasilchenko/.dotfiles/nix#mbp-rovasilchenko-OZON-W0HDJTC2M5";
 
   programs.zsh = {
     enable = true;
+    enableCompletion = true;
+    enableFzfCompletion = true;
+    enableFzfGit = true;
+    enableFzfHistory = true;
+    enableSyntaxHighlighting = true;
   };
   system.stateVersion = 4;
   nixpkgs.hostPlatform = "aarch64-darwin";
@@ -41,6 +47,7 @@
     "visual-studio-code"
     "whatsapp"
     "zed"
+    "alt-tab"
   ];
   homebrew.brews = [
     "go"
@@ -65,5 +72,7 @@
     "tree-sitter"
     "unzip"
     "wget"
+    "fzf"
+    "zoxide"
   ];
 }
