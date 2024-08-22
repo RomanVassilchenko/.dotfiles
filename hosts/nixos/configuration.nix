@@ -13,10 +13,11 @@
     ./modules/games.nix
     ./modules/applications.nix
 
-    ./desktop/plasma.nix
-    # ./desktop/gnome.nix
+    # ./desktop/plasma.nix
+    ./desktop/gnome.nix
   ];
 
+  users.defaultUserShell=pkgs.zsh;
   users.users.rovasilchenko = {
     isNormalUser = true;
     description = "Roman Vassilchenko";

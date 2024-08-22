@@ -28,5 +28,20 @@
     fastfetch
     neovim
     insync
+
+    kdePackages.breeze
+    kdePackages.breeze-gtk
+    kdePackages.breeze-grub
+    kdePackages.breeze-icons
+    kdePackages.breeze-plymouth
   ];
+
+  # services.flatpak.enable = true;
+  # xdg.portal = {
+  #   enable = true;
+  #   extraPortals = with pkgs; [
+  #     xdg-desktop-portal-kde
+  #     xdg-desktop-portal-gtk
+  #   ];
+  # };
 }
