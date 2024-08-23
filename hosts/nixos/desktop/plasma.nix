@@ -19,6 +19,4 @@
     haruna
     # kdePackages.kamoso
   ];
-
-  # Additional KDE Plasma-specific settings can be added here
 }

@@ -16,21 +16,24 @@
     gnome-tour
     gnome-connections
     totem
-    epiphany
-  ]) ++ (with pkgs.gnome; [
-    # for packages that are pkgs.gnome.*
-    # epiphany # web browser
-    # totem # video player
-    # geary # email reader
-    # evince # document viewer
-  ]);
+  ]) ++ (with pkgs.gnome; []);
 
   environment.systemPackages = with pkgs; [
     celluloid
     gnome-tweaks
+    fragments
+    gnome-extension-manager
+    foliate
+    rnote
+    drawing
+    amberol
+    parabolic
 
     gnomeExtensions.blur-my-shell
     gnomeExtensions.dash-to-dock
     gnomeExtensions.appindicator
+    gnomeExtensions.gsconnect
   ];
+
+  services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
 }
