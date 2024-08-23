@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
@@ -17,7 +17,8 @@
     ./desktop/gnome.nix
   ];
 
-  users.defaultUserShell=pkgs.zsh;
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
   users.users.rovasilchenko = {
     isNormalUser = true;
     description = "Roman Vassilchenko";
@@ -25,35 +26,7 @@
     packages = with pkgs; [];
   };
 
-  programs.zsh = {
-  enable = true;
-  enableCompletion = true;
-  autosuggestions.enable     = true;
-  syntaxHighlighting.enable = true;
-
-  shellAliases = {
-    ll = "ls -l";
-    la = "ls -a";
-    lah = "ls -lah";
-    up = "nh os switch ~/.dotfiles/nix";
-  };
-
-};
-
   nixpkgs.config.allowUnfree = true;
-
-  environment.etc."gitconfig".text = ''
-    [user]
-        name = Roman Vassilchenko
-        email = roman.vassilchenko.work@gmail.com
-
-    [alias]
-        co = checkout
-        br = branch
-        ci = commit
-        st = status
-        hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
-  '';
 
   programs.nh = {
     enable = true;

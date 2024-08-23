@@ -11,13 +11,18 @@
     };
   };
 
-  outputs = { self, nixpkgs, nix-darwin, flake-utils, ... }: {
+  outputs = { self, nixpkgs, nix-darwin, home-manager, flake-utils, ... }: {
     nixosConfigurations = {
       XiaoXinPro = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./../hosts/nixos/configuration.nix
           ./../hosts/nixos/hardware-configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+          }
         ];
       };
     };
@@ -29,6 +34,16 @@
             system.configurationRevision = self.rev or "unknown-rev";
           })
           ./../hosts/darwin/configuration.nix
+        ];
+      };
+    };
+
+    homeConfigurations = {
+      rovasilchenko = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        homeDirectory = "/home/rovasilchenko";
+        modules = [
+          ./../hosts/nixos/home.nix
         ];
       };
     };
