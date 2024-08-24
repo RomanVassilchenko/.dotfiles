@@ -11,10 +11,13 @@
     };
   };
 
-  outputs = { self, nixpkgs, nix-darwin, home-manager, flake-utils, ... }: {
+  outputs = { self, nixpkgs, nix-darwin, home-manager, flake-utils, ... }:
+    let
+      system = "x86_64-linux";
+    in{
     nixosConfigurations = {
       XiaoXinPro = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        inherit system;
         modules = [
           ./../hosts/nixos/configuration.nix
           ./../hosts/nixos/hardware-configuration.nix
@@ -22,6 +25,8 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.users.rovasilchenko = import ./../hosts/nixos/home.nix;
+            home-manager.backupFileExtension = "backup";
           }
         ];
       };
@@ -40,7 +45,7 @@
 
     homeConfigurations = {
       rovasilchenko = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        pkgs = nixpkgs.legacyPackages.${system};
         homeDirectory = "/home/rovasilchenko";
         modules = [
           ./../hosts/nixos/home.nix

@@ -28,12 +28,18 @@
     papirus-icon-theme
     jetbrains.goland
     fastfetch
-    neovim
     insync
     zed-editor
     boxbuddy
     fzf
     zoxide
+    bat
+    fd
+    ripgrep
+    wget
+    curl
+    unzip
+    gamescope
 
     kdePackages.breeze
     kdePackages.breeze-gtk
