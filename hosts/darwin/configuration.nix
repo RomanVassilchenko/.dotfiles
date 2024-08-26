@@ -74,5 +74,6 @@
     "wget"
     "fzf"
     "zoxide"
+    "pandoc"
   ];
 }
