@@ -28,7 +28,6 @@
     drawing
     amberol
     parabolic
-    gnome-network-displays
 
     gnomeExtensions.blur-my-shell
     gnomeExtensions.dash-to-dock
