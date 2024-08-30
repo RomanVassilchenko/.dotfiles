@@ -48,6 +48,7 @@
     "whatsapp"
     "zed"
     "alt-tab"
+    "goland"
   ];
   homebrew.brews = [
     "go"
@@ -76,5 +77,6 @@
     "zoxide"
     "pandoc"
     "neovim"
+    "ripgrep"
   ];
 }
