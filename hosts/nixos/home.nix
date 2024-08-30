@@ -15,7 +15,7 @@
       la = "ls -a";
       lah = "ls -lah";
       v = "nvim";
-      up = "nh os switch ~/.dotfiles/nix";
+      up = "nh os switch ~/.dotfiles";
     };
 
     history = {

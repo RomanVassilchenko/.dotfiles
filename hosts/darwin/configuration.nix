@@ -7,7 +7,7 @@
 
   services.nix-daemon.enable = true;
   nix.settings.experimental-features = "nix-command flakes";
-  environment.shellAliases.up = "darwin-rebuild switch --flake /Users/rovasilchenko/.dotfiles/nix#mbp-rovasilchenko-OZON-W0HDJTC2M5";
+  environment.shellAliases.up = "darwin-rebuild switch --flake /Users/rovasilchenko/.dotfiles#mbp-rovasilchenko-OZON-W0HDJTC2M5";
 
   programs.zsh = {
     enable = true;

@@ -19,13 +19,13 @@
       XiaoXinPro = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
-          ./../hosts/nixos/configuration.nix
-          ./../hosts/nixos/hardware-configuration.nix
+          ./hosts/nixos/configuration.nix
+          ./hosts/nixos/hardware-configuration.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.rovasilchenko = import ./../hosts/nixos/home.nix;
+            home-manager.users.rovasilchenko = import ./hosts/nixos/home.nix;
             home-manager.backupFileExtension = "backup";
           }
         ];
@@ -38,7 +38,7 @@
           ({ pkgs, ... }: {
             system.configurationRevision = self.rev or "unknown-rev";
           })
-          ./../hosts/darwin/configuration.nix
+          ./hosts/darwin/configuration.nix
         ];
       };
     };
@@ -48,7 +48,7 @@
         pkgs = nixpkgs.legacyPackages.${system};
         homeDirectory = "/home/rovasilchenko";
         modules = [
-          ./../hosts/nixos/home.nix
+          ./hosts/nixos/home.nix
         ];
       };
     };
