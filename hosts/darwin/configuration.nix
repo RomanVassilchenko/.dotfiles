@@ -75,5 +75,6 @@
     "fzf"
     "zoxide"
     "pandoc"
+    "neovim"
   ];
 }
