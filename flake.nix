@@ -13,11 +13,12 @@
 
   outputs = { self, nixpkgs, nix-darwin, home-manager, flake-utils, ... }:
     let
-      system = "x86_64-linux";
-    in{
+      nixosSystem = "x86_64-linux";
+      darwinSystem = "aarch64-darwin";
+    in {
     nixosConfigurations = {
       XiaoXinPro = nixpkgs.lib.nixosSystem {
-        inherit system;
+        inherit nixosSystem;
         modules = [
           ./hosts/nixos/configuration.nix
           ./hosts/nixos/hardware-configuration.nix
@@ -39,16 +40,31 @@
             system.configurationRevision = self.rev or "unknown-rev";
           })
           ./hosts/darwin/configuration.nix
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.rovasilchenko = import ./hosts/darwin/home.nix;
+            home-manager.backupFileExtension = "backup";
+          }
         ];
       };
     };
 
     homeConfigurations = {
-      rovasilchenko = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
+      nixosHome = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs { system = nixosSystem; };
         homeDirectory = "/home/rovasilchenko";
         modules = [
           ./hosts/nixos/home.nix
+        ];
+      };
+
+      darwinHome = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs { system = darwinSystem; };
+        homeDirectory = "/Users/rovasilchenko";
+        modules = [
+          ./hosts/darwin/home.nix
         ];
       };
     };
