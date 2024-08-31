@@ -18,7 +18,7 @@
     in {
     nixosConfigurations = {
       XiaoXinPro = nixpkgs.lib.nixosSystem {
-        inherit nixosSystem;
+        system = nixosSystem;
         modules = [
           ./hosts/nixos/configuration.nix
           ./hosts/nixos/hardware-configuration.nix
@@ -35,6 +35,7 @@
 
     darwinConfigurations = {
       "mbp-rovasilchenko-OZON-W0HDJTC2M5" = nix-darwin.lib.darwinSystem {
+        system = darwinSystem;
         modules = [
           ({ pkgs, ... }: {
             system.configurationRevision = self.rev or "unknown-rev";

@@ -15,6 +15,7 @@
     vscode
     cartridges
     obs-studio
+    obs-studio-plugins.obs-backgroundremoval
     gimp-with-plugins
     libreoffice-qt6-fresh
     thunderbird
