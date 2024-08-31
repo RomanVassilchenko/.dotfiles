@@ -22,7 +22,7 @@
     krita
     bitwarden-desktop
     kdePackages.kdenlive
-    gnome.gnome-boxes
+    gnome-boxes
     inkscape-with-extensions
     postman
     dbeaver-bin

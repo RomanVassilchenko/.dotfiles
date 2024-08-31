@@ -1,13 +1,7 @@
 { config, pkgs, lib, ... }:
 
-let
-  isNixOS = lib.mkIf (config ? systemd) "linux";
-  platform = if isNixOS == "linux" then "linux" else "darwin";
-in
-
 {
   home.username = "rovasilchenko";
-  home.homeDirectory = lib.mkForce (if platform == "darwin" then "/Users/rovasilchenko" else "/home/rovasilchenko");
 
   programs.zsh = {
     enable = true;
@@ -48,28 +42,18 @@ in
     };
   };
 
-  # programs.neovim = {
-  #   enable = true;
-  #   viAlias = true;
-  #   vimAlias = true;
-  #   defaultEditor = true;
-  #   plugins = with pkgs.vimPlugins; [
-  #     yuck-vim
-  #     scss-syntax-vim
-  #     nerdtree
-  #   ];
-  #   extraConfig = ''
-  #     :set number relativenumber
-  #     :set tabstop=2
-  #     :set shiftwidth=2
-  #     :set expandtab
-  #     :set autoindent
-  #     :syntax on
-  #   '';
-  # };
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+    defaultEditor = true;
+    plugins = with pkgs.vimPlugins; [
+      LazyVim
+    ];
+  };
 
   home.packages = with pkgs; [
-    vimPlugins.LazyVim
+    # Any additional packages can be added here
   ];
 
   home.stateVersion = "24.05";
