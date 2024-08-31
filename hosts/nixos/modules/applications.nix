@@ -40,7 +40,7 @@
     wget
     curl
     unzip
-    gamescope
+    xdg-ninja
 
     kdePackages.breeze
     kdePackages.breeze-gtk
