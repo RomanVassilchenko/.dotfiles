@@ -250,6 +250,10 @@
     "pandoc"
     "neovim"
     "ripgrep"
+    "allure"
+    "fastfetch"
+    "goose"
+    "buf"
   ];
 
   # Fonts

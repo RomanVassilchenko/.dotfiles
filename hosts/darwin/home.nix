@@ -6,6 +6,8 @@
     ../shared/home.nix
   ];
 
+  home.homeDirectory = lib.mkForce "/Users/rovasilchenko";
+
   programs.zsh.shellAliases.up = "darwin-rebuild switch --flake ~/.dotfiles#mbp-rovasilchenko-OZON-W0HDJTC2M5";
 
   programs.git.userName = "rovasilchenko";
