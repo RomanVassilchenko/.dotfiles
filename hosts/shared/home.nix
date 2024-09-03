@@ -3,6 +3,8 @@
 {
   home.username = "rovasilchenko";
 
+  home.sessionVariables.ZDOTDIR = "${config.home.homeDirectory}/.config/zsh";
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;

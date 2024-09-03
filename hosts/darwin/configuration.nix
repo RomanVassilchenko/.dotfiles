@@ -221,6 +221,7 @@
     "zed"
     "alt-tab"
     "goland"
+    "obsidian"
   ];
   homebrew.brews = [
     "go"
