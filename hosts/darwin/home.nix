@@ -22,7 +22,7 @@
     ZDOTDIR = "${config.home.homeDirectory}/.config/zsh";
   };
 
-  home.sessionVariables.PATH = lib.mkAfter "/run/current-system/sw/bin:${config.home.homeDirectory}/go/bin:${config.home.homeDirectory}/.o3-cli/bin:${pkgs.coreutils}/bin:/bin:/usr/bin:/usr/local/bin:/sbin";
+  home.sessionVariables.PATH = lib.mkAfter "/run/current-system/sw/bin:${config.home.homeDirectory}/.o3-cli/bin:${pkgs.coreutils}/bin:/bin:/usr/bin:/usr/local/bin:/sbin:${config.home.sessionVariables.GOPATH}/bin";
 
   programs.zsh.shellAliases.up = "darwin-rebuild switch --flake ~/.dotfiles#mbp-rovasilchenko-OZON-W0HDJTC2M5";
 
