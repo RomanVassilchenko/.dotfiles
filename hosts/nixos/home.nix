@@ -22,5 +22,12 @@
     };
   };
 
+  programs.obs-studio = {
+    enable = true;
+    plugins = with pkgs.obs-studio-plugins; [
+        obs-backgroundremoval
+    ];
+  };
+
   home.stateVersion = "24.05";  # Use the same version as your system.stateVersion
 }
