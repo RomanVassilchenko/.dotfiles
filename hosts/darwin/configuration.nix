@@ -222,6 +222,12 @@
     "alt-tab"
     "goland"
     "obsidian"
+    "gimp"
+    "inkscape"
+    "krita"
+    "kdenlive"
+    "obs"
+    "rectangle"
   ];
   homebrew.brews = [
     "go"
