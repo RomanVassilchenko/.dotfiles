@@ -228,6 +228,7 @@
     "kdenlive"
     "obs"
     "rectangle"
+    "zen-browser"
   ];
   homebrew.brews = [
     "go"
