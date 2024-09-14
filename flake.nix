@@ -15,9 +15,10 @@
       url = "github:nix-community/lanzaboote/v0.4.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
   };
 
-  outputs = { self, nixpkgs, nix-darwin, home-manager, flake-utils, ... }:
+  outputs = { self, nixpkgs, nix-darwin, home-manager, flake-utils, nix-flatpak, ... }:
     let
       nixosSystem = "x86_64-linux";
       darwinSystem = "aarch64-darwin";
@@ -28,6 +29,7 @@
         modules = [
           ./hosts/nixos/configuration.nix
           ./hosts/nixos/hardware-configuration.nix
+          nix-flatpak.nixosModules.nix-flatpak
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
