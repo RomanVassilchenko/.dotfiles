@@ -39,6 +39,7 @@
     curl
     unzip
     xdg-ninja
+    gnome-disk-utility
 
     kdePackages.breeze
     kdePackages.breeze-gtk

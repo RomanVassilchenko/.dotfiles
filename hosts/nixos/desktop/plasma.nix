@@ -19,4 +19,12 @@
     haruna
     # kdePackages.kamoso
   ];
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-kde
+      xdg-desktop-portal-gtk
+    ];
+  };
 }
