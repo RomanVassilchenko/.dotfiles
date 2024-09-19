@@ -16,9 +16,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak";
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
-  outputs = { self, nixpkgs, nix-darwin, home-manager, flake-utils, nix-flatpak, ... }:
+  outputs = inputs@ { self, nixpkgs, nix-darwin, home-manager, flake-utils, nix-flatpak, plasma-manager, ... }:
     let
       nixosSystem = "x86_64-linux";
       darwinSystem = "aarch64-darwin";
@@ -36,6 +41,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.rovasilchenko = import ./hosts/nixos/home.nix;
             home-manager.backupFileExtension = "backup";
+            home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
           }
         ];
       };
