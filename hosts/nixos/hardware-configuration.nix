@@ -16,13 +16,19 @@
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/39f4b437-10ac-4a80-9aee-d3017c02039a";
       fsType = "btrfs";
-      options = [ "subvol=@" ];
+      options = [ "subvol=@" "defaults" "noatime" "discard=async" ];
     };
 
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/8371-F9C3";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
+    };
+
+  fileSystems."/mnt/Games" =
+    { device = "/dev/disk/by-label/Games";
+      fsType = "btrfs";
+      options = [ "defaults" "noatime" "discard=async" ];
     };
 
   swapDevices = [ ];

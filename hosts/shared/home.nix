@@ -24,7 +24,7 @@
     };
 
     oh-my-zsh = {
-      enable = true;
+        enable = true;
       plugins = [ "git" "sudo" ];
       theme = "agnoster";
     };
