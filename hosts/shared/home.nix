@@ -3,7 +3,7 @@
 {
   home.username = "rovasilchenko";
 
-  home.sessionVariables.ZDOTDIR = "${config.home.homeDirectory}/.config/zsh";
+  # home.sessionVariables.ZDOTDIR = "${config.home.homeDirectory}/.config/zsh";
 
   programs.zsh = {
     enable = true;
@@ -20,12 +20,12 @@
 
     history = {
       size = 10000;
-      path = "${config.xdg.dataHome}/zsh/history";
+      # path = "${config.xdg.dataHome}/zsh/history";
     };
 
     oh-my-zsh = {
         enable = true;
-      plugins = [ "git" "sudo" ];
+      plugins = [ "git" "sudo" "fzf" ];
       theme = "agnoster";
     };
   };
@@ -55,7 +55,7 @@
   };
 
   home.packages = with pkgs; [
-    # Any additional packages can be added here
+    fzf
   ];
 
   home.stateVersion = "24.05";

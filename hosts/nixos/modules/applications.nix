@@ -4,6 +4,14 @@
 
   programs.firefox.enable = true;
 
+  programs.tmux = {
+    enable = true;
+    clock24 = true;
+    extraConfig = '' # used for less common options, intelligently combines if defined in multiple places.
+      ...
+    '';
+  };
+
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   environment.systemPackages = with pkgs; [
@@ -40,6 +48,8 @@
     unzip
     xdg-ninja
     gnome-disk-utility
+    lazygit
+    lazydocker
 
     kdePackages.breeze
     kdePackages.breeze-gtk
