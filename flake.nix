@@ -40,7 +40,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.rovasilchenko = import ./hosts/nixos/home.nix;
-            home-manager.backupFileExtension = "old";
+            home-manager.backupFileExtension = "hm-backup";
             home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
           }
         ];

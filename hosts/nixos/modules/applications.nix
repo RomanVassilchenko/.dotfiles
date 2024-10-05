@@ -16,10 +16,10 @@
 
   environment.systemPackages = with pkgs; [
     git
-    google-chrome
+    # google-chrome
     vesktop
     telegram-desktop
-    spotify
+    # spotify
     vscode
     cartridges
     gimp-with-plugins
@@ -33,9 +33,9 @@
     postman
     dbeaver-bin
     papirus-icon-theme
-    jetbrains.goland
+    # jetbrains.goland
     fastfetch
-    insync
+    # insync
     zed-editor
     boxbuddy
     fzf

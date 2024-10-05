@@ -24,8 +24,18 @@
     };
 
     oh-my-zsh = {
-        enable = true;
-      plugins = [ "git" "sudo" "fzf" ];
+      enable = true;
+      plugins = [ 
+        "git" 
+        "sudo" 
+        "fzf" 
+        # "zsh-autosuggestions" 
+        # "zsh-syntax-highlighting" 
+        # "you-should-use" 
+        "docker" 
+        "docker-compose"
+        "zoxide"
+      ];
       theme = "agnoster";
     };
   };
@@ -56,6 +66,9 @@
 
   home.packages = with pkgs; [
     fzf
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    zsh-you-should-use
   ];
 
   home.stateVersion = "24.05";
