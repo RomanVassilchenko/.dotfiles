@@ -14,7 +14,7 @@
     ./modules/applications.nix
     ./modules/nix.nix
 
-    ./desktop/plasma.nix
+    ./desktop/hyprland.nix
     # ./desktop/gnome.nix
   ];
 
