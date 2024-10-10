@@ -20,7 +20,7 @@
     gamescopeSession.enable = true;
   };
 
-   environment.sessionVariables = {
+  environment.sessionVariables = {
     STEAM_FORCE_DESKTOPUI_SCALING = "1.25";
   };
 }

@@ -12,11 +12,13 @@
     '';
   };
 
-  environment.gnome.excludePackages = (with pkgs; [
-    gnome-tour
-    gnome-connections
-    totem
-  ]) ++ (with pkgs.gnome; []);
+  environment.gnome.excludePackages =
+    (with pkgs; [
+      gnome-tour
+      gnome-connections
+      totem
+    ])
+    ++ (with pkgs.gnome; [ ]);
 
   environment.systemPackages = with pkgs; [
     celluloid

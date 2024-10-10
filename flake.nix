@@ -23,65 +23,75 @@
     };
   };
 
-  outputs = inputs@ { self, nixpkgs, nix-darwin, home-manager, flake-utils, nix-flatpak, plasma-manager, ... }:
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      nix-darwin,
+      home-manager,
+      flake-utils,
+      nix-flatpak,
+      plasma-manager,
+      ...
+    }:
     let
       nixosSystem = "x86_64-linux";
       darwinSystem = "aarch64-darwin";
-    in {
-    nixosConfigurations = {
-      XiaoXinPro = nixpkgs.lib.nixosSystem {
-        system = nixosSystem;
-        modules = [
-          ./hosts/nixos/configuration.nix
-          ./hosts/nixos/hardware-configuration.nix
-          nix-flatpak.nixosModules.nix-flatpak
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.rovasilchenko = import ./hosts/nixos/home.nix;
-            home-manager.backupFileExtension = "hm-backup";
-            home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
-          }
-        ];
-      };
-    };
-
-    darwinConfigurations = {
-      "mbp-rovasilchenko-OZON-W0HDJTC2M5" = nix-darwin.lib.darwinSystem {
-        system = darwinSystem;
-        modules = [
-          ({ pkgs, ... }: {
-            system.configurationRevision = self.rev or "unknown-rev";
-          })
-          ./hosts/darwin/configuration.nix
-          home-manager.darwinModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.rovasilchenko = import ./hosts/darwin/home.nix;
-            home-manager.backupFileExtension = "backup";
-          }
-        ];
-      };
-    };
-
-    homeConfigurations = {
-      nixosHome = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs { system = nixosSystem; };
-        homeDirectory = "/home/rovasilchenko";
-        modules = [
-          ./hosts/nixos/home.nix
-        ];
+    in
+    {
+      nixosConfigurations = {
+        XiaoXinPro = nixpkgs.lib.nixosSystem {
+          system = nixosSystem;
+          modules = [
+            ./hosts/nixos/configuration.nix
+            ./hosts/nixos/hardware-configuration.nix
+            nix-flatpak.nixosModules.nix-flatpak
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.rovasilchenko = import ./hosts/nixos/home.nix;
+              home-manager.backupFileExtension = "hm-backup";
+              home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
+            }
+          ];
+        };
       };
 
-      darwinHome = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs { system = darwinSystem; };
-        homeDirectory = "/Users/rovasilchenko";
-        modules = [
-          ./hosts/darwin/home.nix
-        ];
+      darwinConfigurations = {
+        "mbp-rovasilchenko-OZON-W0HDJTC2M5" = nix-darwin.lib.darwinSystem {
+          system = darwinSystem;
+          modules = [
+            (
+              { pkgs, ... }:
+              {
+                system.configurationRevision = self.rev or "unknown-rev";
+              }
+            )
+            ./hosts/darwin/configuration.nix
+            home-manager.darwinModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.rovasilchenko = import ./hosts/darwin/home.nix;
+              home-manager.backupFileExtension = "backup";
+            }
+          ];
+        };
+      };
+
+      homeConfigurations = {
+        nixosHome = home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs { system = nixosSystem; };
+          homeDirectory = "/home/rovasilchenko";
+          modules = [ ./hosts/nixos/home.nix ];
+        };
+
+        darwinHome = home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs { system = darwinSystem; };
+          homeDirectory = "/Users/rovasilchenko";
+          modules = [ ./hosts/darwin/home.nix ];
+        };
       };
     };
-  };
 }

@@ -7,8 +7,9 @@
   programs.tmux = {
     enable = true;
     clock24 = true;
-    extraConfig = '' # used for less common options, intelligently combines if defined in multiple places.
-      ...
+    extraConfig = ''
+      # used for less common options, intelligently combines if defined in multiple places.
+           ...
     '';
   };
 
@@ -56,8 +57,11 @@
     kdePackages.breeze-plymouth
   ];
 
-    services.flatpak.packages = [
-    { appId = "io.github.zen_browser.zen"; origin = "flathub";  }
+  services.flatpak.packages = [
+    {
+      appId = "io.github.zen_browser.zen";
+      origin = "flathub";
+    }
     # "com.obsproject.Studio"
     # "im.riot.Riot"
   ];

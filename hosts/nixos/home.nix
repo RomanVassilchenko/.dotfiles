@@ -1,18 +1,14 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    ../shared/home.nix
-  ];
+  imports = [ ../shared/home.nix ];
 
   programs.zsh.shellAliases.up = "nh os switch ~/.dotfiles";
 
   programs.git.userName = "Roman Vassilchenko";
   programs.git.userEmail = "roman.vassilchenko.work@gmail.com";
 
-  home.packages = with pkgs; [
-    zsh
-  ];
+  home.packages = with pkgs; [ zsh ];
 
   programs.btop = {
     enable = true;
@@ -24,21 +20,33 @@
 
   programs.obs-studio = {
     enable = true;
-    plugins = with pkgs.obs-studio-plugins; [
-        obs-backgroundremoval
-    ];
+    plugins = with pkgs.obs-studio-plugins; [ obs-backgroundremoval ];
   };
 
   programs.plasma = {
     shortcuts = {
       "KDE Keyboard Layout Switcher"."Switch keyboard layout to English (US)" = [ ];
       "KDE Keyboard Layout Switcher"."Switch keyboard layout to Russian" = [ ];
-      "ksmserver"."Lock Session" = ["Screensaver" "Meta+L" "Ctrl+Alt+Q,Meta+L" "Screensaver,Lock Session"];
+      "ksmserver"."Lock Session" = [
+        "Screensaver"
+        "Meta+L"
+        "Ctrl+Alt+Q,Meta+L"
+        "Screensaver,Lock Session"
+      ];
       "ksmserver"."LogOut" = "none,,Log Out";
-      "kwin"."Window Close" = ["Alt+Q" "Alt+F4,Alt+F4,Close Window"];
+      "kwin"."Window Close" = [
+        "Alt+Q"
+        "Alt+F4,Alt+F4,Close Window"
+      ];
       "org_kde_powerdevil"."Turn Off Screen" = "Ctrl+Alt+L,none,Turn Off Screen";
-      "plasmashell"."activate application launcher" = ["Meta,Meta" "Alt+F1,Activate Application Launcher"];
-      "services/org.kde.spectacle.desktop"."RectangularRegionScreenShot" = ["Meta+Shift+Print" "Alt+%"];
+      "plasmashell"."activate application launcher" = [
+        "Meta,Meta"
+        "Alt+F1,Activate Application Launcher"
+      ];
+      "services/org.kde.spectacle.desktop"."RectangularRegionScreenShot" = [
+        "Meta+Shift+Print"
+        "Alt+%"
+      ];
     };
     configFile = {
       "katerc"."General"."Days Meta Infos" = 30;
@@ -120,5 +128,5 @@
     };
   };
 
-  home.stateVersion = "24.05";  # Use the same version as your system.stateVersion
+  home.stateVersion = "24.05"; # Use the same version as your system.stateVersion
 }

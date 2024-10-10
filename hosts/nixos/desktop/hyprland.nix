@@ -7,17 +7,17 @@
   # Set environment packages
   environment.systemPackages = with pkgs; [
     hyprland
-    waybar            # Highly customizable status bar for Wayland
-    alacritty         # Terminal emulator
-    dmenu             # Application launcher
-    wl-clipboard      # Clipboard for Wayland
-    grim              # Screenshot utility for Wayland
-    slurp             # Select area for grim screenshots
-    wf-recorder       # Screen recording tool
-    kdeconnect        # KDE Connect for phone integration
-    haruna            # Video player (you used this in your plasma config)
+    waybar # Highly customizable status bar for Wayland
+    alacritty # Terminal emulator
+    dmenu # Application launcher
+    wl-clipboard # Clipboard for Wayland
+    grim # Screenshot utility for Wayland
+    slurp # Select area for grim screenshots
+    wf-recorder # Screen recording tool
+    kdeconnect # KDE Connect for phone integration
+    haruna # Video player (you used this in your plasma config)
     # Additional utilities
-    mako              # Wayland notification daemon
+    mako # Wayland notification daemon
     xdg-desktop-portal
     xdg-desktop-portal-wlr
   ];
@@ -41,7 +41,7 @@
 
   # Optional: Hyprland specific configuration
   programs.hyprland = {
-    useDefaultConfig = true;  # Set to false if you want to customize
-    configFile = ./hyprland.conf;  # Point to your custom Hyprland config if needed
+    useDefaultConfig = true; # Set to false if you want to customize
+    configFile = ./hyprland.conf; # Point to your custom Hyprland config if needed
   };
 }

@@ -24,8 +24,11 @@
   users.users.rovasilchenko = {
     isNormalUser = true;
     description = "Roman Vassilchenko";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
+    packages = with pkgs; [ ];
   };
 
   nixpkgs.config.allowUnfree = true;
