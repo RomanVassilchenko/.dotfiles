@@ -4,14 +4,14 @@
 
   programs.firefox.enable = true;
 
-  programs.tmux = {
-    enable = true;
-    clock24 = true;
-    extraConfig = ''
-      # used for less common options, intelligently combines if defined in multiple places.
-           ...
-    '';
-  };
+  # programs.tmux = {
+  #   enable = true;
+  #   clock24 = true;
+  #   extraConfig = ''
+  #     # used for less common options, intelligently combines if defined in multiple places.
+  #          ...
+  #   '';
+  # };
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
@@ -38,7 +38,7 @@
     # insync
     zed-editor
     boxbuddy
-    fzf
+    # fzf
     bat
     fd
     ripgrep

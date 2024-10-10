@@ -13,7 +13,7 @@
     # pkgs.iperf
     # pkgs.lua-language-server
     pkgs.mkalias
-    # pkgs.neovim
+    pkgs.neovim
     # pkgs.nil
     # pkgs.obsidian
     # pkgs.opentofu
@@ -27,6 +27,7 @@
     # pkgs.tailwindcss
     # pkgs.tailwindcss-language-server
     # pkgs.templ
+    pkgs.fzf
     pkgs.tmux
     pkgs.nixfmt-rfc-style
     # pkgs.unstable.amber-lang
