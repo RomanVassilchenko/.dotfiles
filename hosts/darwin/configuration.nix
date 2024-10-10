@@ -1,9 +1,11 @@
 { pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [
-    vim
-  ];
+  imports = [ ../shared/configuration.nix ];
+
+  environment.systemPackages = with pkgs; [ vim ];
+
+  nixpkgs.config.allowUnfree = true;
 
   services.nix-daemon.enable = true;
   nix.settings.experimental-features = "nix-command flakes";
@@ -24,16 +26,7 @@
 
   time.timeZone = "Asia/Almaty";
 
-  # system.defaults = {
-  #   dock.autohide = true;
-  #   dock.mru-spaces = false;
-  #   finder.AppleShowAllExtensions = true;
-  #   screencapture.location = "~/Pictures/screenshots";
-  #   screensaver.askForPasswordDelay = 10;
-  # };
-
   system = {
-    # activationScripts are executed every time you boot the system or run `nixos-rebuild` / `darwin-rebuild`.
     activationScripts.postUserActivation.text = ''
       # activateSettings -u will reload the settings from the database and apply them to the current session,
       # so we do not need to logout and login again to make the changes take effect.
@@ -41,15 +34,13 @@
     '';
 
     defaults = {
-      menuExtraClock.Show24Hour = true; # show 24 hour clock
+      menuExtraClock.Show24Hour = true;
 
-      # customize dock
       dock = {
-        autohide = true; # automatically hide and show the dock
-        show-recents = false; # do not show recent apps in dock
-        # do not automatically rearrange spaces based on most recent use.
+        autohide = true;
+        show-recents = false;
         mru-spaces = false;
-        expose-group-by-app = true; # Group windows by application
+        expose-group-by-app = true;
 
         # customize Hot Corners(触发角, 鼠标移动到屏幕角落时触发的动作)
         # wvous-tl-corner = 2; # top-left - Mission Control
@@ -58,7 +49,6 @@
         # wvous-br-corner = 13; # bottom-right - Lock Screen
       };
 
-      # customize finder
       finder = {
         _FXShowPosixPathInTitle = true; # show full path in finder title
         AppleShowAllExtensions = true; # show all file extensions
@@ -195,14 +185,14 @@
 
   homebrew.enable = true;
   homebrew.onActivation = {
-      autoUpdate = true;
-      cleanup = "zap";
-      upgrade = true;
-      extraFlags = [
-        "--verbose"
-        "--debug"
-      ];
-    };
+    autoUpdate = true;
+    cleanup = "zap";
+    upgrade = true;
+    extraFlags = [
+      "--verbose"
+      "--debug"
+    ];
+  };
   homebrew.casks = [
     "betterdisplay"
     "dbeaver-community"
@@ -232,6 +222,7 @@
     "arc"
   ];
   homebrew.brews = [
+    "mas"
     "go"
     "lima"
     "colima"
@@ -240,7 +231,6 @@
     "docker-credential-helper"
     "grpc"
     "golangci-lint"
-    "git"
     "vault"
     "kubectl"
     "kubectx"
@@ -255,7 +245,6 @@
     "unzip"
     "wget"
     "fzf"
-    "zoxide"
     "pandoc"
     "neovim"
     "ripgrep"
@@ -264,6 +253,9 @@
     "goose"
     "buf"
   ];
+  homebrew.masApps = {
+    # Yoink = 457622435;
+  };
 
   # Fonts
   # fonts = {

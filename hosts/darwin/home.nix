@@ -1,10 +1,13 @@
 # hosts/darwin/home.nix
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
-  imports = [
-    ../shared/home.nix
-  ];
+  imports = [ ../shared/home.nix ];
 
   home.homeDirectory = lib.mkForce "/Users/rovasilchenko";
 
@@ -18,11 +21,11 @@
     GOPATH = "${config.home.homeDirectory}/.local/share/go";
     LESSHISTFILE = "${config.home.homeDirectory}/.local/state/less/history";
     ZPLUG_HOME = "${config.home.homeDirectory}/.local/share/zplug";
-    HISTFILE = "${config.home.homeDirectory}/.local/state/zsh/history";
-    ZDOTDIR = "${config.home.homeDirectory}/.config/zsh";
+    # HISTFILE = "${config.home.homeDirectory}/.local/state/zsh/history";
+    # ZDOTDIR = "${config.home.homeDirectory}/.config/zsh";
   };
 
-  home.sessionVariables.PATH = lib.mkAfter "/run/current-system/sw/bin:${config.home.homeDirectory}/.o3-cli/bin:${pkgs.coreutils}/bin:/bin:/usr/bin:/usr/local/bin:/sbin:${config.home.sessionVariables.GOPATH}/bin";
+  home.sessionVariables.PATH = lib.mkAfter "/run/current-system/sw/bin:${config.home.homeDirectory}/.o3-cli/bin:${pkgs.coreutils}/bin:/bin:/usr/bin:/usr/local/go/bin:/usr/local/bin:/sbin:${config.home.sessionVariables.GOPATH}/bin:/opt/homebrew/bin";
 
   programs.zsh.shellAliases.up = "darwin-rebuild switch --flake ~/.dotfiles#mbp-rovasilchenko-OZON-W0HDJTC2M5";
 

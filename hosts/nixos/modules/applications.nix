@@ -15,7 +15,6 @@
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   environment.systemPackages = with pkgs; [
-    git
     # google-chrome
     vesktop
     telegram-desktop
@@ -39,7 +38,6 @@
     zed-editor
     boxbuddy
     fzf
-    zoxide
     bat
     fd
     ripgrep

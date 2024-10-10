@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   home.username = "rovasilchenko";
@@ -25,11 +30,11 @@
 
     oh-my-zsh = {
       enable = true;
-      plugins = [ 
-        "git" 
-        "sudo" 
-        "fzf" 
-        "docker" 
+      plugins = [
+        "git"
+        "sudo"
+        "fzf"
+        "docker"
         "docker-compose"
         "zoxide"
       ];
@@ -47,7 +52,9 @@
         st = "status";
         hist = "log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short";
       };
-      push = { autoSetupRemote = true; };
+      push = {
+        autoSetupRemote = true;
+      };
     };
   };
 
@@ -56,9 +63,7 @@
     viAlias = true;
     vimAlias = true;
     defaultEditor = true;
-    plugins = with pkgs.vimPlugins; [
-      LazyVim
-    ];
+    plugins = with pkgs.vimPlugins; [ LazyVim ];
   };
 
   home.packages = with pkgs; [
