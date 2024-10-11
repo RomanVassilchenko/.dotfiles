@@ -8,15 +8,7 @@
   programs.git.userName = "Roman Vassilchenko";
   programs.git.userEmail = "roman.vassilchenko.work@gmail.com";
 
-  home.packages = with pkgs; [ zsh ];
-
-  programs.btop = {
-    enable = true;
-    settings = {
-      color_theme = "Default";
-      theme_background = false;
-    };
-  };
+  home.packages = with pkgs; [ ];
 
   programs.obs-studio = {
     enable = true;

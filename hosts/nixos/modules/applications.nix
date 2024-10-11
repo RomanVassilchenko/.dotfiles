@@ -34,7 +34,7 @@
     dbeaver-bin
     papirus-icon-theme
     # jetbrains.goland
-    fastfetch
+    # fastfetch
     # insync
     zed-editor
     boxbuddy

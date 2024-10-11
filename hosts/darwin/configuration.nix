@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   imports = [ ../shared/configuration.nix ];
@@ -27,11 +27,29 @@
   time.timeZone = "Asia/Almaty";
 
   system = {
-    activationScripts.postUserActivation.text = ''
-      # activateSettings -u will reload the settings from the database and apply them to the current session,
-      # so we do not need to logout and login again to make the changes take effect.
-      /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
-    '';
+    activationScripts.postUserActivation.text =
+      let
+        env = pkgs.buildEnv {
+          name = "system-applications";
+          paths = config.environment.systemPackages;
+          pathsToLink = "/Applications";
+        };
+      in
+      ''
+        # Reload settings to apply changes without logging out
+        /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+
+        # Set up Nix Apps in /Applications/Nix Apps
+        echo "Setting up /Applications/Nix Apps..." >&2
+        rm -rf /Applications/Nix\ Apps
+        mkdir -p /Applications/Nix\ Apps
+        find ${env}/Applications -maxdepth 1 -type l -exec readlink '{}' + |
+        while read src; do
+          app_name=$(basename "$src")
+          echo "Linking $src to /Applications/Nix Apps" >&2
+          ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
+        done
+      '';
 
     defaults = {
       menuExtraClock.Show24Hour = true;
@@ -211,7 +229,7 @@
     "zed"
     "alt-tab"
     "goland"
-    "obsidian"
+    # "obsidian"
     "gimp"
     "inkscape"
     "krita"
@@ -235,7 +253,7 @@
     "kubectl"
     "kubectx"
     "bat"
-    "btop"
+    # "btop"
     "xdg-ninja"
     "protobuf"
     "stow"
@@ -249,7 +267,7 @@
     # "neovim"
     "ripgrep"
     "allure"
-    "fastfetch"
+    # "fastfetch"
     "goose"
     "buf"
   ];

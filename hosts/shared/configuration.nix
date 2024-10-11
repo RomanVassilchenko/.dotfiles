@@ -15,7 +15,7 @@
     pkgs.mkalias
     pkgs.neovim
     # pkgs.nil
-    # pkgs.obsidian
+    pkgs.obsidian
     # pkgs.opentofu
     # pkgs.pass
     # pkgs.postgresql_16
@@ -32,5 +32,11 @@
     pkgs.nixfmt-rfc-style
     # pkgs.unstable.amber-lang
     pkgs.zoxide
+    pkgs.btop
+    pkgs.eza
+    pkgs.fastfetch
+    pkgs.zsh-autosuggestions
+    pkgs.zsh-syntax-highlighting
+    pkgs.zsh-you-should-use
   ];
 }

@@ -17,10 +17,13 @@
     autosuggestion.enable = true;
 
     shellAliases = {
-      ll = "ls -l";
-      la = "ls -a";
-      lah = "ls -lah";
       v = "nvim";
+      cat = "bat";
+      ls = "eza --icons";
+      ll = "eza -lh --icons --grid --group-directories-first";
+      la = "eza -lah --icons --grid --group-directories-first";
+      ".." = "cd ..";
+
     };
 
     history = {
@@ -55,6 +58,119 @@
       push = {
         autoSetupRemote = true;
       };
+    };
+  };
+
+  programs.fastfetch = {
+    enable = true;
+
+    settings = {
+      display = {
+        color = {
+          keys = "35";
+          output = "90";
+        };
+      };
+
+      # logo = {
+      #   source = ./nixos.png;
+      #   type = "kitty-direct";
+      #   height = 15;
+      #   width = 30;
+      #   padding = {
+      #     top = 3;
+      #     left = 3;
+      #   };
+      # };
+
+      modules = [
+        "break"
+        {
+          type = "custom";
+          format = "┌─────────────────────────────Hardware─────────────────────────────┐";
+        }
+        {
+          type = "cpu";
+          key = "│  ";
+        }
+        {
+          type = "gpu";
+          key = "│ 󰍛 ";
+        }
+        {
+          type = "memory";
+          key = "│ 󰑭 ";
+        }
+        {
+          type = "custom";
+          format = "└──────────────────────────────────────────────────────────────────┘";
+        }
+        "break"
+        {
+          type = "custom";
+          format = "┌─────────────────────────────Software─────────────────────────────┐";
+        }
+        {
+          type = "custom";
+          format =
+            if pkgs.stdenv.isDarwin then " OS -> Ozon MacBook Pro M1Pro" else " OS -> XiaoXinPro NixOS";
+        }
+        {
+          type = "kernel";
+          key = "│ ├ ";
+        }
+        {
+          type = "packages";
+          key = "│ ├󰏖 ";
+        }
+        {
+          type = "shell";
+          key = "└ └ ";
+        }
+        "break"
+        {
+          type = "wm";
+          key = " WM";
+        }
+        {
+          type = "wmtheme";
+          key = "│ ├󰉼 ";
+        }
+        {
+          type = "terminal";
+          key = "└ └ ";
+        }
+        {
+          type = "custom";
+          format = "└──────────────────────────────────────────────────────────────────┘";
+        }
+        "break"
+        {
+          type = "custom";
+          format = "┌───────────────────────────Uptime / Age───────────────────────────┐";
+        }
+        {
+          type = "command";
+          key = "│  ";
+          text = # bash
+            ''
+              birth_install=$(stat -c %W /)
+              current=$(date +%s)
+              delta=$((current - birth_install))
+              delta_days=$((delta / 86400))
+              echo $delta_days days
+            '';
+        }
+        {
+          type = "uptime";
+          key = "│  ";
+        }
+        {
+          type = "custom";
+          format = "└──────────────────────────────────────────────────────────────────┘";
+        }
+        "break"
+      ];
     };
   };
 
@@ -132,9 +248,10 @@
 
   programs.neovim = {
     enable = true;
+    defaultEditor = true;
     viAlias = true;
     vimAlias = true;
-    defaultEditor = true;
+    vimdiffAlias = true;
     plugins = with pkgs.vimPlugins; [ LazyVim ];
   };
 
@@ -148,6 +265,15 @@
     enable = true;
     enableZshIntegration = true;
     tmux.enableShellIntegration = true;
+  };
+
+  programs.btop = {
+    enable = true;
+    settings = {
+      color_theme = "Default";
+      vim_keys = true;
+      theme_background = false;
+    };
   };
 
   programs.alacritty = {
@@ -197,11 +323,7 @@
     };
   };
 
-  home.packages = with pkgs; [
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-    zsh-you-should-use
-  ];
+  home.packages = with pkgs; [ ];
 
   home.stateVersion = "24.05";
 }
