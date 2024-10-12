@@ -33,13 +33,15 @@
       ...
     }:
     let
-      nixosSystem = "x86_64-linux";
-      darwinSystem = "aarch64-darwin";
+      systems = [
+        "x86_64-linux"
+        "aarch64-darwin"
+      ];
     in
     {
       nixosConfigurations = {
         XiaoXinPro = nixpkgs.lib.nixosSystem {
-          system = nixosSystem;
+          system = "x86_64-linux";
           modules = [
             ./hosts/nixos/configuration.nix
             ./hosts/nixos/hardware-configuration.nix
@@ -58,7 +60,7 @@
 
       darwinConfigurations = {
         "mbp-rovasilchenko-OZON-W0HDJTC2M5" = nix-darwin.lib.darwinSystem {
-          system = darwinSystem;
+          system = "aarch64-darwin";
           modules = [
             (
               { pkgs, ... }:
@@ -75,20 +77,6 @@
               home-manager.backupFileExtension = "backup";
             }
           ];
-        };
-      };
-
-      homeConfigurations = {
-        nixosHome = home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs { system = nixosSystem; };
-          homeDirectory = "/home/rovasilchenko";
-          modules = [ ./hosts/nixos/home.nix ];
-        };
-
-        darwinHome = home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs { system = darwinSystem; };
-          homeDirectory = "/Users/rovasilchenko";
-          modules = [ ./hosts/darwin/home.nix ];
         };
       };
     };

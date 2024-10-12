@@ -1,7 +1,12 @@
-{ config, pkgs, ... }:
-
 {
-  environment.systemPackages = with pkgs; [
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+
+let
+  gamePackages = with pkgs; [
     adwsteamgtk
     heroic
     lutris
@@ -10,6 +15,12 @@
     ryujinx
     bottles
     itch
+  ];
+in
+{
+  environment.systemPackages = lib.mkMerge [
+    config.environment.systemPackages
+    gamePackages
   ];
 
   programs.steam = {
@@ -20,7 +31,5 @@
     gamescopeSession.enable = true;
   };
 
-  environment.sessionVariables = {
-    STEAM_FORCE_DESKTOPUI_SCALING = "1.25";
-  };
+  environment.sessionVariables.STEAM_FORCE_DESKTOPUI_SCALING = "1.25";
 }

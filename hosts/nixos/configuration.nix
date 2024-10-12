@@ -14,12 +14,9 @@
     ./modules/games.nix
     ./modules/applications.nix
     ./modules/nix.nix
-
-    ./desktop/hyprland.nix
-    # ./desktop/gnome.nix
+    ./desktop/plasma.nix
   ];
 
-  programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
   users.users.rovasilchenko = {
     isNormalUser = true;
@@ -31,7 +28,7 @@
     packages = with pkgs; [ ];
   };
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   programs.nh = {
     enable = true;
@@ -42,7 +39,6 @@
 
   zramSwap = {
     enable = true;
-    # one of "lzo", "lz4", "zstd"
     algorithm = "zstd";
     priority = 5;
     memoryPercent = 50;

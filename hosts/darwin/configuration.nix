@@ -5,22 +5,9 @@
 
   environment.systemPackages = with pkgs; [ vim ];
 
-  nixpkgs.config.allowUnfree = true;
-
   services.nix-daemon.enable = true;
-  nix.settings.experimental-features = "nix-command flakes";
-  environment.shellAliases.up = "darwin-rebuild switch --flake /Users/rovasilchenko/.dotfiles#mbp-rovasilchenko-OZON-W0HDJTC2M5";
 
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    enableFzfCompletion = true;
-    enableFzfGit = true;
-    enableFzfHistory = true;
-    enableSyntaxHighlighting = true;
-  };
   system.stateVersion = 4;
-  nixpkgs.hostPlatform = "aarch64-darwin";
 
   security.pam.enableSudoTouchIdAuth = true;
 
@@ -164,7 +151,6 @@
         "com.apple.AdLib" = {
           allowApplePersonalizedAdvertising = false;
         };
-        # Prevent Photos from opening automatically when devices are plugged in
         "com.apple.ImageCapture".disableHotPlug = true;
       };
 
@@ -231,37 +217,5 @@
   ];
   homebrew.masApps = {
     BitWarden = 1352778147;
-    # Yoink = 457622435;
   };
-
-  # Fonts
-  # fonts = {
-  #   packages = with pkgs; [
-  #     # packages = with pkgs; [
-  #     # icon fonts
-  #     material-design-icons
-  #     font-awesome
-
-  #     # 思源系列字体是 Adobe 主导的。其中汉字部分被称为「思源黑体」和「思源宋体」，是由 Adobe + Google 共同开发的
-  #     source-sans # 无衬线字体，不含汉字。字族名叫 Source Sans 3 和 Source Sans Pro，以及带字重的变体，加上 Source Sans 3 VF
-  #     source-serif # 衬线字体，不含汉字。字族名叫 Source Code Pro，以及带字重的变体
-  #     source-han-sans # 思源黑体
-  #     source-han-serif # 思源宋体
-
-  #     # nerdfonts
-  #     # https://github.com/NixOS/nixpkgs/blob/nixos-24.05/pkgs/data/fonts/nerdfonts/shas.nix
-  #     (nerdfonts.override {
-  #       fonts = [
-  #         # symbols icon only
-  #         "NerdFontsSymbolsOnly"
-  #         # Characters
-  #         "FiraCode"
-  #         "JetBrainsMono"
-  #         "Iosevka"
-  #       ];
-  #     })
-  #     julia-mono
-  #     dejavu_fonts
-  #   ];
-  # };
 }

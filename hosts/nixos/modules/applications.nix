@@ -1,24 +1,13 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
-  programs.firefox.enable = true;
-
-  # programs.tmux = {
-  #   enable = true;
-  #   clock24 = true;
-  #   extraConfig = ''
-  #     # used for less common options, intelligently combines if defined in multiple places.
-  #          ...
-  #   '';
-  # };
-
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
-  environment.systemPackages = with pkgs; [
-    # google-chrome
+let
+  extraPackages = with pkgs; [
     # vesktop
-    # vscode
     cartridges
     libreoffice-qt6-fresh
     thunderbird
@@ -26,30 +15,33 @@
     bitwarden-desktop
     kdePackages.kdenlive
     gnome-boxes
-    # postman
     dbeaver-bin
     papirus-icon-theme
     # jetbrains.goland
     # insync
-    zed-editor
     boxbuddy
     fd
-    # ripgrep
-    # wget
-    # curl
-    # unzip
-    # xdg-ninja
     gnome-disk-utility
     lazygit
     lazydocker
-
     kdePackages.breeze
     kdePackages.breeze-gtk
     kdePackages.breeze-grub
     kdePackages.breeze-icons
     kdePackages.breeze-plymouth
   ];
+in
+{
+  # programs.firefox.enable = true;
 
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
+  environment.systemPackages = lib.mkMerge [
+    config.environment.systemPackages
+    extraPackages
+  ];
+
+  services.flatpak.enable = true;
   services.flatpak.packages = [
     {
       appId = "io.github.zen_browser.zen";
