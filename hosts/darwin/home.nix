@@ -32,16 +32,7 @@
   programs.git.userName = "rovasilchenko";
   programs.git.userEmail = "rovasilchenko@ozon.ru";
 
-  home.packages = with pkgs; [
-    # wget
-    # curl
-    # fzf
-    # zoxide
-    # bat
-    # fd
-    # ripgrep
-    # neovim
-  ];
+  home.packages = with pkgs; [ ];
 
   home.stateVersion = "24.05";
 }

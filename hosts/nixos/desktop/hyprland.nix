@@ -8,7 +8,7 @@
   environment.systemPackages = with pkgs; [
     hyprland
     waybar # Highly customizable status bar for Wayland
-    alacritty # Terminal emulator
+    # alacritty # Terminal emulator
     dmenu # Application launcher
     wl-clipboard # Clipboard for Wayland
     grim # Screenshot utility for Wayland
