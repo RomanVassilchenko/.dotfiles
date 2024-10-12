@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   imports = [
@@ -28,14 +33,14 @@
     packages = with pkgs; [ ];
   };
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-
   programs.nh = {
     enable = true;
     clean.enable = true;
     clean.extraArgs = "--keep-since 4d --keep 3";
     flake = "/home/rovasilchenko/.dotfiles";
   };
+
+  programs.zsh.enable = true;
 
   zramSwap = {
     enable = true;

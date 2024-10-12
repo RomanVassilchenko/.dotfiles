@@ -7,7 +7,6 @@ let
     ffmpeg
     git
     gnupg
-    mkalias
     neovim
     obsidian
     ripgrep

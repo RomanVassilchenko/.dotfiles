@@ -3,7 +3,7 @@
 {
   imports = [ ../shared/configuration.nix ];
 
-  environment.systemPackages = with pkgs; [ vim ];
+  environment.systemPackages = with pkgs; [ mkalias ];
 
   services.nix-daemon.enable = true;
 

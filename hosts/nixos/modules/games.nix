@@ -5,8 +5,8 @@
   ...
 }:
 
-let
-  gamePackages = with pkgs; [
+{
+  environment.systemPackages = with pkgs; [
     adwsteamgtk
     heroic
     lutris
@@ -15,12 +15,6 @@ let
     ryujinx
     bottles
     itch
-  ];
-in
-{
-  environment.systemPackages = lib.mkMerge [
-    config.environment.systemPackages
-    gamePackages
   ];
 
   programs.steam = {

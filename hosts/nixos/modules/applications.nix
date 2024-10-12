@@ -5,8 +5,8 @@
   ...
 }:
 
-let
-  extraPackages = with pkgs; [
+{
+  environment.systemPackages = with pkgs; [
     # vesktop
     cartridges
     libreoffice-qt6-fresh
@@ -30,16 +30,8 @@ let
     kdePackages.breeze-icons
     kdePackages.breeze-plymouth
   ];
-in
-{
-  # programs.firefox.enable = true;
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
-  environment.systemPackages = lib.mkMerge [
-    config.environment.systemPackages
-    extraPackages
-  ];
 
   services.flatpak.enable = true;
   services.flatpak.packages = [
