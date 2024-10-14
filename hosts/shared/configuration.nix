@@ -32,6 +32,7 @@ let
     kubectl
     zellij
     goose
+    nixfmt-rfc-style
   ];
 in
 {
