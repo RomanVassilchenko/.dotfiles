@@ -3,7 +3,11 @@
 {
   imports = [ ../shared/configuration.nix ];
 
-  environment.systemPackages = with pkgs; [ mkalias ];
+  environment.systemPackages = with pkgs; [
+    mkalias
+    # mas
+     ];
+
 
   services.nix-daemon.enable = true;
 
@@ -211,11 +215,8 @@
     "zen-browser"
     "arc"
   ];
-  homebrew.brews = [
-    "mas"
-    "goose"
-  ];
-  homebrew.masApps = {
-    BitWarden = 1352778147;
-  };
+  homebrew.brews = [];
+  # homebrew.masApps = {
+  #   BitWarden = 1352778147;
+  # };
 }

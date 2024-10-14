@@ -2,7 +2,7 @@
 
 let
   commonPackages = with pkgs; [
-    alacritty
+    # alacritty
     kitty
     ffmpeg
     git
@@ -30,6 +30,8 @@ let
     docker
     docker-compose
     kubectl
+    zellij
+    goose
   ];
 in
 {
