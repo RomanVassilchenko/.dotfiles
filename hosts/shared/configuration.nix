@@ -33,6 +33,7 @@ let
     zellij
     goose
     nixfmt-rfc-style
+    gnumake
   ];
 in
 {
