@@ -8,9 +8,7 @@
     backupFileExtension = "hm-backup";
     users.${username} = {
       imports = 
-        if (host == "desktop") then 
-          [ ./../home/default.desktop.nix ] 
-        elseif (host == "mbp-rovasilchenko-OZON-W0HDJTC2M5") then
+        if (host == "mbp-rovasilchenko-OZON-W0HDJTC2M5") then
           [ ./../home/default.darwin.nix ]
         else [ ./../home ];
       home.username = "${username}";
