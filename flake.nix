@@ -1,82 +1,76 @@
 {
-  description = "Unified Darwin and NixOS system flake";
+  description = "FrostPhoenix's nixos configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nix-darwin.url = "github:LnL7/nix-darwin";
-    flake-utils.url = "github:numtide/flake-utils";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nur.url = "github:nix-community/NUR";
+
+    hypr-contrib.url = "github:hyprwm/contrib";
+    hyprpicker.url = "github:hyprwm/hyprpicker";
+
+    alejandra.url = "github:kamadorueda/alejandra/3.0.0";
+
+    nix-gaming.url = "github:fufexan/nix-gaming";
+
+    hyprland = {
+      type = "git";
+      url = "https://github.com/hyprwm/Hyprland";
+      submodules = true;
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-flatpak.url = "github:gmodena/nix-flatpak";
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
+
+    spicetify-nix = {
+      url = "github:gerg-l/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
     };
+
+    hyprmag.url = "github:SIMULATAN/hyprmag";
+
+    wezterm = {
+      url = "github:wez/wezterm/main?dir=nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
   };
 
   outputs =
-    inputs@{
-      self,
-      nixpkgs,
-      nix-darwin,
-      home-manager,
-      flake-utils,
-      nix-flatpak,
-      plasma-manager,
-      ...
-    }:
+    { nixpkgs, self, ... }@inputs:
     let
-      systems = [
-        "x86_64-linux"
-        "aarch64-darwin"
-      ];
+      username = "rovasilchenko";
+      system = "x86_64-linux";
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
+      lib = nixpkgs.lib;
     in
     {
       nixosConfigurations = {
         XiaoXinPro = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./hosts/nixos/configuration.nix
-            ./hosts/nixos/hardware-configuration.nix
-            nix-flatpak.nixosModules.nix-flatpak
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.rovasilchenko = import ./hosts/nixos/home.nix;
-              home-manager.backupFileExtension = "hm-backup";
-              home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
-            }
-          ];
+          inherit system;
+          modules = [ ./hosts/XiaoXinPro ];
+          specialArgs = {
+            host = "XiaoXinPro";
+            inherit self inputs username;
+          };
         };
-      };
-
-      darwinConfigurations = {
-        "mbp-rovasilchenko-OZON-W0HDJTC2M5" = nix-darwin.lib.darwinSystem {
+        mbp-rovasilchenko-OZON-W0HDJTC2M5 = nixpkgs.lib.nixosSystem {
           system = "aarch64-darwin";
-          modules = [
-            (
-              { pkgs, ... }:
-              {
-                system.configurationRevision = self.rev or "unknown-rev";
-              }
-            )
-            ./hosts/darwin/configuration.nix
-            home-manager.darwinModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.rovasilchenko = import ./hosts/darwin/home.nix;
-              home-manager.backupFileExtension = "backup";
-            }
-          ];
+          modules = [ ./hosts/mbp-rovasilchenko-OZON-W0HDJTC2M5 ];
+          specialArgs = {
+            host = "mbp-rovasilchenko-OZON-W0HDJTC2M5";
+            inherit self inputs username;
+          };
         };
       };
     };
