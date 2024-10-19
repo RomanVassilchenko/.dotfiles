@@ -25,11 +25,11 @@
     gimp
     inkscape
     telegram-desktop
-    discord
+    # discord
     postman
-    vscode
+    # vscode
     zed
-    go
+    # go
     docker
     docker-compose
     kubectl
@@ -244,6 +244,8 @@
     ];
   };
   homebrew.casks = [
+    "visual-studio-code"
+    "discord"
     "betterdisplay"
     "dbeaver-community"
     "google-chrome"
@@ -257,7 +259,7 @@
     "zen-browser"
     "arc"
   ];
-  homebrew.brews = [ ];
+  homebrew.brews = [ "go" ];
   # homebrew.masApps = {
   #   BitWarden = 1352778147;
   # };

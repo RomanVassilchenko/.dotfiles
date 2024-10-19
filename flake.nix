@@ -1,5 +1,5 @@
 {
-  description = "FrostPhoenix's nixos configuration";
+  description = "NixOS and macOS configuration";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -16,6 +16,10 @@
       type = "git";
       url = "https://github.com/hyprwm/Hyprland";
       submodules = true;
+    };
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     home-manager = {
@@ -44,7 +48,12 @@
   };
 
   outputs =
-    { nixpkgs, self, ... }@inputs:
+    {
+      nixpkgs,
+      self,
+      nix-darwin,
+      ...
+    }@inputs:
     let
       username = "rovasilchenko";
       system = "x86_64-linux";
@@ -64,7 +73,10 @@
             inherit self inputs username;
           };
         };
-        mbp-rovasilchenko-OZON-W0HDJTC2M5 = nixpkgs.lib.nixosSystem {
+      };
+
+      darwinConfigurations = {
+        mbp-rovasilchenko-OZON-W0HDJTC2M5 = nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           modules = [ ./hosts/mbp-rovasilchenko-OZON-W0HDJTC2M5 ];
           specialArgs = {
