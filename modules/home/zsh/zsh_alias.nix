@@ -8,7 +8,6 @@
       tt = "gtrash put";
       cat = "bat";
       nano = "micro";
-      code = "codium";
       diff = "delta --diff-so-fancy --side-by-side";
       less = "bat";
       y = "yazi";
@@ -26,7 +25,7 @@
       tree = "eza --icons --tree --group-directories-first";
 
       # Nixos
-      cdnix = "cd ~/nixos-config && codium ~/nixos-config";
+      cdnix = "cd ~/.dotfiles && code ~/.dotfiles";
       ns = "nom-shell --run zsh";
       nix-switch = "nh os switch";
       nix-update = "nh os switch --update";

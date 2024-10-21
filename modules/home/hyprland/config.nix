@@ -21,7 +21,7 @@
         "hyprlock"
 
         ## App auto start
-        # "[workspace 1 silent] floorp"
+        # "[workspace 1 silent] zen"
         # "[workspace 2 silent] wezterm"
       ];
 
@@ -145,7 +145,7 @@
         "$mainMod, Return, exec, wezterm start --always-new-process"
         "ALT, Return, exec, [float; center] wezterm start --always-new-process"
         "$mainMod SHIFT, Return, exec, [fullscreen] wezterm start --always-new-process"
-        "$mainMod, B, exec, hyprctl dispatch exec '[workspace 1 silent] floorp'"
+        "$mainMod, B, exec, hyprctl dispatch exec '[workspace 1 silent] zen'"
         "$mainMod, Q, killactive,"
         "$mainMod, F, fullscreen, 0"
         "$mainMod SHIFT, F, fullscreen, 1"
@@ -248,6 +248,11 @@
         "$mainMod, V, exec, cliphist list | rofi -dmenu -theme-str 'window {width: 50%;}' | cliphist decode | wl-copy"
       ];
 
+      bindl = [
+	", switch:on:Lid Switch, exec, hyprctl keyword monitor 'eDP-1, disable'"
+	", switch:off:Lid Switch, exec, hyprctl keyword monitor 'eDP-1, 2560x1600, -1600x0, auto'"
+      ];
+
       # # binds active in lockscreen
       # bindl = [
       #   # laptop brigthness
@@ -303,9 +308,9 @@
         "opacity 1.0 override 1.0 override, title:^(.*mpv.*)$"
         "opacity 1.0 override 1.0 override, class:(Aseprite)"
         "opacity 1.0 override 1.0 override, class:(Unity)"
-        "opacity 1.0 override 1.0 override, class:(floorp)"
+        "opacity 1.0 override 1.0 override, class:(zen)"
         "opacity 1.0 override 1.0 override, class:(evince)"
-        "workspace 1, class:^(floorp)$"
+        "workspace 1, class:^(zen)$"
         "workspace 3, class:^(evince)$"
         "workspace 4, class:^(Gimp-2.10)$"
         "workspace 4, class:^(Aseprite)$"
@@ -349,7 +354,8 @@
     };
 
     extraConfig = "
-      monitor=,preferred,auto,auto
+      monitor=DP-2, 2560x1440, 0x0, auto
+      monitor=eDP-1, 2560x1600@120, -1600x0, auto
 
       xwayland {
         force_zero_scaling = true

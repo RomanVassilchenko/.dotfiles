@@ -1,10 +1,10 @@
 { inputs, pkgs, ... }: 
 let 
-  _2048 = pkgs.callPackage ../../pkgs/2048/default.nix {}; 
+  # _2048 = pkgs.callPackage ../../pkgs/2048/default.nix {}; 
 in
 {
   home.packages = (with pkgs; [
-    _2048
+    # _2048
 
     ## CLI utility
     ani-cli
@@ -54,6 +54,7 @@ in
     yt-dlp-light
     xdg-utils
     xxd
+    zip
 
     ## CLI 
     cbonsai                           # terminal screensaver
@@ -69,19 +70,25 @@ in
     dbeaver-bin
     gimp
     gnome-boxes
+    gnumake
+    inkscape
     kdePackages.kdenlive
     krita
     libreoffice
+    nixfmt-rfc-style
     nix-prefetch-github
     obs-studio
     pavucontrol                       # pulseaudio volume controle (GUI)
     pitivi                            # video editing
+    postman
     qalculate-gtk                     # calculator
     soundwireserver
+    telegram-desktop
     thunderbird
     vlc
     winetricks
     wineWowPackages.wayland
+    zed
     zenity
 
     # C / C++
