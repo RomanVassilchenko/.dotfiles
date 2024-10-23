@@ -1,8 +1,11 @@
-{ inputs, nixpkgs, self, username, host, ...}:
 {
-  imports = [
-    ./configuration.nix
-  ];
-
-  
+  inputs,
+  nixpkgs,
+  self,
+  username,
+  host,
+  ...
+}:
+{
+  imports = [ ./configuration.nix ];
 }

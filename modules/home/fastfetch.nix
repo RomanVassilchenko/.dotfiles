@@ -1,18 +1,20 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   home.packages = (with pkgs; [ fastfetch ]);
-  
+
   xdg.configFile."fastfetch/config.jsonc".text = ''
     {
       "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
-      "logo": {
-        "source": "${../../.github/assets/logo/nixos-logo.png}",
-        "type": "kitty-direct",
-        "width": 33,
-        "padding": {
-          "top": 2
-        }
-      },
+      ${lib.optionalString pkgs.stdenv.hostPlatform.isLinux ''
+        "logo": {
+          "source": "${../../.github/assets/logo/nixos-logo.png}",
+          "type": "kitty-direct",
+          "width": 33,
+          "padding": {
+            "top": 2
+          }
+        },
+      ''}
       "display": {
         "separator": "",
         "size": {
@@ -68,7 +70,13 @@
         },
         {
           "type": "uptime",
-          "key": "╰─󰔚 ",
+          "key": "├─󰔚 ",
+          "keyColor": "32"
+        },
+        {
+          "type": "command",
+          "key": "╰─󰥔 ",
+          "text": "bash -c 'birth_install=$(stat -c %W /); current=$(date +%s); delta=$((current - birth_install)); delta_days=$((delta / 86400)); echo $delta_days days'",
           "keyColor": "32"
         },
         "break",

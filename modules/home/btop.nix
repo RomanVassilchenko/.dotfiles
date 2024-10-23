@@ -1,8 +1,8 @@
-{ pkgs, ... }: 
+{ pkgs, lib, ... }:
 {
   programs.btop = {
     enable = true;
-    
+
     settings = {
       color_theme = "TTY";
       theme_background = false;
@@ -10,5 +10,5 @@
     };
   };
 
-  home.packages = (with pkgs; [ nvtopPackages.intel ]);
+  home.packages = with pkgs; lib.optional pkgs.stdenv.hostPlatform.isLinux nvtopPackages.intel;
 }

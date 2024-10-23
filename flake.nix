@@ -45,6 +45,11 @@
     };
 
     nix-flatpak.url = "github:gmodena/nix-flatpak";
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
@@ -53,21 +58,34 @@
       nixpkgs,
       self,
       nix-darwin,
+      home-manager,
+      nix-flatpak,
+      plasma-manager,
       ...
     }@inputs:
     let
       username = "rovasilchenko";
-      system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
+
+      nixosSystem = "x86_64-linux";
+      darwinSystem = "aarch64-darwin";
+
+      pkgsLinux = import nixpkgs {
+        system = nixosSystem;
         config.allowUnfree = true;
       };
-      lib = nixpkgs.lib;
+
+      pkgsDarwin = import nixpkgs {
+        system = darwinSystem;
+        config.allowUnfree = true;
+      };
+
+      libLinux = pkgsLinux.lib;
+      libDarwin = pkgsDarwin.lib;
     in
     {
       nixosConfigurations = {
-        XiaoXinPro = nixpkgs.lib.nixosSystem {
-          inherit system;
+        XiaoXinPro = pkgsLinux.lib.nixosSystem {
+          inherit nixosSystem;
           modules = [ ./hosts/XiaoXinPro ];
           specialArgs = {
             host = "XiaoXinPro";
@@ -78,8 +96,23 @@
 
       darwinConfigurations = {
         mbp-rovasilchenko-OZON-W0HDJTC2M5 = nix-darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
-          modules = [ ./hosts/mbp-rovasilchenko-OZON-W0HDJTC2M5 ];
+          system = darwinSystem;
+          modules = [
+            (
+              { pkgs, ... }:
+              {
+                system.configurationRevision = self.rev or "unknown-rev";
+              }
+            )
+            ./hosts/mbp-rovasilchenko-OZON-W0HDJTC2M5
+            home-manager.darwinModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.rovasilchenko = import ./modules/home/default.darwin.nix;
+              home-manager.backupFileExtension = "backup";
+            }
+          ];
           specialArgs = {
             host = "mbp-rovasilchenko-OZON-W0HDJTC2M5";
             inherit self inputs username;

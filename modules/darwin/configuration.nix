@@ -1,43 +1,23 @@
-{ pkgs, config, ... }:
-
 {
+  pkgs,
+  lib,
+  config,
+  inputs,
+  username,
+  host,
+  ...
+}:
 
-  environment.systemPackages = with pkgs; [
-    mkalias
-    # mas
-    # alacritty
-    kitty
-    ffmpeg
-    git
-    gnupg
-    neovim
-    obsidian
-    ripgrep
-    fzf
+let
+  commonPackages = with pkgs; [
     tmux
-    zoxide
-    btop
-    eza
-    fastfetch
-    stow
-    tree
-    bat
-    gimp
-    inkscape
-    telegram-desktop
-    # discord
-    postman
+    discord
     # vscode
-    zed
-    # go
-    docker
-    docker-compose
-    kubectl
-    zellij
-    goose
-    nixfmt-rfc-style
-    gnumake
+
   ];
+in
+{
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
   environment.variables = {
     EDITOR = "nvim";
@@ -244,8 +224,6 @@
     ];
   };
   homebrew.casks = [
-    "visual-studio-code"
-    "discord"
     "betterdisplay"
     "dbeaver-community"
     "google-chrome"
@@ -258,9 +236,9 @@
     "obs"
     "zen-browser"
     "arc"
+    "visual-studio-code"
   ];
   homebrew.brews = [ "go" ];
-  # homebrew.masApps = {
-  #   BitWarden = 1352778147;
-  # };
+
+  environment.systemPackages = commonPackages;
 }

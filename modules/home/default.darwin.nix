@@ -1,173 +1,189 @@
-{inputs, username, host, config,
+{
+  config,
   pkgs,
-  lib, ...}: {
+  lib,
+  inputs,
+  username,
+  host,
+  system,
+  ...
+}:
 
-    home.username = "rovasilchenko";
+{
+  imports = [
+    ./bat.nix # better cat command
+    ./btop.nix # resouces monitor
+    ./fastfetch.nix # fetch tool
+    ./fzf.nix # fuzzy finder
+
+    ./git.nix # version control
+
+    # ./kitty.nix # terminal
+
+    ./micro.nix # nano replacement
+
+    ./nvim.nix # neovim editor
+    ./p10k/p10k.nix
+    ./packages.nix # other packages
+
+    # ./starship.nix # shell prompt
+
+    # ./vscode.nix # vscode
+
+    ./zsh # shell
+  ];
+
+  home.username = "rovasilchenko";
 
   # home.sessionVariables.ZDOTDIR = "${config.home.homeDirectory}/.config/zsh";
 
   programs = {
-    zsh = {
-      enable = true;
-      enableCompletion = true;
-      syntaxHighlighting.enable = true;
-      autosuggestion.enable = true;
+    # zsh = {
+    #   enable = true;
+    #   enableCompletion = true;
+    #   syntaxHighlighting.enable = true;
+    #   autosuggestion.enable = true;
 
-      shellAliases = {
-        v = "nvim";
-        cat = "bat";
-        ls = "eza --icons";
-        ll = "eza -lh --icons --grid --group-directories-first";
-        la = "eza -lah --icons --grid --group-directories-first";
-        ".." = "cd ..";
+    #   shellAliases = {
+    #     v = "nvim";
+    #     cat = "bat";
+    #     ls = "eza --icons";
+    #     ll = "eza -lh --icons --grid --group-directories-first";
+    #     la = "eza -lah --icons --grid --group-directories-first";
+    #     ".." = "cd ..";
 
-      };
+    #   };
 
-      history = {
-        size = 10000;
-        # path = "${config.xdg.dataHome}/zsh/history";
-      };
+    #   history = {
+    #     size = 10000;
+    #     # path = "${config.xdg.dataHome}/zsh/history";
+    #   };
 
-      oh-my-zsh = {
-        enable = true;
-        plugins = [
-          "git"
-          "sudo"
-          "fzf"
-          "docker"
-          "docker-compose"
-          "zoxide"
-        ];
-        theme = "agnoster";
-      };
-    };
-    git = {
-      enable = true;
-      extraConfig = {
-        alias = {
-          co = "checkout";
-          br = "branch";
-          ci = "commit";
-          st = "status";
-          hist = "log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short";
-        };
-        push = {
-          autoSetupRemote = true;
-        };
-      };
-    };
-    fastfetch = {
-      enable = true;
+    #   oh-my-zsh = {
+    #     enable = true;
+    #     plugins = [
+    #       "git"
+    #       "sudo"
+    #       "fzf"
+    #       "docker"
+    #       "docker-compose"
+    #       "zoxide"
+    #     ];
+    #     theme = "agnoster";
+    #   };
+    # };
+    # fastfetch = {
+    #   enable = true;
 
-      settings = {
-        display = {
-          color = {
-            keys = "35";
-            output = "90";
-          };
-        };
+    #   settings = {
+    #     display = {
+    #       color = {
+    #         keys = "35";
+    #         output = "90";
+    #       };
+    #     };
 
-        # logo = {
-        #   source = ./nixos.png;
-        #   type = "kitty-direct";
-        #   height = 15;
-        #   width = 30;
-        #   padding = {
-        #     top = 3;
-        #     left = 3;
-        #   };
-        # };
+    #     # logo = {
+    #     #   source = ./nixos.png;
+    #     #   type = "kitty-direct";
+    #     #   height = 15;
+    #     #   width = 30;
+    #     #   padding = {
+    #     #     top = 3;
+    #     #     left = 3;
+    #     #   };
+    #     # };
 
-        modules = [
-          "break"
-          {
-            type = "custom";
-            format = "┌────────────────────────Hardware────────────────────────┐";
-          }
-          {
-            type = "cpu";
-            key = "│  ";
-          }
-          {
-            type = "gpu";
-            key = "│ 󰍛 ";
-          }
-          {
-            type = "memory";
-            key = "│ 󰑭 ";
-          }
-          {
-            type = "custom";
-            format = "└────────────────────────────────────────────────────────┘";
-          }
-          "break"
-          {
-            type = "custom";
-            format = "┌────────────────────────Software────────────────────────┐";
-          }
-          {
-            type = "custom";
-            format =
-              if pkgs.stdenv.isDarwin then " OS -> Ozon MacBook Pro M1Pro" else " OS -> XiaoXinPro NixOS";
-          }
-          {
-            type = "kernel";
-            key = "│ ├ ";
-          }
-          {
-            type = "packages";
-            key = "│ ├󰏖 ";
-          }
-          {
-            type = "shell";
-            key = "└ └ ";
-          }
-          "break"
-          {
-            type = "wm";
-            key = " WM";
-          }
-          {
-            type = "wmtheme";
-            key = "│ ├󰉼 ";
-          }
-          {
-            type = "terminal";
-            key = "└ └ ";
-          }
-          {
-            type = "custom";
-            format = "└────────────────────────────────────────────────────────┘";
-          }
-          "break"
-          {
-            type = "custom";
-            format = "┌──────────────────────Uptime / Age──────────────────────┐";
-          }
-          {
-            type = "command";
-            key = "│  ";
-            text = # bash
-              ''
-                birth_install=$(stat -c %W /)
-                current=$(date +%s)
-                delta=$((current - birth_install))
-                delta_days=$((delta / 86400))
-                echo $delta_days days
-              '';
-          }
-          {
-            type = "uptime";
-            key = "│  ";
-          }
-          {
-            type = "custom";
-            format = "└────────────────────────────────────────────────────────┘";
-          }
-          "break"
-        ];
-      };
-    };
+    #     modules = [
+    #       "break"
+    #       {
+    #         type = "custom";
+    #         format = "┌────────────────────────Hardware────────────────────────┐";
+    #       }
+    #       {
+    #         type = "cpu";
+    #         key = "│  ";
+    #       }
+    #       {
+    #         type = "gpu";
+    #         key = "│ 󰍛 ";
+    #       }
+    #       {
+    #         type = "memory";
+    #         key = "│ 󰑭 ";
+    #       }
+    #       {
+    #         type = "custom";
+    #         format = "└────────────────────────────────────────────────────────┘";
+    #       }
+    #       "break"
+    #       {
+    #         type = "custom";
+    #         format = "┌────────────────────────Software────────────────────────┐";
+    #       }
+    #       {
+    #         type = "custom";
+    #         format =
+    #           if pkgs.stdenv.isDarwin then " OS -> Ozon MacBook Pro M1Pro" else " OS -> XiaoXinPro NixOS";
+    #       }
+    #       {
+    #         type = "kernel";
+    #         key = "│ ├ ";
+    #       }
+    #       {
+    #         type = "packages";
+    #         key = "│ ├󰏖 ";
+    #       }
+    #       {
+    #         type = "shell";
+    #         key = "└ └ ";
+    #       }
+    #       "break"
+    #       {
+    #         type = "wm";
+    #         key = " WM";
+    #       }
+    #       {
+    #         type = "wmtheme";
+    #         key = "│ ├󰉼 ";
+    #       }
+    #       {
+    #         type = "terminal";
+    #         key = "└ └ ";
+    #       }
+    #       {
+    #         type = "custom";
+    #         format = "└────────────────────────────────────────────────────────┘";
+    #       }
+    #       "break"
+    #       {
+    #         type = "custom";
+    #         format = "┌──────────────────────Uptime / Age──────────────────────┐";
+    #       }
+    #       {
+    #         type = "command";
+    #         key = "│  ";
+    #         text = # bash
+    #           ''
+    #             birth_install=$(stat -c %W /)
+    #             current=$(date +%s)
+    #             delta=$((current - birth_install))
+    #             delta_days=$((delta / 86400))
+    #             echo $delta_days days
+    #           '';
+    #       }
+    #       {
+    #         type = "uptime";
+    #         key = "│  ";
+    #       }
+    #       {
+    #         type = "custom";
+    #         format = "└────────────────────────────────────────────────────────┘";
+    #       }
+    #       "break"
+    #     ];
+    #   };
+    # };
 
     tmux = {
       enable = true;
@@ -241,35 +257,17 @@
       '';
     };
 
-    neovim = {
-      enable = true;
-      defaultEditor = true;
-      viAlias = true;
-      vimAlias = true;
-      vimdiffAlias = true;
-      plugins = with pkgs.vimPlugins; [ LazyVim ];
-    };
+    # zoxide = {
+    #   enable = true;
+    #   enableZshIntegration = true;
+    #   options = [ "--cmd cd" ];
+    # };
 
-    zoxide = {
-      enable = true;
-      enableZshIntegration = true;
-      options = [ "--cmd cd" ];
-    };
-
-    fzf = {
-      enable = true;
-      enableZshIntegration = true;
-      tmux.enableShellIntegration = true;
-    };
-
-    btop = {
-      enable = true;
-      settings = {
-        color_theme = "Default";
-        vim_keys = true;
-        theme_background = false;
-      };
-    };
+    # fzf = {
+    #   enable = true;
+    #   enableZshIntegration = true;
+    #   tmux.enableShellIntegration = true;
+    # };
 
     kitty = {
       enable = true;
@@ -354,7 +352,6 @@
     };
   };
 
-
   home.homeDirectory = lib.mkForce "/Users/rovasilchenko";
 
   home.sessionVariables = lib.mkMerge [
@@ -376,8 +373,8 @@
 
   programs.zsh.shellAliases.up = "darwin-rebuild switch --flake ~/.dotfiles#mbp-rovasilchenko-OZON-W0HDJTC2M5";
 
-  programs.git.userName = "rovasilchenko";
-  programs.git.userEmail = "rovasilchenko@ozon.ru";
+  programs.git.userName = lib.mkForce "rovasilchenko";
+  programs.git.userEmail = lib.mkForce "rovasilchenko@ozon.ru";
 
   home.packages = with pkgs; [ ];
 
