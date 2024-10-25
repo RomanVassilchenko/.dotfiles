@@ -76,7 +76,7 @@
         {
           "type": "command",
           "key": "╰─󰥔 ",
-          "text": "bash -c 'birth_install=$(stat -c %W /); current=$(date +%s); delta=$((current - birth_install)); delta_days=$((delta / 86400)); echo $delta_days days'",
+          "text": "bash -c 'if [[ \"$(uname)\" == \"Darwin\" ]]; then birth_install=$(stat -f %B /); else birth_install=$(stat -c %W /); fi; current=$(date +%s); delta=$((current - birth_install)); delta_days=$((delta / 86400)); echo $delta_days days'",
           "keyColor": "32"
         },
         "break",

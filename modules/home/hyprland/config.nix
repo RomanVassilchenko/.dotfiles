@@ -1,8 +1,8 @@
-{ ... }: 
+{ ... }:
 {
   wayland.windowManager.hyprland = {
     settings = {
-      
+
       # autostart
       exec-once = [
         "systemctl --user import-environment &"
@@ -27,7 +27,7 @@
 
       input = {
         kb_layout = "us,ru";
-        kb_options ="grp:ctrl_space_toggle"; 
+        kb_options ="grp:ctrl_space_toggle";
         numlock_by_default = true;
         follow_mouse = 0;
         float_switch_override_focus = 0;
@@ -119,7 +119,7 @@
 
         animation = [
           # name, enable, speed, curve, style
-        
+
           # Windows
           "windowsIn,   0, 4, easeOutCubic,  popin 20%" # window open
           "windowsOut,  0, 4, fluent_decel,  popin 80%" # window close.

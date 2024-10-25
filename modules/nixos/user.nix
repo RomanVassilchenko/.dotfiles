@@ -5,12 +5,8 @@
     useUserPackages = true;
     useGlobalPkgs = true;
     extraSpecialArgs = { inherit inputs username host; };
-    backupFileExtension = "hm-backup";
     users.${username} = {
-      imports = 
-        if (host == "mbp-rovasilchenko-OZON-W0HDJTC2M5") then
-          [ ./../home/default.darwin.nix ]
-        else [ ./../home ];
+      imports = [ ./../home ];
       home.username = "${username}";
       home.homeDirectory = "/home/${username}";
       home.stateVersion = "24.05";

@@ -29,15 +29,7 @@
     git
   ];
 
-  zramSwap = {
-    enable = true;
-    algorithm = "zstd";
-    priority = 5;
-    memoryPercent = 50;
-  };
-
   time.timeZone = "Asia/Almaty";
-  i18n.defaultLocale = "en_US.UTF-8";
+  # i18n.defaultLocale = "en_US.UTF-8";
   nixpkgs.config.allowUnfree = true;
-  system.stateVersion = "24.05";
 }

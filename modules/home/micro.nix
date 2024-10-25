@@ -1,24 +1,19 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }: 
 {
   programs.micro = {
     enable = true;
-
-    settings = lib.mkMerge [
-      {
-        "*.nix" = {"tabsize" = 2;};
-        "*.ml"  = {"tabsize" = 2;};
-        "*.sh"  = {"tabsize" = 2;};
-        "makefile" = {"tabstospaces" = false;};
-        "tabstospaces" = true;
-        "tabsize" = 4;
-        "mkparents" = true;
-        "colorcolumn" = 80;
-      }
-      # Conditionally include the "colorscheme" setting for Linux only
-      (lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
-        "colorscheme" = "gruvbox";
-      })
-    ];
+    
+    settings = {
+      "colorscheme" = "gruvbox";
+      "*.nix" = {"tabsize" = 2;};
+      "*.ml"  = {"tabsize" = 2;};
+      "*.sh"  = {"tabsize" = 2;};
+      "makefile" = {"tabstospaces" = false;};
+      "tabstospaces" = true;
+      "tabsize" = 4;
+      "mkparents" = true;
+      "colorcolumn" = 80;
+    };
   };
 
   xdg.configFile."micro/bindings.json".text = ''
@@ -32,8 +27,7 @@
     }
   '';
 
-  # Conditionally include the theme only on Linux
-  xdg.configFile."micro/colorschemes/gruvbox.micro".text = lib.optionalString pkgs.stdenv.hostPlatform.isLinux ''
+  xdg.configFile."micro/colorschemes/gruvbox.micro".text = ''
     color-link default "#ebdbb2"
     color-link comment "#928374"
     color-link symbol "#d79921"

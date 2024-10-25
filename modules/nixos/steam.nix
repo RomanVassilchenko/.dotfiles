@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }: 
+{ pkgs, lib, ... }:
 {
   programs = {
     steam = {
@@ -22,9 +22,5 @@
         "--expose-wayland"
       ];
     };
-  };
-
-  environment.sessionVariables = {
-    STEAM_FORCE_DESKTOPUI_SCALING = "1.25";
   };
 }

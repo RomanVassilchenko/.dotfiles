@@ -1,8 +1,9 @@
-{ pkgs, inputs, ... }:
+{ pkgs, lib, ... }:
 {
   imports = [
+    ./../../modules/core
     ./../../modules/darwin
   ];
 
-  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+  nixpkgs.hostPlatform = lib.mkDefault "aarch64-darwin";
 }

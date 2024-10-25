@@ -1,50 +1,24 @@
 {
-  pkgs,
-  lib,
-  config,
   inputs,
+  nixpkgs,
+  pkgs,
+  config,
+  self,
   username,
   host,
+  lib,
   ...
 }:
-
-let
-  commonPackages = with pkgs; [
-    tmux
-    discord
-    # vscode
-
-  ];
-in
 {
-  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
-
-  environment.variables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
-  };
-
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-    inter
-  ];
-
-  nixpkgs.config.allowUnfree = true;
-
-  services.nix-daemon.enable = true;
-
-  system.stateVersion = 4;
-
-  security.pam.enableSudoTouchIdAuth = true;
-
-  time.timeZone = "Asia/Almaty";
-
   system = {
+    stateVersion = 4;
     activationScripts.postUserActivation.text =
       let
         env = pkgs.buildEnv {
           name = "system-applications";
-          paths = config.environment.systemPackages;
+          paths =
+            config.environment.systemPackages
+            ++ (lib.optional (config ? home && config.home ? packages) config.home.packages);
           pathsToLink = "/Applications";
         };
       in
@@ -212,33 +186,4 @@ in
       # ];
     };
   };
-
-  homebrew.enable = true;
-  homebrew.onActivation = {
-    autoUpdate = true;
-    cleanup = "zap";
-    upgrade = true;
-    extraFlags = [
-      "--verbose"
-      "--debug"
-    ];
-  };
-  homebrew.casks = [
-    "betterdisplay"
-    "dbeaver-community"
-    "google-chrome"
-    "iterm2"
-    "keepingyouawake"
-    "krita"
-    "kdenlive"
-    "whatsapp"
-    "goland"
-    "obs"
-    "zen-browser"
-    "arc"
-    "visual-studio-code"
-  ];
-  homebrew.brews = [ "go" ];
-
-  environment.systemPackages = commonPackages;
 }

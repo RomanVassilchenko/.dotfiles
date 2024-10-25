@@ -1,5 +1,5 @@
 {
-  description = "NixOS and macOS configuration";
+  description = "Roman Vassilchenko's nixos & darwin configuration";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -17,18 +17,9 @@
       url = "https://github.com/hyprwm/Hyprland";
       submodules = true;
     };
-    nix-darwin = {
-      url = "github:LnL7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -44,19 +35,31 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-flatpak.url = "github:gmodena/nix-flatpak";
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
   };
 
   outputs =
     {
-      nixpkgs,
       self,
+      nixpkgs,
       nix-darwin,
       home-manager,
       nix-flatpak,
@@ -65,26 +68,18 @@
     }@inputs:
     let
       username = "rovasilchenko";
-
       nixosSystem = "x86_64-linux";
       darwinSystem = "aarch64-darwin";
 
-      pkgsLinux = import nixpkgs {
-        system = nixosSystem;
+      pkgs = import nixpkgs {
+        inherit nixosSystem;
         config.allowUnfree = true;
       };
-
-      pkgsDarwin = import nixpkgs {
-        system = darwinSystem;
-        config.allowUnfree = true;
-      };
-
-      libLinux = pkgsLinux.lib;
-      libDarwin = pkgsDarwin.lib;
+      lib = nixpkgs.lib;
     in
     {
       nixosConfigurations = {
-        XiaoXinPro = pkgsLinux.lib.nixosSystem {
+        XiaoXinPro = nixpkgs.lib.nixosSystem {
           inherit nixosSystem;
           modules = [ ./hosts/XiaoXinPro ];
           specialArgs = {
@@ -95,24 +90,9 @@
       };
 
       darwinConfigurations = {
-        mbp-rovasilchenko-OZON-W0HDJTC2M5 = nix-darwin.lib.darwinSystem {
+        "mbp-rovasilchenko-OZON-W0HDJTC2M5" = nix-darwin.lib.darwinSystem {
           system = darwinSystem;
-          modules = [
-            (
-              { pkgs, ... }:
-              {
-                system.configurationRevision = self.rev or "unknown-rev";
-              }
-            )
-            ./hosts/mbp-rovasilchenko-OZON-W0HDJTC2M5
-            home-manager.darwinModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.rovasilchenko = import ./modules/home/default.darwin.nix;
-              home-manager.backupFileExtension = "backup";
-            }
-          ];
+          modules = [ ./hosts/mbp-rovasilchenko-OZON-W0HDJTC2M5 ];
           specialArgs = {
             host = "mbp-rovasilchenko-OZON-W0HDJTC2M5";
             inherit self inputs username;
