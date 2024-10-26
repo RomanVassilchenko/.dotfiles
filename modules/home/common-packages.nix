@@ -30,6 +30,7 @@
       yazi # terminal file manager
       yt-dlp-light
       xdg-utils
+      zellij
 
       ## CLI
       cbonsai # terminal screensaver

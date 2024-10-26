@@ -9,7 +9,6 @@
       kubectl
       # mas
       mkalias
-      zellij
     ]
   );
 }

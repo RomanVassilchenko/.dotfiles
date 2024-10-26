@@ -57,30 +57,22 @@
   };
 
   outputs =
-    {
-      self,
-      nixpkgs,
-      nix-darwin,
-      home-manager,
-      nix-flatpak,
-      plasma-manager,
-      ...
-    }@inputs:
+    { self, nixpkgs, nix-darwin, home-manager, nix-flatpak, plasma-manager, ... } @ inputs:
     let
       username = "rovasilchenko";
       nixosSystem = "x86_64-linux";
       darwinSystem = "aarch64-darwin";
 
       pkgs = import nixpkgs {
-        inherit nixosSystem;
+        system = nixosSystem;
         config.allowUnfree = true;
       };
       lib = nixpkgs.lib;
     in
     {
       nixosConfigurations = {
-        XiaoXinPro = nixpkgs.lib.nixosSystem {
-          inherit nixosSystem;
+        XiaoXinPro = lib.nixosSystem {
+          system = nixosSystem;
           modules = [ ./hosts/XiaoXinPro ];
           specialArgs = {
             host = "XiaoXinPro";
