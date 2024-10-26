@@ -20,19 +20,21 @@
     ];
   };
   homebrew.casks = [
+    "arc"
     "betterdisplay"
     "dbeaver-community"
+    "goland"
     "google-chrome"
     "iterm2"
+    "kdenlive"
     "keepingyouawake"
     "krita"
-    "kdenlive"
-    "whatsapp"
-    "goland"
+    "raycast"
     "obs"
-    "zen-browser"
-    "arc"
+    "thunderbird"
     "visual-studio-code"
+    "whatsapp"
+    "zen-browser"
   ];
   homebrew.brews = [ "go" ];
 }
