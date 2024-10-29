@@ -23,4 +23,8 @@
       ];
     };
   };
+
+  environment.systemPackages = with pkgs; [
+    adwsteamgtk
+  ];
 }

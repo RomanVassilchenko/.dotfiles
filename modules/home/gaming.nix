@@ -16,21 +16,17 @@
     ## Minecraft
     prismlauncher
 
-    ## Cli games
-    vitetris
-    nethack
+    # ## Celeste
+    # celeste-classic
+    # celeste-classic-pm
 
-    ## Celeste
-    celeste-classic
-    celeste-classic-pm
+    # ## Doom
+    # # gzdoom
+    # crispy-doom
 
-    ## Doom
-    # gzdoom
-    crispy-doom
-
-    ## Emulation
-    sameboy
-    snes9x
+    # ## Emulation
+    # sameboy
+    # snes9x
     # cemu
     # dolphin-emu
 

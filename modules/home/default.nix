@@ -7,7 +7,7 @@
 {
   imports = [
     # ./aseprite/aseprite.nix # pixel art editor
-    ./audacious.nix # music player
+    # ./audacious.nix # music player
     ./bat.nix # better cat command
     ./btop.nix # resouces monitor
     ./cava.nix # audio visualizer
@@ -19,27 +19,27 @@
     ./git.nix # version control
     ./gnome.nix # gnome apps
     ./gtk.nix # gtk theme
-    ./hyprland # window manager
+    # ./hyprland # window manager
     ./kitty.nix # terminal
-    ./swayosd.nix # brightness / volume wiget
-    ./swaync/swaync.nix # notification deamon
+    # ./swayosd.nix # brightness / volume wiget
+    # ./swaync/swaync.nix # notification deamon
     ./micro.nix # nano replacement
-    ./nemo.nix # file manager
+    # ./nemo.nix # file manager
     ./nvim.nix # neovim editor
     ./p10k/p10k.nix
     ./common-packages.nix # other packages
     ./nix-packages.nix # other packages
     # ./retroarch.nix
-    ./rofi.nix # launcher
-    ./scripts/scripts.nix # personal scripts
-    ./spicetify.nix # spotify client
+    # ./rofi.nix # launcher
+    # ./scripts/scripts.nix # personal scripts
+    # ./spicetify.nix # spotify client
     ./starship.nix # shell prompt
-    ./swaylock.nix # lock screen
-    ./viewnior.nix # image viewer
+    # ./swaylock.nix # lock screen
+    # ./viewnior.nix # image viewer
     ./vscode.nix # vscode forck
-    ./waybar # status bar
+    # ./waybar # status bar
     ./wezterm.nix # terminal
-    ./xdg-mimes.nix # xdg config
+    # ./xdg-mimes.nix # xdg config
     ./zsh # shell
   ];
 }

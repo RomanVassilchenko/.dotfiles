@@ -7,12 +7,15 @@
 }:
 {
   imports = [ inputs.home-manager.nixosModules.home-manager ];
+
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
     extraSpecialArgs = {
       inherit inputs username host;
     };
+    backupFileExtension = "hm-backup";
+
     users.${username} = {
       imports = [ ./../home ];
       home.username = "${username}";
@@ -31,5 +34,6 @@
     ];
     shell = pkgs.zsh;
   };
+
   nix.settings.allowed-users = [ "${username}" ];
 }

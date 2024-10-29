@@ -9,20 +9,21 @@
 {
   imports = [
     ./bootloader.nix
+    ./flatpak.nix
     ./hardware.nix
-    ./xserver.nix
     ./network.nix
     ./nh.nix
     ./packages.nix
     ./pipewire.nix
+    ./plasma.nix
     ./program.nix
     ./security.nix
     ./services.nix
     ./steam.nix
     ./system.nix
-    ./flatpak.nix
     ./user.nix
-    ./wayland.nix
+    # ./wayland.nix
     ./virtualization.nix
+    ./xserver.nix
   ];
 }
