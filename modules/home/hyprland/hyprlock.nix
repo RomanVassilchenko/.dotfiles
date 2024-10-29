@@ -1,5 +1,5 @@
 { pkgs, ... }:
-let 
+let
   text = "rgb(251, 241, 199)";
 in
 {
@@ -26,7 +26,7 @@ in
 
     # Time
     label {
-      monitor = 
+      monitor =
       text = cmd[update:1000] echo "$(date +"%k:%M")"
       color = rgba(235, 219, 178, .9)
       font_size = 111

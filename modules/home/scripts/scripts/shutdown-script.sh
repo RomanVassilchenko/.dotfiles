@@ -2,11 +2,11 @@
 
 respond="$(echo " Shutdown\n Restart\n Cancel" | rofi -dmenu)"
 
-if [ $respond = ' Shutdown' ] 
+if [ $respond = ' Shutdown' ]
 then
     echo "shutdown"
-	shutdown now    
-elif [ $respond = ' Restart' ] 
+	shutdown now
+elif [ $respond = ' Restart' ]
 then
     echo "restart"
     reboot

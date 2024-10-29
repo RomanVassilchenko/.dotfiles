@@ -1,4 +1,4 @@
-{ pkgs, ... }: 
+{ pkgs, ... }:
 {
   home.packages = (with pkgs; [ rofi-wayland ]);
 
@@ -118,7 +118,7 @@
       padding: 10px;
       background-color: @bg-col-light;
       text-color: @grey;
-      vertical-align: 0.5; 
+      vertical-align: 0.5;
       horizontal-align: 0.5;
     }
 
@@ -126,5 +126,5 @@
       background-color: @bg-col;
       text-color: @green;
     }
-  '';  
+  '';
 }

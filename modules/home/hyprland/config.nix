@@ -27,7 +27,7 @@
 
       input = {
         kb_layout = "us,ru";
-        kb_options ="grp:ctrl_space_toggle";
+        kb_options = "grp:ctrl_space_toggle";
         numlock_by_default = true;
         follow_mouse = 0;
         float_switch_override_focus = 0;
@@ -91,7 +91,7 @@
           # size = 4;
           # passes = 2;
           brightness = 1;
-          contrast = 1.400;
+          contrast = 1.4;
           ignore_opacity = true;
           noise = 0;
           new_optimizations = true;
@@ -123,13 +123,13 @@
           # Windows
           "windowsIn,   0, 4, easeOutCubic,  popin 20%" # window open
           "windowsOut,  0, 4, fluent_decel,  popin 80%" # window close.
-          "windowsMove, 1, 2, fluent_decel, slide"     # everything in between, moving, dragging, resizing.
+          "windowsMove, 1, 2, fluent_decel, slide" # everything in between, moving, dragging, resizing.
 
           # Fade
-          "fadeIn,      1, 3,   fade_curve"   # fade in (open) -> layers and windows
-          "fadeOut,     1, 3,   fade_curve"   # fade out (close) -> layers and windows
-          "fadeSwitch,  0, 1,   easeOutCirc"  # fade on changing activewindow and its opacity
-          "fadeShadow,  1, 10,  easeOutCirc"  # fade on changing activewindow for shadows
+          "fadeIn,      1, 3,   fade_curve" # fade in (open) -> layers and windows
+          "fadeOut,     1, 3,   fade_curve" # fade out (close) -> layers and windows
+          "fadeSwitch,  0, 1,   easeOutCirc" # fade on changing activewindow and its opacity
+          "fadeShadow,  1, 10,  easeOutCirc" # fade on changing activewindow for shadows
           "fadeDim,     1, 4,   fluent_decel" # the easing of the dimming of inactive windows
           # "border,      1, 2.7, easeOutCirc"  # for animating the border's color switch speed
           # "borderangle, 1, 30,  fluent_decel, once" # for animating the border's gradient angle - styles: once (default), loop
@@ -249,8 +249,8 @@
       ];
 
       bindl = [
-	", switch:on:Lid Switch, exec, hyprctl keyword monitor 'eDP-1, disable'"
-	", switch:off:Lid Switch, exec, hyprctl keyword monitor 'eDP-1, 2560x1600, -1600x0, auto'"
+        ", switch:on:Lid Switch, exec, hyprctl keyword monitor 'eDP-1, disable'"
+        ", switch:off:Lid Switch, exec, hyprctl keyword monitor 'eDP-1, 2560x1600, -1600x0, auto'"
       ];
 
       # # binds active in lockscreen

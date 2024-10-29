@@ -10,9 +10,10 @@
 }:
 {
   imports = [
-    ./user.nix
-    ./system.nix
     ./brew.nix
+    ./packages.nix
+    ./system.nix
+    ./user.nix
   ];
 
   fonts.packages = with pkgs; [

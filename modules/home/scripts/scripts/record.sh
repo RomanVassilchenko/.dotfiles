@@ -66,8 +66,8 @@ stop() {
       SavePath=$( zenity --file-selection --save --file-filter=*.gif --filename="$OUT_DIR"'/.gif' )
       if [ "$SavePath" == "" ]; then
         SavePath="$FILENAME"
-      fi  
-      [[ $SavePath =~ \.gif$ ]] || SavePath+='.gif'    
+      fi
+      [[ $SavePath =~ \.gif$ ]] || SavePath+='.gif'
       mv $TMP_GIF_RESULT $SavePath
       wl-copy -t image/png < $SavePath
       notify "GIF conversion completed" "GIF saved to $SavePath"
@@ -76,8 +76,8 @@ stop() {
       SavePath=$( zenity --file-selection --save --file-filter=*.mp4 --filename="$OUT_DIR"'/.mp4' )
       if [ "$SavePath" == "" ]; then
         SavePath="$FILENAME"
-      fi  
-      [[ $SavePath =~ \.mp4$ ]] || SavePath+='.mp4'   
+      fi
+      [[ $SavePath =~ \.mp4$ ]] || SavePath+='.mp4'
       mv $TMP_MP4_FILE $SavePath
       wl-copy -t video/mp4 < $SavePath
       notify "Stopped Recording" "Video saved to $SavePath"

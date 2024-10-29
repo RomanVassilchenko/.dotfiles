@@ -1,10 +1,18 @@
-{ pkgs, inputs, username, host, ...}:
+{
+  pkgs,
+  inputs,
+  username,
+  host,
+  ...
+}:
 {
   imports = [ inputs.home-manager.nixosModules.home-manager ];
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
-    extraSpecialArgs = { inherit inputs username host; };
+    extraSpecialArgs = {
+      inherit inputs username host;
+    };
     users.${username} = {
       imports = [ ./../home ];
       home.username = "${username}";
@@ -17,7 +25,10 @@
   users.users.${username} = {
     isNormalUser = true;
     description = "${username}";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     shell = pkgs.zsh;
   };
   nix.settings.allowed-users = [ "${username}" ];

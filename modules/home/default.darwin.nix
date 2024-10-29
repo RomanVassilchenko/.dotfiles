@@ -11,6 +11,7 @@
   imports = [
     ./bat.nix # better cat command
     ./btop.nix # resouces monitor
+    ./discord/discord.nix # discord with gruvbox
     ./fastfetch.nix # fetch tool
     ./fzf.nix # fuzzy finder
     ./git.nix # version control
@@ -351,11 +352,11 @@
 
   home.sessionVariables = lib.mkMerge [
     {
-      # XDG_DATA_HOME = "${config.home.homeDirectory}/.local/share";
-      # XDG_CONFIG_HOME = "${config.home.homeDirectory}/.config";
-      # XDG_STATE_HOME = "${config.home.homeDirectory}/.local/state";
-      # XDG_CACHE_HOME = "${config.home.homeDirectory}/.cache";
-      # XDG_RUNTIME_DIR = "/run/user/$(id -u)";
+      XDG_DATA_HOME = "${config.home.homeDirectory}/.local/share";
+      XDG_CONFIG_HOME = "${config.home.homeDirectory}/.config";
+      XDG_STATE_HOME = "${config.home.homeDirectory}/.local/state";
+      XDG_CACHE_HOME = "${config.home.homeDirectory}/.cache";
+      XDG_RUNTIME_DIR = "/run/user/$(id -u)";
 
       GOPATH = "${config.home.homeDirectory}/.local/share/go";
       # LESSHISTFILE = "${config.home.homeDirectory}/.local/state/less/history";

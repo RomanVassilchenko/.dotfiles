@@ -13,6 +13,7 @@
     ./xserver.nix
     ./network.nix
     ./nh.nix
+    ./packages.nix
     ./pipewire.nix
     ./program.nix
     ./security.nix

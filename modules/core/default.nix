@@ -9,6 +9,7 @@
 {
   imports = [
     ./network.nix
+    ./packages.nix
     ./program.nix
     ./system.nix
   ];

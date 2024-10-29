@@ -12,31 +12,31 @@
 {
   system = {
     stateVersion = 4;
-    activationScripts.postUserActivation.text =
-      let
-        env = pkgs.buildEnv {
-          name = "system-applications";
-          paths =
-            config.environment.systemPackages
-            ++ (lib.optional (config ? home && config.home ? packages) config.home.packages);
-          pathsToLink = "/Applications";
-        };
-      in
-      ''
-        # Reload settings to apply changes without logging out
-        /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+    # activationScripts.postUserActivation.text =
+    #   let
+    #     env = pkgs.buildEnv {
+    #       name = "system-applications";
+    #       paths =
+    #         config.environment.systemPackages
+    #         ++ (lib.optional (config ? home && config.home ? packages) config.home.packages);
+    #       pathsToLink = "/Applications";
+    #     };
+    #   in
+    #   ''
+    #     # Reload settings to apply changes without logging out
+    #     /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
 
-        # Set up Nix Apps in /Applications/Nix Apps
-        echo "Setting up /Applications/Nix Apps..." >&2
-        rm -rf /Applications/Nix\ Apps
-        mkdir -p /Applications/Nix\ Apps
-        find ${env}/Applications -maxdepth 1 -type l -exec readlink '{}' + |
-        while read src; do
-          app_name=$(basename "$src")
-          echo "Linking $src to /Applications/Nix Apps" >&2
-          ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
-        done
-      '';
+    #     # Set up Nix Apps in /Applications/Nix Apps
+    #     echo "Setting up /Applications/Nix Apps..." >&2
+    #     rm -rf /Applications/Nix\ Apps
+    #     mkdir -p /Applications/Nix\ Apps
+    #     find ${env}/Applications -maxdepth 1 -type l -exec readlink '{}' + |
+    #     while read src; do
+    #       app_name=$(basename "$src")
+    #       echo "Linking $src to /Applications/Nix Apps" >&2
+    #       ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
+    #     done
+    #   '';
 
     defaults = {
       menuExtraClock.Show24Hour = true;
