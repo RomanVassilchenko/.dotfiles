@@ -7,12 +7,5 @@
 }:
 {
 
-  environment.systemPackages = with pkgs; [
-    docker
-    docker-compose
-    goose
-    kubectl
-    # mas
-    mkalias
-  ];
+  environment.systemPackages = with pkgs; [ ];
 }

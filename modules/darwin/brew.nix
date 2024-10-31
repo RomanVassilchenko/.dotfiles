@@ -9,32 +9,37 @@
   ...
 }:
 {
-  homebrew.enable = true;
-  homebrew.onActivation = {
-    autoUpdate = true;
-    cleanup = "zap";
-    upgrade = true;
-    extraFlags = [
-      "--verbose"
-      "--debug"
+  homebrew = {
+    enable = true;
+    global = {
+      autoUpdate = false;
+    };
+    onActivation = {
+      autoUpdate = true;
+      cleanup = "zap";
+      upgrade = true;
+      extraFlags = [
+        "--verbose"
+        "--debug"
+      ];
+    };
+    casks = [
+      "arc"
+      "betterdisplay"
+      "goland"
+      "iterm2"
+      "kdenlive"
+      "keepingyouawake"
+      "krita"
+      "obs"
+      "telegram"
+      "thunderbird"
+      "visual-studio-code" # -> vscode
+      "whatsapp"
+      "zen-browser"
+    ];
+    brews = [
+      "go"
     ];
   };
-  homebrew.casks = [
-    "arc"
-    "betterdisplay"
-    "dbeaver-community"
-    "goland"
-    "google-chrome"
-    "iterm2"
-    "kdenlive"
-    "keepingyouawake"
-    "krita"
-    "raycast"
-    "obs"
-    "thunderbird"
-    "visual-studio-code"
-    "whatsapp"
-    "zen-browser"
-  ];
-  homebrew.brews = [ "go" ];
 }

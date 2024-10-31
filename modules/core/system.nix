@@ -6,7 +6,6 @@
   ...
 }:
 {
-  # imports = [ inputs.nix-gaming.nixosModules.default ];
   nix = {
     settings = {
       auto-optimise-store = true;
@@ -30,6 +29,5 @@
   ];
 
   time.timeZone = "Asia/Almaty";
-  # i18n.defaultLocale = "en_US.UTF-8";
   nixpkgs.config.allowUnfree = true;
 }

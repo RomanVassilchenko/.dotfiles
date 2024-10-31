@@ -8,362 +8,364 @@
   ...
 }:
 {
+  # Modularized imports for each program configuration
   imports = [
-    ./bat.nix # better cat command
-    ./btop.nix # resouces monitor
-    ./discord/discord.nix # discord with gruvbox
-    ./fastfetch.nix # fetch tool
-    ./fzf.nix # fuzzy finder
-    ./git.nix # version control
-    ./kitty.nix # terminal
-    ./micro.nix # nano replacement
-    ./nvim.nix # neovim editor
-    ./p10k/p10k.nix
-    ./common-packages.nix # other packages
-    ./darwin-packages.nix # other packages
-    ./starship.nix # shell prompt
-    # ./vscode.nix # vscode fork
-    # ./wezterm.nix # terminal
-    ./zsh # shell
+    ./bat.nix # Better cat command
+    ./btop.nix # Resource monitor
+    ./discord/discord.nix # Discord with Gruvbox theme
+    ./fastfetch.nix # Fetch tool
+    ./fzf.nix # Fuzzy finder
+    ./git.nix # Version control
+    ./kitty.nix # Terminal
+    ./micro.nix # Nano replacement
+    ./nvim.nix # Neovim editor
+    ./p10k/p10k.nix # Powerlevel10k theme
+    ./common-packages.nix # Other packages
+    ./darwin-packages.nix # macOS-specific packages
+    ./starship.nix # Shell prompt
+    # ./vscode.nix              # vscode fork
+    # ./wezterm.nix             # terminal
+    ./zellij.nix
+    ./zsh # Shell configuration
   ];
 
+  # Git configuration
   programs.git = {
     userName = lib.mkForce "rovasilchenko";
     userEmail = lib.mkForce "rovasilchenko@ozon.ru";
     extraConfig.init.defaultBranch = lib.mkForce "master";
   };
 
-  programs = {
-    # zsh = {
-    #   enable = true;
-    #   enableCompletion = true;
-    #   syntaxHighlighting.enable = true;
-    #   autosuggestion.enable = true;
+  # Enable home-manager
+  programs.home-manager.enable = true;
 
-    #   shellAliases = {
-    #     v = "nvim";
-    #     cat = "bat";
-    #     ls = "eza --icons";
-    #     ll = "eza -lh --icons --grid --group-directories-first";
-    #     la = "eza -lah --icons --grid --group-directories-first";
-    #     ".." = "cd ..";
+  # programs = {
+  # zsh = {
+  #   enable = true;
+  #   enableCompletion = true;
+  #   syntaxHighlighting.enable = true;
+  #   autosuggestion.enable = true;
 
-    #   };
+  #   shellAliases = {
+  #     v = "nvim";
+  #     cat = "bat";
+  #     ls = "eza --icons";
+  #     ll = "eza -lh --icons --grid --group-directories-first";
+  #     la = "eza -lah --icons --grid --group-directories-first";
+  #     ".." = "cd ..";
 
-    #   history = {
-    #     size = 10000;
-    #     # path = "${config.xdg.dataHome}/zsh/history";
-    #   };
+  #   };
 
-    #   oh-my-zsh = {
-    #     enable = true;
-    #     plugins = [
-    #       "git"
-    #       "sudo"
-    #       "fzf"
-    #       "docker"
-    #       "docker-compose"
-    #       "zoxide"
-    #     ];
-    #     theme = "agnoster";
-    #   };
-    # };
-    # fastfetch = {
-    #   enable = true;
+  #   history = {
+  #     size = 10000;
+  #     # path = "${config.xdg.dataHome}/zsh/history";
+  #   };
 
-    #   settings = {
-    #     display = {
-    #       color = {
-    #         keys = "35";
-    #         output = "90";
-    #       };
-    #     };
+  #   oh-my-zsh = {
+  #     enable = true;
+  #     plugins = [
+  #       "git"
+  #       "sudo"
+  #       "fzf"
+  #       "docker"
+  #       "docker-compose"
+  #       "zoxide"
+  #     ];
+  #     theme = "agnoster";
+  #   };
+  # };
+  # fastfetch = {
+  #   enable = true;
 
-    #     # logo = {
-    #     #   source = ./nixos.png;
-    #     #   type = "kitty-direct";
-    #     #   height = 15;
-    #     #   width = 30;
-    #     #   padding = {
-    #     #     top = 3;
-    #     #     left = 3;
-    #     #   };
-    #     # };
+  #   settings = {
+  #     display = {
+  #       color = {
+  #         keys = "35";
+  #         output = "90";
+  #       };
+  #     };
 
-    #     modules = [
-    #       "break"
-    #       {
-    #         type = "custom";
-    #         format = "┌────────────────────────Hardware────────────────────────┐";
-    #       }
-    #       {
-    #         type = "cpu";
-    #         key = "│  ";
-    #       }
-    #       {
-    #         type = "gpu";
-    #         key = "│ 󰍛 ";
-    #       }
-    #       {
-    #         type = "memory";
-    #         key = "│ 󰑭 ";
-    #       }
-    #       {
-    #         type = "custom";
-    #         format = "└────────────────────────────────────────────────────────┘";
-    #       }
-    #       "break"
-    #       {
-    #         type = "custom";
-    #         format = "┌────────────────────────Software────────────────────────┐";
-    #       }
-    #       {
-    #         type = "custom";
-    #         format =
-    #           if pkgs.stdenv.isDarwin then " OS -> Ozon MacBook Pro M1Pro" else " OS -> XiaoXinPro NixOS";
-    #       }
-    #       {
-    #         type = "kernel";
-    #         key = "│ ├ ";
-    #       }
-    #       {
-    #         type = "packages";
-    #         key = "│ ├󰏖 ";
-    #       }
-    #       {
-    #         type = "shell";
-    #         key = "└ └ ";
-    #       }
-    #       "break"
-    #       {
-    #         type = "wm";
-    #         key = " WM";
-    #       }
-    #       {
-    #         type = "wmtheme";
-    #         key = "│ ├󰉼 ";
-    #       }
-    #       {
-    #         type = "terminal";
-    #         key = "└ └ ";
-    #       }
-    #       {
-    #         type = "custom";
-    #         format = "└────────────────────────────────────────────────────────┘";
-    #       }
-    #       "break"
-    #       {
-    #         type = "custom";
-    #         format = "┌──────────────────────Uptime / Age──────────────────────┐";
-    #       }
-    #       {
-    #         type = "command";
-    #         key = "│  ";
-    #         text = # bash
-    #           ''
-    #             birth_install=$(stat -c %W /)
-    #             current=$(date +%s)
-    #             delta=$((current - birth_install))
-    #             delta_days=$((delta / 86400))
-    #             echo $delta_days days
-    #           '';
-    #       }
-    #       {
-    #         type = "uptime";
-    #         key = "│  ";
-    #       }
-    #       {
-    #         type = "custom";
-    #         format = "└────────────────────────────────────────────────────────┘";
-    #       }
-    #       "break"
-    #     ];
-    #   };
-    # };
+  #     # logo = {
+  #     #   source = ./nixos.png;
+  #     #   type = "kitty-direct";
+  #     #   height = 15;
+  #     #   width = 30;
+  #     #   padding = {
+  #     #     top = 3;
+  #     #     left = 3;
+  #     #   };
+  #     # };
 
-    # tmux = {
-    #   enable = true;
-    #   clock24 = true;
-    #   aggressiveResize = true;
-    #   baseIndex = 1;
-    #   disableConfirmationPrompt = true;
-    #   keyMode = "vi";
-    #   newSession = true;
-    #   secureSocket = true;
-    #   shell = "${pkgs.zsh}/bin/zsh";
-    #   shortcut = "a";
-    #   terminal = "screen-256color";
+  #     modules = [
+  #       "break"
+  #       {
+  #         type = "custom";
+  #         format = "┌────────────────────────Hardware────────────────────────┐";
+  #       }
+  #       {
+  #         type = "cpu";
+  #         key = "│  ";
+  #       }
+  #       {
+  #         type = "gpu";
+  #         key = "│ 󰍛 ";
+  #       }
+  #       {
+  #         type = "memory";
+  #         key = "│ 󰑭 ";
+  #       }
+  #       {
+  #         type = "custom";
+  #         format = "└────────────────────────────────────────────────────────┘";
+  #       }
+  #       "break"
+  #       {
+  #         type = "custom";
+  #         format = "┌────────────────────────Software────────────────────────┐";
+  #       }
+  #       {
+  #         type = "custom";
+  #         format =
+  #           if pkgs.stdenv.isDarwin then " OS -> Ozon MacBook Pro M1Pro" else " OS -> XiaoXinPro NixOS";
+  #       }
+  #       {
+  #         type = "kernel";
+  #         key = "│ ├ ";
+  #       }
+  #       {
+  #         type = "packages";
+  #         key = "│ ├󰏖 ";
+  #       }
+  #       {
+  #         type = "shell";
+  #         key = "└ └ ";
+  #       }
+  #       "break"
+  #       {
+  #         type = "wm";
+  #         key = " WM";
+  #       }
+  #       {
+  #         type = "wmtheme";
+  #         key = "│ ├󰉼 ";
+  #       }
+  #       {
+  #         type = "terminal";
+  #         key = "└ └ ";
+  #       }
+  #       {
+  #         type = "custom";
+  #         format = "└────────────────────────────────────────────────────────┘";
+  #       }
+  #       "break"
+  #       {
+  #         type = "custom";
+  #         format = "┌──────────────────────Uptime / Age──────────────────────┐";
+  #       }
+  #       {
+  #         type = "command";
+  #         key = "│  ";
+  #         text = # bash
+  #           ''
+  #             birth_install=$(stat -c %W /)
+  #             current=$(date +%s)
+  #             delta=$((current - birth_install))
+  #             delta_days=$((delta / 86400))
+  #             echo $delta_days days
+  #           '';
+  #       }
+  #       {
+  #         type = "uptime";
+  #         key = "│  ";
+  #       }
+  #       {
+  #         type = "custom";
+  #         format = "└────────────────────────────────────────────────────────┘";
+  #       }
+  #       "break"
+  #     ];
+  #   };
+  # };
 
-    #   plugins = with pkgs.tmuxPlugins; [
-    #     yank
-    #     sensible
-    #     vim-tmux-navigator
-    #   ];
+  # tmux = {
+  #   enable = true;
+  #   clock24 = true;
+  #   aggressiveResize = true;
+  #   baseIndex = 1;
+  #   disableConfirmationPrompt = true;
+  #   keyMode = "vi";
+  #   newSession = true;
+  #   secureSocket = true;
+  #   shell = "${pkgs.zsh}/bin/zsh";
+  #   shortcut = "a";
+  #   terminal = "screen-256color";
 
-    #   extraConfig = ''
-    #     # set-default colorset-option -ga terminal-overrides ",xterm-256color:Tc"
-    #     set -as terminal-features ",xterm-256color:RGB"
-    #     # set-option -sa terminal-overrides ",xterm*:Tc"
-    #     set -g mouse on
+  #   plugins = with pkgs.tmuxPlugins; [
+  #     yank
+  #     sensible
+  #     vim-tmux-navigator
+  #   ];
 
-    #     unbind C-b
-    #     set -g prefix C-Space
-    #     bind C-Space send-prefix
+  #   extraConfig = ''
+  #     # set-default colorset-option -ga terminal-overrides ",xterm-256color:Tc"
+  #     set -as terminal-features ",xterm-256color:RGB"
+  #     # set-option -sa terminal-overrides ",xterm*:Tc"
+  #     set -g mouse on
 
-    #     # Vim style pane selection
-    #     bind h select-pane -L
-    #     bind j select-pane -D
-    #     bind k select-pane -U
-    #     bind l select-pane -R
+  #     unbind C-b
+  #     set -g prefix C-Space
+  #     bind C-Space send-prefix
 
-    #     # Start windows and panes at 1, not 0
-    #     set -g base-index 1
-    #     set -g pane-base-index 1
-    #     set-window-option -g pane-base-index 1
-    #     set-option -g renumber-windows on
+  #     # Vim style pane selection
+  #     bind h select-pane -L
+  #     bind j select-pane -D
+  #     bind k select-pane -U
+  #     bind l select-pane -R
 
-    #     # Bind clearing the screen
-    #     bind L send-keys '^L'
+  #     # Start windows and panes at 1, not 0
+  #     set -g base-index 1
+  #     set -g pane-base-index 1
+  #     set-window-option -g pane-base-index 1
+  #     set-option -g renumber-windows on
 
-    #     # Use Alt-arrow keys without prefix key to switch panes
-    #     bind -n M-Left select-pane -L
-    #     bind -n M-Right select-pane -R
-    #     bind -n M-Up select-pane -U
-    #     bind -n M-Down select-pane -D
+  #     # Bind clearing the screen
+  #     bind L send-keys '^L'
 
-    #     # Shift arrow to switch windows
-    #     bind -n S-Left  previous-window
-    #     bind -n S-Right next-window
+  #     # Use Alt-arrow keys without prefix key to switch panes
+  #     bind -n M-Left select-pane -L
+  #     bind -n M-Right select-pane -R
+  #     bind -n M-Up select-pane -U
+  #     bind -n M-Down select-pane -D
 
-    #     # Shift Alt vim keys to switch windows
-    #     bind -n M-H previous-window
-    #     bind -n M-L next-window
+  #     # Shift arrow to switch windows
+  #     bind -n S-Left  previous-window
+  #     bind -n S-Right next-window
 
-    #     # set vi-mode
-    #     set-window-option -g mode-keys vi
+  #     # Shift Alt vim keys to switch windows
+  #     bind -n M-H previous-window
+  #     bind -n M-L next-window
 
-    #     # keybindings
-    #     bind-key -T copy-mode-vi v send-keys -X begin-selection
-    #     bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
-    #     bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+  #     # set vi-mode
+  #     set-window-option -g mode-keys vi
 
-    #     bind '"' split-window -v -c "#{pane_current_path}"
-    #     bind % split-window -h -c "#{pane_current_path}"
-    #     bind c new-window -c "#{pane_current_path}"
-    #   '';
-    # };
+  #     # keybindings
+  #     bind-key -T copy-mode-vi v send-keys -X begin-selection
+  #     bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
+  #     bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
 
-    # zoxide = {
-    #   enable = true;
-    #   enableZshIntegration = true;
-    #   options = [ "--cmd cd" ];
-    # };
+  #     bind '"' split-window -v -c "#{pane_current_path}"
+  #     bind % split-window -h -c "#{pane_current_path}"
+  #     bind c new-window -c "#{pane_current_path}"
+  #   '';
+  # };
 
-    # fzf = {
-    #   enable = true;
-    #   enableZshIntegration = true;
-    #   tmux.enableShellIntegration = true;
-    # };
+  # zoxide = {
+  #   enable = true;
+  #   enableZshIntegration = true;
+  #   options = [ "--cmd cd" ];
+  # };
 
-    # kitty = {
-    #   enable = true;
-    #   package = pkgs.kitty;
-    #   settings = {
-    #     scrollback_lines = 2000;
-    #     wheel_scroll_min_lines = 1;
-    #     window_padding_width = 4;
-    #     confirm_os_window_close = 0;
+  # fzf = {
+  #   enable = true;
+  #   enableZshIntegration = true;
+  #   tmux.enableShellIntegration = true;
+  # };
 
-    #     font_family = "JetBrainsMono Nerd Font";
-    #     font_size = 16;
-    #     bold_font = "JetBrainsMono Nerd Font Bold";
-    #     italic_font = "JetBrainsMono Nerd Font Italic";
-    #     bold_italic_font = "JetBrainsMono Nerd Font Bold Italic";
+  # kitty = {
+  #   enable = true;
+  #   package = pkgs.kitty;
+  #   settings = {
+  #     scrollback_lines = 2000;
+  #     wheel_scroll_min_lines = 1;
+  #     window_padding_width = 4;
+  #     confirm_os_window_close = 0;
 
-    #     opacity = 1.0; # Set to 1 for full opacity
-    #     window_title = "Kitty";
-    #     dynamic_title = true;
+  #     font_family = "JetBrainsMono Nerd Font";
+  #     font_size = 16;
+  #     bold_font = "JetBrainsMono Nerd Font Bold";
+  #     italic_font = "JetBrainsMono Nerd Font Italic";
+  #     bold_italic_font = "JetBrainsMono Nerd Font Bold Italic";
 
-    #     # Cursor style similar to Alacritty
-    #     cursor_shape = "block";
-    #   };
+  #     opacity = 1.0; # Set to 1 for full opacity
+  #     window_title = "Kitty";
+  #     dynamic_title = true;
 
-    #   extraConfig = ''
-    #     # Tab bar styling
-    #     tab_bar_style fade
-    #     tab_fade 1
-    #     active_tab_font_style   bold
-    #     inactive_tab_font_style bold
+  #     # Cursor style similar to Alacritty
+  #     cursor_shape = "block";
+  #   };
 
-    #     # Set environment variable to match Alacritty TERM
-    #     env TERM xterm-256color
-    #   '';
-    # };
+  #   extraConfig = ''
+  #     # Tab bar styling
+  #     tab_bar_style fade
+  #     tab_fade 1
+  #     active_tab_font_style   bold
+  #     inactive_tab_font_style bold
 
-    # alacritty = {
-    #   enable = true;
+  #     # Set environment variable to match Alacritty TERM
+  #     env TERM xterm-256color
+  #   '';
+  # };
 
-    #   settings = {
-    #     window = {
-    #       padding = {
-    #         x = 4;
-    #         y = 8;
-    #       };
-    #       decorations = "full";
-    #       opacity = 1;
-    #       startup_mode = "Windowed";
-    #       title = "Alacritty";
-    #       dynamic_title = true;
-    #       decorations_theme_variant = "None";
-    #     };
+  # alacritty = {
+  #   enable = true;
 
-    #     # import = [ pkgs.alacritty-theme.tokyo-night ];
+  #   settings = {
+  #     window = {
+  #       padding = {
+  #         x = 4;
+  #         y = 8;
+  #       };
+  #       decorations = "full";
+  #       opacity = 1;
+  #       startup_mode = "Windowed";
+  #       title = "Alacritty";
+  #       dynamic_title = true;
+  #       decorations_theme_variant = "None";
+  #     };
 
-    #     font =
-    #       let
-    #         jetbrainsMono = style: {
-    #           family = "JetBrainsMono Nerd Font";
-    #           inherit style;
-    #         };
-    #       in
-    #       {
-    #         # size = if meta.name == "karasu" then 12 else 16;
-    #         size = 16;
-    #         normal = jetbrainsMono "Regular";
-    #         bold = jetbrainsMono "Bold";
-    #         italic = jetbrainsMono "Italic";
-    #         bold_italic = jetbrainsMono "Bold Italic";
-    #       };
+  #     # import = [ pkgs.alacritty-theme.tokyo-night ];
 
-    #     cursor = {
-    #       style = "Block";
-    #     };
+  #     font =
+  #       let
+  #         jetbrainsMono = style: {
+  #           family = "JetBrainsMono Nerd Font";
+  #           inherit style;
+  #         };
+  #       in
+  #       {
+  #         # size = if meta.name == "karasu" then 12 else 16;
+  #         size = 16;
+  #         normal = jetbrainsMono "Regular";
+  #         bold = jetbrainsMono "Bold";
+  #         italic = jetbrainsMono "Italic";
+  #         bold_italic = jetbrainsMono "Bold Italic";
+  #       };
 
-    #     env = {
-    #       TERM = "xterm-256color";
-    #     };
+  #     cursor = {
+  #       style = "Block";
+  #     };
 
-    #     live_config_reload = true;
-    #   };
-    # };
-  };
+  #     env = {
+  #       TERM = "xterm-256color";
+  #     };
 
-  home.homeDirectory = lib.mkForce "/Users/rovasilchenko";
+  #     live_config_reload = true;
+  #   };
+  # };
+  # };
 
+  # Define PATH and session variables
   home.sessionVariables = lib.mkMerge [
     {
+      # Define XDG and Go paths
       XDG_DATA_HOME = "${config.home.homeDirectory}/.local/share";
       XDG_CONFIG_HOME = "${config.home.homeDirectory}/.config";
       XDG_STATE_HOME = "${config.home.homeDirectory}/.local/state";
       XDG_CACHE_HOME = "${config.home.homeDirectory}/.cache";
       XDG_RUNTIME_DIR = "/run/user/$(id -u)";
-
       GOPATH = "${config.home.homeDirectory}/.local/share/go";
-      # LESSHISTFILE = "${config.home.homeDirectory}/.local/state/less/history";
-      # ZPLUG_HOME = "${config.home.homeDirectory}/.local/share/zplug";
-      # HISTFILE = "${config.home.homeDirectory}/.local/state/zsh/history";
-      # ZDOTDIR = "${config.home.homeDirectory}/.config/zsh";
-      PATH = lib.mkAfter "/run/current-system/sw/bin:${config.home.homeDirectory}/.o3-cli/bin:${pkgs.coreutils}/bin:/bin:/usr/bin:/usr/local/go/bin:/usr/local/bin:/sbin:${config.home.sessionVariables.GOPATH}/bin:/opt/homebrew/bin";
+
+      PATH = lib.mkAfter "${config.home.homeDirectory}/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin:/etc/profiles/per-user/${username}/bin:/opt/homebrew/bin:/run/current-system/sw/bin:${config.home.homeDirectory}/.o3-cli/bin:${pkgs.coreutils}/bin:/bin:/usr/bin:/usr/local/go/bin:/usr/local/bin:/sbin:${config.home.sessionVariables.GOPATH}/bin";
     }
   ];
 }

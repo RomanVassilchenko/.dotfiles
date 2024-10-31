@@ -8,8 +8,6 @@
     hypr-contrib.url = "github:hyprwm/contrib";
     hyprpicker.url = "github:hyprwm/hyprpicker";
 
-    alejandra.url = "github:kamadorueda/alejandra/3.0.0";
-
     nix-gaming.url = "github:fufexan/nix-gaming";
 
     hyprland = {
@@ -54,14 +52,29 @@
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak";
+
+    mac-app-util = {
+      url = "github:hraban/mac-app-util";
+    };
   };
 
   outputs =
-    { self, nixpkgs, nix-darwin, home-manager, nix-flatpak, plasma-manager, ... } @ inputs:
+    {
+      self,
+      nixpkgs,
+      nix-darwin,
+      home-manager,
+      nix-flatpak,
+      plasma-manager,
+      mac-app-util,
+      ...
+    }@inputs:
     let
       username = "rovasilchenko";
       nixosSystem = "x86_64-linux";
       darwinSystem = "aarch64-darwin";
+      nixosHost = "XiaoXinPro";
+      darwinHost = "mbp-rovasilchenko-OZON-W0HDJTC2M5";
 
       pkgs = import nixpkgs {
         system = nixosSystem;
@@ -73,20 +86,47 @@
       nixosConfigurations = {
         XiaoXinPro = lib.nixosSystem {
           system = nixosSystem;
-          modules = [ ./hosts/XiaoXinPro ];
+          modules = [ ./hosts/NixOS ];
           specialArgs = {
-            host = "XiaoXinPro";
+            host = nixosHost;
             inherit self inputs username;
           };
         };
       };
 
       darwinConfigurations = {
-        "mbp-rovasilchenko-OZON-W0HDJTC2M5" = nix-darwin.lib.darwinSystem {
+        mbp-rovasilchenko-OZON-W0HDJTC2M5 = nix-darwin.lib.darwinSystem {
           system = darwinSystem;
-          modules = [ ./hosts/mbp-rovasilchenko-OZON-W0HDJTC2M5 ];
+          modules = [
+            mac-app-util.darwinModules.default
+            {
+              imports = [ ./hosts/Darwin ];
+              _module.args.self = self;
+              _module.args.host = darwinHost;
+              _module.args.inputs = inputs;
+            }
+            home-manager.darwinModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              users.users.${username} = {
+                home = "/Users/${username}";
+              };
+              home-manager.users.${username} = {
+                imports = [
+                  mac-app-util.homeManagerModules.default
+                  ./modules/home/default.darwin.nix
+                ];
+                _module.args.self = self;
+                _module.args.host = darwinHost;
+                _module.args.inputs = inputs;
+                _module.args.username = username;
+                home.stateVersion = "24.05";
+              };
+            }
+          ];
           specialArgs = {
-            host = "mbp-rovasilchenko-OZON-W0HDJTC2M5";
+            host = darwinHost;
             inherit self inputs username;
           };
         };
