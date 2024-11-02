@@ -12,7 +12,6 @@
     ./flatpak.nix
     ./hardware.nix
     ./network.nix
-    ./nh.nix
     ./packages.nix
     ./pipewire.nix
     ./plasma.nix

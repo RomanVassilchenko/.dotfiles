@@ -34,11 +34,11 @@
       # Nixos
       cdnix = "cd ~/.dotfiles && code ~/.dotfiles";
       ns = "nom-shell --run zsh";
-      nix-switch = "nh os switch";
-      nix-update = "nh os switch --update";
-      nix-clean = "nh clean all --keep 5";
+      nix-switch = "nh os switch ~/.dotfiles";
+      nix-update = "nh os switch --update ~/.dotfiles";
+      nix-clean = "nh clean all --keep 5 ~/.dotfiles";
       nix-search = "nh search";
-      nix-test = "nh os test";
+      nix-test = "nh os test ~/.dotfiles";
 
       # darwin
       up = "darwin-rebuild switch --flake ~/.dotfiles#mbp-rovasilchenko-OZON-W0HDJTC2M5";

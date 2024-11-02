@@ -8,6 +8,7 @@
 }:
 {
   imports = [
+    ./nh.nix
     ./network.nix
     ./packages.nix
     ./program.nix
