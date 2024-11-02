@@ -24,7 +24,6 @@
     ./nix-packages.nix # other packages
     ./starship.nix # shell prompt
     ./vscode.nix # vscode forck
-    # ./wezterm.nix # terminal
     ./zellij.nix
     ./zsh # shell
   ];

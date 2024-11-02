@@ -28,11 +28,6 @@
 
     hyprmag.url = "github:SIMULATAN/hyprmag";
 
-    wezterm = {
-      url = "github:wez/wezterm/main?dir=nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
