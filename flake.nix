@@ -56,6 +56,7 @@
     mac-app-util = {
       url = "github:hraban/mac-app-util";
     };
+    nh_darwin.url = "github:ToyVo/nh_darwin";
   };
 
   outputs =
@@ -67,6 +68,7 @@
       nix-flatpak,
       plasma-manager,
       mac-app-util,
+      nh_darwin,
       ...
     }@inputs:
     let

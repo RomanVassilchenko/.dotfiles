@@ -2,44 +2,44 @@
 {
   programs.zellij = {
     enable = true;
-    enableZshIntegration = true;
+    # enableZshIntegration = true;
   };
 
-  # NOTE: the module only supports YAML config which is deprecated
-  home.file.zellij = {
-    target = ".config/zellij/config.kdl";
-    text = ''
-      simplified_ui true
-      default_layout "compact"
-      keybinds clear-defaults=true {
-        normal {
-          bind "Ctrl o" { SwitchToMode "tmux"; }
-        }
-        tmux {
-          bind "Ctrl o" { SwitchToMode "Normal"; }
-          bind "Esc" { SwitchToMode "Normal"; }
+  # # NOTE: the module only supports YAML config which is deprecated
+  # home.file.zellij = {
+  #   target = ".config/zellij/config.kdl";
+  #   text = ''
+  #     simplified_ui true
+  #     default_layout "compact"
+  #     keybinds clear-defaults=true {
+  #       normal {
+  #         bind "Ctrl o" { SwitchToMode "tmux"; }
+  #       }
+  #       tmux {
+  #         bind "Ctrl o" { SwitchToMode "Normal"; }
+  #         bind "Esc" { SwitchToMode "Normal"; }
 
-          bind "Ctrl e" { WriteChars "vi ."; Write 13; SwitchToMode "Normal"; }
-          bind "Ctrl r" { WriteChars "kubie ctx"; Write 13; SwitchToMode "Normal"; }
+  #         bind "Ctrl e" { WriteChars "vi ."; Write 13; SwitchToMode "Normal"; }
+  #         bind "Ctrl r" { WriteChars "kubie ctx"; Write 13; SwitchToMode "Normal"; }
 
-          bind "Ctrl u" { CloseFocus; SwitchToMode "Normal"; }
-          bind "z" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
-          bind "d" { Detach; }
-          bind "s" { ToggleActiveSyncTab; SwitchToMode "Normal"; }
+  #         bind "Ctrl u" { CloseFocus; SwitchToMode "Normal"; }
+  #         bind "z" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
+  #         bind "d" { Detach; }
+  #         bind "s" { ToggleActiveSyncTab; SwitchToMode "Normal"; }
 
-          bind "h" { MoveFocus "Left"; SwitchToMode "Normal"; }
-          bind "l" { MoveFocus "Right"; SwitchToMode "Normal"; }
-          bind "j" { MoveFocus "Down"; SwitchToMode "Normal"; }
-          bind "k" { MoveFocus "Up"; SwitchToMode "Normal"; }
+  #         bind "h" { MoveFocus "Left"; SwitchToMode "Normal"; }
+  #         bind "l" { MoveFocus "Right"; SwitchToMode "Normal"; }
+  #         bind "j" { MoveFocus "Down"; SwitchToMode "Normal"; }
+  #         bind "k" { MoveFocus "Up"; SwitchToMode "Normal"; }
 
-          bind "y" { NewPane "Down"; SwitchToMode "Normal"; }
-          bind "n" { NewPane "Right"; SwitchToMode "Normal"; }
+  #         bind "y" { NewPane "Down"; SwitchToMode "Normal"; }
+  #         bind "n" { NewPane "Right"; SwitchToMode "Normal"; }
 
-          bind "c" { NewTab; SwitchToMode "Normal"; }
-          bind "Ctrl l" { GoToNextTab; SwitchToMode "Normal"; }
-          bind "Ctrl h" { GoToPreviousTab; SwitchToMode "Normal"; }
-        }
-      }
-    '';
-  };
+  #         bind "c" { NewTab; SwitchToMode "Normal"; }
+  #         bind "Ctrl l" { GoToNextTab; SwitchToMode "Normal"; }
+  #         bind "Ctrl h" { GoToPreviousTab; SwitchToMode "Normal"; }
+  #       }
+  #     }
+  #   '';
+  # };
 }
