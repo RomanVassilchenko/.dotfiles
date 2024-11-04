@@ -36,6 +36,7 @@
       "kwin"."ExposeClass" = "Ctrl+F7";
       "kwin"."ExposeClassCurrentDesktop" = [ ];
       "kwin"."Grid View" = "Meta+G";
+      "kwin"."Close Window" = "Meta+Q";
       "kwin"."Increase Opacity" = "none,,Increase Opacity of Active Window by 5%";
       "kwin"."Kill Window" = "Meta+Ctrl+Esc";
       "kwin"."KrohnkiteBTreeLayout" = [ ];

@@ -14,7 +14,7 @@
     ./network.nix
     ./packages.nix
     ./pipewire.nix
-    ./plasma.nix
+    #./plasma.nix
     ./program.nix
     ./security.nix
     ./services.nix
@@ -22,7 +22,7 @@
     ./system.nix
     ./user.nix
     # ./wayland.nix
-    ./virtualization.nix
-    ./xserver.nix
+    #./virtualization.nix
+    #./xserver.nix
   ];
 }

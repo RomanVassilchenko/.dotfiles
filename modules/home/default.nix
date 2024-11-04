@@ -13,14 +13,14 @@
     ./fzf.nix # fuzzy finder
     ./gaming.nix # packages related to gaming
     ./git.nix # version control
-    ./gnome.nix # gnome apps
-    ./gtk.nix # gtk theme
+    ./gnome.nix # gnome DE
+    #./gtk.nix # gtk theme
     # ./hyprland # window manager
     ./kitty.nix # terminal
     ./micro.nix # nano replacement
     ./nvim.nix # neovim editor
     ./p10k/p10k.nix
-    ./plasma.nix
+    #./plasma.nix
     ./common-packages.nix # other packages
     ./nix-packages.nix # other packages
     ./starship.nix # shell prompt
