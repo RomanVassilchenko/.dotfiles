@@ -83,7 +83,9 @@
       nixosConfigurations = {
         XiaoXinPro = lib.nixosSystem {
           system = nixosSystem;
-          modules = [ ./hosts/NixOS ];
+          modules = [ 
+            ./hosts/NixOS
+             ];
           specialArgs = {
             host = nixosHost;
             inherit self inputs username;

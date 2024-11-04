@@ -20,6 +20,7 @@
     ./micro.nix # nano replacement
     ./nvim.nix # neovim editor
     ./p10k/p10k.nix
+    ./plasma.nix
     ./common-packages.nix # other packages
     ./nix-packages.nix # other packages
     ./starship.nix # shell prompt
