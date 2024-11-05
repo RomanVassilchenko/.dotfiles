@@ -19,7 +19,6 @@
 
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-    inter
   ];
 
   nixpkgs.config.allowUnfree = true;

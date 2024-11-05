@@ -24,22 +24,16 @@
       ];
     };
     casks = [
-      "arc"
       "betterdisplay"
       "goland"
-      "iterm2"
       "kdenlive"
-      "keepingyouawake"
       "krita"
       "obs"
       "telegram"
       "thunderbird"
-      "visual-studio-code" # -> vscode
       "whatsapp"
       "zen-browser"
     ];
-    brews = [
-      "go"
-    ];
+    brews = [ ];
   };
 }

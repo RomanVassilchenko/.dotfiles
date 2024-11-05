@@ -7,6 +7,7 @@
       # mas
       mkalias
       raycast
+      # whatsapp-for-mac
     ]
   );
 }

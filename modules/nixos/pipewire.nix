@@ -9,6 +9,6 @@
     # lowLatency.enable = true;
   };
   environment.systemPackages = with pkgs; [
-    pulseaudioFull
+    # pulseaudioFull
   ];
 }

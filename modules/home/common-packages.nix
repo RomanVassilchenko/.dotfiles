@@ -24,6 +24,7 @@
       # ncdu # disk space
       nixd
       nixfmt-rfc-style
+      obsidian
       openssl
       onefetch # fetch utility for git repo
       # programmer-calculator
@@ -54,6 +55,9 @@
       # C / C++
       # gcc
       gnumake
+
+      # Go
+      go
 
       # Python
       python3

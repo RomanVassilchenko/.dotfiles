@@ -5,7 +5,6 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
-
   environment.gnome.excludePackages = with pkgs; [
     # gnome-tour
     # gnome-connections
@@ -19,4 +18,13 @@
     # pop-shell
     # ...
   ];
+
+  xdg.portal = {
+    enable = true;
+    # xdgOpenUsePortal = true;
+    extraPortals = [
+      # pkgs.xdg-desktop-portal-hyprland
+      pkgs.xdg-desktop-portal-gtk
+    ];
+  };
 }

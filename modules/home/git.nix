@@ -2,6 +2,7 @@
 {
   programs.git = {
     enable = true;
+    lfs.enable = true;
 
     userName = "Roman Vassilchenko";
     userEmail = "roman.vassilchenko.work@gmail.com";
@@ -11,6 +12,7 @@
       credential.helper = "store";
       merge.conflictstyle = "diff3";
       diff.colorMoved = "default";
+      push.autoSetupRemote = true;
     };
 
     delta = {

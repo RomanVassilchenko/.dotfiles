@@ -10,6 +10,7 @@
   imports = [
     ./bootloader.nix
     ./flatpak.nix
+    ./gnome.nix
     ./hardware.nix
     ./network.nix
     ./packages.nix

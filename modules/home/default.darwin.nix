@@ -22,7 +22,7 @@
     ./common-packages.nix # Other packages
     ./darwin-packages.nix # macOS-specific packages
     ./starship.nix # Shell prompt
-    # ./vscode.nix              # vscode fork
+    ./vscode.nix
     ./zellij.nix
     ./zsh # Shell configuration
   ];
