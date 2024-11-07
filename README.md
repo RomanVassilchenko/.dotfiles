@@ -3,15 +3,15 @@
    <img src="./.github/assets/logo/macos-logo.png" width="100px" />
    <br>
    Roman Vassilchenko's Dotfiles
-   <br>
-   <img src="./.github/assets/pallet/pallet-0.png" width="600px" />
+   <!-- <br>
+   <img src="./.github/assets/pallet/pallet-0.png" width="600px" /> -->
 </h1>
 
 <div align="center">
    <p></p>
-   <a href="https://github.com/RomanVassilchenko/.dotfiles/stargazers">
+   <!-- <a href="https://github.com/RomanVassilchenko/.dotfiles/stargazers">
       <img src="https://img.shields.io/github/stars/RomanVassilchenko/.dotfiles?color=FABD2F&labelColor=282828&style=for-the-badge&logo=starship&logoColor=FABD2F">
-   </a>
+   </a> -->
    <a href="https://github.com/RomanVassilchenko/.dotfiles/">
       <img src="https://img.shields.io/github/repo-size/RomanVassilchenko/.dotfiles?color=B16286&labelColor=282828&style=for-the-badge&logo=github&logoColor=B16286">
    </a>
@@ -23,16 +23,16 @@
    </a>
 </div>
 
-### 🖼️ Gallery
+<!-- ### 🖼️ Gallery
 
 <p align="center">
    <img src="./.github/assets/screenshots/1.png" style="margin-bottom: 10px;" /> <br>
    <img src="./.github/assets/screenshots/2.png" style="margin-bottom: 10px;" /> <br>
    <img src="./.github/assets/screenshots/3.png" style="margin-bottom: 10px;" /> <br>
    Screenshots last updated <b>2024-11-02</b>
-</p>
+</p> -->
 
----
+<!-- --- -->
 
 # 🗃️ Overview
 
@@ -52,7 +52,7 @@ This repository contains my personal dotfiles and configurations for NixOS and m
 
 ---
 
-## 📓 Components
+<!-- ## 📓 Components
 
 | Component                     | NixOS Configuration          | macOS (Darwin) Configuration         |
 | ----------------------------- | ---------------------------- | ------------------------------------ |
@@ -76,7 +76,7 @@ This repository contains my personal dotfiles and configurations for NixOS and m
 | **📋 Clipboard Manager**      | wl-clip-persist              | macOS Universal Clipboard           |
 | **🌈 Color Picker**           | hyprpicker                   | macOS Color Picker                  |
 
----
+--- -->
 
 ## 📝 Shell Aliases
 
@@ -108,7 +108,7 @@ Utility Aliases (Expand)
 NixOS Specific Aliases (Expand)
 </summary>
 
-- `cdnix` ➔ `cd ~/nixos-config && code ~/nixos-config`
+- `cdnix` ➔ `cd ~/.dotfiles && code ~/.dotfiles`
 - `ns` ➔ `nom-shell --run zsh`
 - `nix-test` ➔ `nh os test`
 - `nix-switch` ➔ `nh os switch`
@@ -139,7 +139,7 @@ Git Aliases (Expand)
   
 </details>
 
----
+<!-- ---
 
 ## 🛠️ Scripts
 
@@ -175,9 +175,9 @@ compress.sh
 **Usage:** `compress <file/folder>`
 </details>
 
----
+--- -->
 
-## ⌨️ Keybinds
+<!-- ## ⌨️ Keybinds
 
 Press `$mainMod + F1` to view all keybindings. By default, `$mainMod` is the `SUPER` key.
 
@@ -234,7 +234,7 @@ nix build .#darwinConfigurations.mbp-rovasilchenko-OZON-W0HDJTC2M5.system
 sudo nixos-rebuild switch --flake .
 ```
 
----
+--- -->
 
 <p align="center"><img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/footers/gray0_ctp_on_line.svg?sanitize=true" /></p>
 

@@ -25,6 +25,7 @@
     };
     casks = [
       "betterdisplay"
+      "datagrip"
       "goland"
       "kdenlive"
       "krita"

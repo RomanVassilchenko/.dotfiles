@@ -3,7 +3,7 @@
   programs.kitty = {
     enable = true;
 
-    # themeFile = "gruvbox-dark-hard";
+    themeFile = "VSCode_Dark";
 
     font = {
       name = "CaskaydiaCove Nerd Font";
@@ -23,10 +23,10 @@
       inactive_tab_font_style = "normal";
       tab_bar_style = "powerline";
       tab_powerline_style = "angled";
-      active_tab_foreground = "#FBF1C7";
-      active_tab_background = "#7C6F64";
-      inactive_tab_foreground = "#FBF1C7";
-      inactive_tab_background = "#3C3836";
+      # active_tab_foreground = "#FBF1C7";
+      # active_tab_background = "#7C6F64";
+      # inactive_tab_foreground = "#FBF1C7";
+      # inactive_tab_background = "#3C3836";
     };
 
     keybindings = {

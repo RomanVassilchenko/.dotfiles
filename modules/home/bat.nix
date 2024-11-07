@@ -4,7 +4,7 @@
     enable = true;
     config = {
       pager = "less -FR";
-      # theme = "gruvbox-dark";
+      theme = "Visual Studio Dark+";
     };
     extraPackages = with pkgs.bat-extras; [
       batman

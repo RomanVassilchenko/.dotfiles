@@ -8,22 +8,25 @@
 }:
 {
   imports = [
+    # ./wayland.nix
+    #./virtualization.nix
+    #./xserver.nix
+
+    ./gnome.nix
+
+    #./plasma.nix
+
     ./bootloader.nix
     ./flatpak.nix
-    ./gnome.nix
     ./hardware.nix
     ./network.nix
     ./packages.nix
     ./pipewire.nix
-    #./plasma.nix
     ./program.nix
     ./security.nix
     ./services.nix
     ./steam.nix
     ./system.nix
     ./user.nix
-    # ./wayland.nix
-    #./virtualization.nix
-    #./xserver.nix
   ];
 }
