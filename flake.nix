@@ -3,46 +3,46 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nur.url = "github:nix-community/NUR";
+    # nur.url = "github:nix-community/NUR";
 
-    hypr-contrib.url = "github:hyprwm/contrib";
-    hyprpicker.url = "github:hyprwm/hyprpicker";
+    # hypr-contrib.url = "github:hyprwm/contrib";
+    # hyprpicker.url = "github:hyprwm/hyprpicker";
 
-    nix-gaming.url = "github:fufexan/nix-gaming";
+    # nix-gaming.url = "github:fufexan/nix-gaming";
 
-    hyprland = {
-      type = "git";
-      url = "https://github.com/hyprwm/Hyprland";
-      submodules = true;
-    };
+    # hyprland = {
+    #   type = "git";
+    #   url = "https://github.com/hyprwm/Hyprland";
+    #   submodules = true;
+    # };
 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    spicetify-nix = {
-      url = "github:gerg-l/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # spicetify-nix = {
+    #   url = "github:gerg-l/spicetify-nix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
-    hyprmag.url = "github:SIMULATAN/hyprmag";
+    # hyprmag.url = "github:SIMULATAN/hyprmag";
 
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.1";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # lanzaboote = {
+    #   url = "github:nix-community/lanzaboote/v0.4.1";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
+    # plasma-manager = {
+    #   url = "github:nix-community/plasma-manager";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    #   inputs.home-manager.follows = "home-manager";
+    # };
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
@@ -61,7 +61,7 @@
       nix-darwin,
       home-manager,
       nix-flatpak,
-      plasma-manager,
+      # plasma-manager,
       mac-app-util,
       nh_darwin,
       ...
@@ -83,9 +83,9 @@
       nixosConfigurations = {
         XiaoXinPro = lib.nixosSystem {
           system = nixosSystem;
-          modules = [ 
+          modules = [
             ./hosts/NixOS
-             ];
+          ];
           specialArgs = {
             host = nixosHost;
             inherit self inputs username;
@@ -120,7 +120,7 @@
                 _module.args.host = darwinHost;
                 _module.args.inputs = inputs;
                 _module.args.username = username;
-                home.stateVersion = "24.05";
+                home.stateVersion = "24.11";
               };
             }
           ];

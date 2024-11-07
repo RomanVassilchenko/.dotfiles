@@ -11,7 +11,9 @@
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
-    sharedModules = [ inputs.plasma-manager.homeManagerModules.plasma-manager ];
+    sharedModules = [
+      # inputs.plasma-manager.homeManagerModules.plasma-manager
+    ];
     extraSpecialArgs = {
       inherit inputs username host;
     };
@@ -21,7 +23,7 @@
       imports = [ ./../home ];
       home.username = "${username}";
       home.homeDirectory = "/home/${username}";
-      home.stateVersion = "24.05";
+      home.stateVersion = "24.11";
       programs.home-manager.enable = true;
     };
   };
