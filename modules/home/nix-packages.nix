@@ -34,6 +34,7 @@
       ## GUI Apps
       # audacity
       # bleachbit # cache cleaner
+      bitwarden-desktop
       libreoffice
       nix-prefetch-github
       obs-studio
