@@ -35,6 +35,7 @@
       # audacity
       # bleachbit # cache cleaner
       bitwarden-desktop
+      dbeaver-bin
       libreoffice
       nix-prefetch-github
       obs-studio

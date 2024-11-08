@@ -3,7 +3,6 @@
   home.packages = (
     with pkgs;
     [
-      dbeaver-bin
       docker
       docker-compose
       eza # ls replacement

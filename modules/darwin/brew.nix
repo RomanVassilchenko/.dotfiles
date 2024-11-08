@@ -26,6 +26,7 @@
     casks = [
       "betterdisplay"
       "datagrip"
+      "dbeaver-community"
       "goland"
       "kdenlive"
       "krita"
