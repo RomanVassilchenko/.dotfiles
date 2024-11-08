@@ -1,13 +1,20 @@
 { pkgs, ... }:
 {
-
   fonts.fontconfig.enable = true;
   home.packages = (
     with pkgs;
     [
       gnome-tweaks
-      inter
       gnome-extension-manager
+
+      inter
+      libertinus
+      whatsapp-emoji-font
+      jetbrains-mono
+      fira-code
+      ibm-plex
+      font-awesome
+      noto-fonts
       # evince                                        # pdf
       # file-roller                                   # archive
       # gnome-text-editor                             # gedit
@@ -182,6 +189,52 @@
         enable-animations = true;
       };
 
+      # Weather and location settings
+      "org/gnome/shell/weather" = {
+        automatic-location = true;
+        locations = [
+          "<('Astana', 'UACC', false, [(51.1694, 71.4491)], @a[])>"
+        ];
+      };
+      "org/gnome/system/location" = {
+        enabled = true;
+      };
+
+      # Console font scaling
+      "org/gnome/Console" = {
+        font-scale = 2.0;
+        last-window-maximised = false;
+        last-window-size = "(1292, 888)";
+      };
+
+      # GWeather settings
+      "org/gnome/GWeather4" = {
+        temperature-unit = "centigrade";
+      };
+
+      # Calendar
+      "org/gnome/calendar" = {
+        active-view = "month";
+        window-maximized = true;
+        window-size = "(768, 600)";
+      };
+
+      # Control center panel
+      "org/gnome/control-center" = {
+        last-panel = "display";
+        window-state = "(980, 640, false)";
+      };
+
+      # Dash-to-dock extension settings
+      "org/gnome/shell/extensions/dash-to-dock" = {
+        apply-custom-theme = true;
+        background-opacity = 0.8;
+        dash-max-icon-size = 64;
+        dock-position = "BOTTOM";
+        height-fraction = 0.9;
+      };
+
+      # App folders configuration
       "org/gnome/desktop/app-folders" = {
         folder-children = [
           "Utilities"
@@ -195,36 +248,77 @@
         ];
       };
 
-      "org/gnome/shell/extensions/dash-to-dock" = {
-        apply-custom-theme = true;
-        background-opacity = 0.8;
-        dash-max-icon-size = 64;
-        dock-position = "BOTTOM";
-        height-fraction = 0.9;
+      # Mutter settings
+      "org/gnome/mutter" = {
+        center-new-windows = true;
+        experimental-features = [ "scale-monitor-framebuffer" ];
       };
 
-      # Configure individual extensions
-      # "org/gnome/shell/extensions/blur-my-shell" = {
-      #   brightness = 0.75;
-      #   noise-amount = 0;
+      # Notifications configuration
+      "org/gnome/desktop/notifications" = {
+        application-children = [
+          "org-gnome-nautilus"
+          "gnome-power-panel"
+          "zen"
+          "org-gnome-evolution-alarm-notify"
+        ];
+      };
+
+      # Touchpad configuration
+      "org/gnome/desktop/peripherals/touchpad" = {
+        two-finger-scrolling-enabled = true;
+      };
+
+      # Desktop search providers sorting
+      "org/gnome/desktop/search-providers" = {
+        sort-order = [
+          "org.gnome.Settings.desktop"
+          "org.gnome.Contacts.desktop"
+          "org.gnome.Nautilus.desktop"
+        ];
+      };
+
+      # Privacy settings
+      "org/gnome/desktop/privacy" = {
+        remove-old-temp-files = true;
+        remove-old-trash-files = true;
+      };
+
+      # Keybindings
+      "org/gnome/desktop/wm/keybindings" = {
+        close = [ "<Alt>q" ];
+        switch-input-source = [ "<Control>space" ];
+        switch-input-source-backward = [ "<Shift><Control>space" ];
+      };
+
+      # Window management preferences
+      "org/gnome/desktop/wm/preferences" = {
+        button-layout = "appmenu:close";
+        focus-mode = "click";
+        mouse-button-modifier = "<Super>";
+      };
+
+      # World Clocks - Empty array
+      "org/gnome/shell/world-clocks" = {
+        locations = [ ];
+      };
+
+      # Text editor settings
+      # Uncomment if you need custom settings
+      # "org/gnome/TextEditor" = {
+      #   custom-font = "CaskaydiaCove Nerd Font 15";
+      #   highlight-current-line = true;
+      #   indent-style = "space";
+      #   restore-session = false;
+      #   show-grid = false;
+      #   show-line-numbers = true;
+      #   show-right-margin = false;
+      #   style-scheme = "builder-dark";
+      #   style-variant = "dark";
+      #   tab-width = "uint32 4";
+      #   use-system-font = false;
+      #   wrap-text = false;
       # };
     };
   };
-
-  # dconf.settings = {
-  #   "org/gnome/TextEditor" = {
-  #     custom-font = "CaskaydiaCove Nerd Font 15";
-  #     highlight-current-line = true;
-  #     indent-style = "space";
-  #     restore-session = false;
-  #     show-grid = false;
-  #     show-line-numbers = true;
-  #     show-right-margin = false;
-  #     style-scheme = "builder-dark";
-  #     style-variant = "dark";
-  #     tab-width = "uint32 4";
-  #     use-system-font = false;
-  #     wrap-text = false;
-  #   };
-  # };
 }
