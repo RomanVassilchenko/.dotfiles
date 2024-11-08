@@ -34,6 +34,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "tss"
     ];
     shell = pkgs.zsh;
   };

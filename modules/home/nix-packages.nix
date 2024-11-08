@@ -17,6 +17,8 @@
       # imv # image viewer
       # mpv # video player
       nitch # systhem fetch util
+      openvpn3
+      tpm2-tss
       # pamixer # pulseaudio command line mixer
       # playerctl # controller for media players
       # poweralertd
