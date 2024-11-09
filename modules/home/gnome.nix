@@ -1,21 +1,13 @@
 { pkgs, ... }:
 {
   fonts.fontconfig.enable = true;
-  home.packages = (
-    with pkgs;
-    [
-      gnome-tweaks
-      gnome-extension-manager
-      inter
-      libertinus
-      whatsapp-emoji-font
-      jetbrains-mono
-      fira-code
-      ibm-plex
-      font-awesome
-      noto-fonts
-    ]
-  );
+  home.packages = with pkgs; [
+    gnome-tweaks
+    inter
+    jetbrains-mono
+    font-awesome
+    noto-fonts
+  ];
 
   dconf = {
     enable = true;
@@ -46,16 +38,10 @@
           "steam.desktop"
           "org.gnome.Settings.desktop"
         ];
-
       };
-      "org/gnome/desktop/interface" = {
-        clock-show-weekday = true;
-        color-scheme = "prefer-dark";
-        show-battery-percentage = true;
-        font-antialiasing = "rgba";
-        font-name = "Inter Variable 11";
-        document-font-name = "Inter Variable 11";
-        enable-animations = true;
+
+      "org/gnome/Console" = {
+        font-scale = 2.0;
       };
 
       "org/gnome/shell/weather" = {
@@ -64,37 +50,23 @@
           "<('Astana', 'UACC', false, [(51.1694, 71.4491)], @a[])>"
         ];
       };
-      "org/gnome/system/location" = {
-        enabled = true;
-      };
-
-      "org/gnome/Console" = {
-        font-scale = 2.0;
-        last-window-maximised = false;
-        last-window-size = "(1292, 888)";
-      };
 
       "org/gnome/GWeather4" = {
         temperature-unit = "centigrade";
       };
 
-      "org/gnome/calendar" = {
-        active-view = "month";
-        window-maximized = true;
-        window-size = "(768, 600)";
+      "org/gnome/system/location" = {
+        enabled = true;
       };
 
-      "org/gnome/control-center" = {
-        last-panel = "display";
-        window-state = "(980, 640, false)";
-      };
-
-      "org/gnome/shell/extensions/dash-to-dock" = {
-        apply-custom-theme = true;
-        background-opacity = 0.8;
-        dash-max-icon-size = 64;
-        dock-position = "BOTTOM";
-        height-fraction = 0.9;
+      "org/gnome/desktop/interface" = {
+        clock-show-weekday = true;
+        color-scheme = "prefer-dark";
+        show-battery-percentage = true;
+        font-antialiasing = "rgba";
+        font-name = "Inter Variable 11";
+        document-font-name = "Inter Variable 11";
+        enable-animations = true;
       };
 
       "org/gnome/desktop/app-folders" = {
@@ -108,6 +80,22 @@
           "8ca73dad-c018-4278-a087-c8a9f13d85b3"
           "9849b5ec-f896-4a93-be39-540762c000f3"
         ];
+      };
+
+      "org/gnome/calendar" = {
+        active-view = "month";
+      };
+
+      "org/gnome/control-center" = {
+        last-panel = "display";
+      };
+
+      "org/gnome/shell/extensions/dash-to-dock" = {
+        apply-custom-theme = true;
+        background-opacity = 0.8;
+        dash-max-icon-size = 64;
+        dock-position = "BOTTOM";
+        height-fraction = 0.9;
       };
 
       "org/gnome/mutter" = {
@@ -142,7 +130,7 @@
       };
 
       "org/gnome/desktop/wm/keybindings" = {
-        close = [ "<Alt>q" ];
+        close = [ "<Super>q" ];
         switch-input-source = [ "<Control>space" ];
         switch-input-source-backward = [ "<Shift><Control>space" ];
       };
@@ -150,7 +138,6 @@
       "org/gnome/desktop/wm/preferences" = {
         button-layout = "appmenu:close";
         focus-mode = "click";
-        mouse-button-modifier = "<Super>";
       };
 
       "org/gnome/shell/world-clocks" = {
