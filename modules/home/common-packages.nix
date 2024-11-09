@@ -5,63 +5,45 @@
     [
       docker
       docker-compose
-      eza # ls replacement
-      fd # find replacement
+      eza
+      fd
       ffmpeg
-      file # Show file information
+      file
+      gcc
+      gimp
+      go
       goose
-      # gtrash # rm replacement, put deleted files in system trash
-      jq # JSON processor
+      gnumake
+      gtrash
+      inkscape
+      jq
       killall
       kubectl
       lazydocker
       lazygit
-      # libnotify
-      man-pages # extra man pages
-      # mimeo
+      man-pages
       nano
-      # ncdu # disk space
+      ncdu
       nixd
       nixfmt-rfc-style
       obsidian
+      onefetch
       openssl
-      onefetch # fetch utility for git repo
-      # programmer-calculator
-      ripgrep # grep replacement
+      postman
+      programmer-calculator
+      python3
+      python312Packages.ipython
+      ripgrep
       tldr
-      # todo # cli todo list
-      # toipe # typing test in the terminal
-      # ttyper # cli typing test
+      todo
+      toipe
+      ttyper
       unzip
       wget
-      # yazi # terminal file manager
-      # yt-dlp-light
       xdg-utils
-      # zellij
-      zoxide
-
-      ## CLI
-      # cbonsai # terminal screensaver
-      # cmatrix
-
-      ## GUI Apps
-      gimp
-      inkscape
-      obsidian
-      postman
+      yazi
+      yt-dlp-light
       zed
-
-      # C / C++
-      # gcc
-      gnumake
-
-      # Go
-      go
-
-      # Python
-      python3
-      # python312Packages.ipython
-
     ]
   );
 }

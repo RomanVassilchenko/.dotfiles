@@ -3,33 +3,20 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # nur.url = "github:nix-community/NUR";
-
-    # hypr-contrib.url = "github:hyprwm/contrib";
-    # hyprpicker.url = "github:hyprwm/hyprpicker";
-
-    # nix-gaming.url = "github:fufexan/nix-gaming";
-
-    # hyprland = {
-    #   type = "git";
-    #   url = "https://github.com/hyprwm/Hyprland";
-    #   submodules = true;
-    # };
+    nur.url = "github:nix-community/NUR";
 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # spicetify-nix = {
-    #   url = "github:gerg-l/spicetify-nix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
-    # hyprmag.url = "github:SIMULATAN/hyprmag";
-
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nvchad4nix = {
+      url = "github:nix-community/nix4nvchad";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

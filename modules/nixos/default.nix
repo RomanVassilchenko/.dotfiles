@@ -8,12 +8,7 @@
 }:
 {
   imports = [
-    # ./wayland.nix
-    #./virtualization.nix
-    #./xserver.nix
-
     ./gnome.nix
-
     #./plasma.nix
 
     ./bootloader.nix

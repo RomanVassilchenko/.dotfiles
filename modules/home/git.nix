@@ -26,8 +26,7 @@
     };
   };
 
-  home.packages = [ pkgs.gh ]; # pkgs.git-lfs
-
+  home.packages = [ pkgs.gh ];
   programs.zsh.shellAliases = {
     g = "lazygit";
     gf = "onefetch --number-of-file-churns 0 --no-color-palette";

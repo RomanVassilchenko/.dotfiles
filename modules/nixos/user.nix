@@ -41,14 +41,11 @@
 
   nix.settings.allowed-users = [ "${username}" ];
 
-  # Needed for direnv + nix-shell
-  # to prevent invalidating caches.
   nix.settings = {
     keep-outputs = true;
     keep-derivations = true;
   };
 
-  # Autoupdating
   system.autoUpgrade.enable = false;
   system.autoUpgrade.allowReboot = false;
 }

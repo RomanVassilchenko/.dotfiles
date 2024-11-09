@@ -12,15 +12,15 @@
     changeDirWidgetCommand = "fd --type=d --hidden --strip-cwd-prefix --exclude .git";
     changeDirWidgetOptions = [ "--preview 'eza --tree --color=always {} | head -200'" ];
 
-    # ## Theme
-    # defaultOptions = [
-    #   "--color=fg:-1,fg+:#FBF1C7,bg:-1,bg+:#282828"
-    #   "--color=hl:#98971A,hl+:#B8BB26,info:#928374,marker:#D65D0E"
-    #   "--color=prompt:#CC241D,spinner:#689D6A,pointer:#D65D0E,header:#458588"
-    #   "--color=border:#665C54,label:#aeaeae,query:#FBF1C7"
-    #   "--border='rounded' --border-label='' --preview-window='border-rounded' --prompt='> '"
-    #   "--marker='>' --pointer='>' --separator='─' --scrollbar='│'"
-    #   "--info='right'"
-    # ];
+    # Theme settings for VS Code Dark+ look
+    defaultOptions = [
+      "--color=fg:#D4D4D4,bg:#1E1E1E,fg+:#FFFFFF,bg+:#3A3D41"
+      "--color=hl:#569CD6,hl+:#9CDCFE,info:#C586C0,marker:#D7BA7D"
+      "--color=prompt:#CE9178,spinner:#C586C0,pointer:#D7BA7D,header:#007ACC"
+      "--color=border:#3C3C3C,label:#AEAFAD,query:#CE9178"
+      "--border='rounded' --preview-window='border-rounded' --prompt='> '"
+      "--marker='>' --pointer='>' --separator='─' --scrollbar='│'"
+      "--info='right'"
+    ];
   };
 }

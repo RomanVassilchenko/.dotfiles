@@ -10,7 +10,6 @@
     ];
     overrides = {
       global = {
-        # Force Wayland by default
         Context.sockets = [
           "wayland"
           "!x11"
