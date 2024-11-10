@@ -31,8 +31,10 @@
       openssl
       postman
       programmer-calculator
+      protobuf
       python3
       python312Packages.ipython
+      python312Packages.googleapis-common-protos
       ripgrep
       tldr
       todo

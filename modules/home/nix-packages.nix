@@ -19,7 +19,6 @@
       libreoffice
       nitch
       nix-prefetch-github
-      obs-studio
       openvpn3
       telegram-desktop
       thunderbird

@@ -19,6 +19,7 @@
     ./micro.nix
     ./nix-packages.nix
     ./nvchad.nix
+    ./obs.nix
     ./p10k/p10k.nix
     ./starship.nix
     ./tmux.nix

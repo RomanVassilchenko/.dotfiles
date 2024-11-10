@@ -3,6 +3,7 @@
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
     gnome-tweaks
+    xwaylandvideobridge
     inter
     jetbrains-mono
     font-awesome

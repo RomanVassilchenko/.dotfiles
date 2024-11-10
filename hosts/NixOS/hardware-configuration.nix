@@ -19,8 +19,11 @@
     "sdhci_pci"
   ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
+  boot.kernelModules = [
+    "kvm-amd"
+    "v4l2loopback"
+  ];
+  boot.extraModulePackages = [ pkgs.linuxPackages.v4l2loopback ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/bfd76e58-d0e7-47b4-8c91-0d87d295ab2c";
