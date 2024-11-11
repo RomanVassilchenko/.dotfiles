@@ -25,14 +25,10 @@
     };
     casks = [
       "betterdisplay"
-      "datagrip"
       "dbeaver-community"
-      "goland"
-      "kdenlive"
       "krita"
       "obs"
       "telegram"
-      "thunderbird"
       "whatsapp"
       "zen-browser"
     ];
