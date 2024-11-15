@@ -33,5 +33,9 @@
       "zen-browser"
     ];
     brews = [ ];
+
+    masApps = {
+      Xcode = 497799835;
+    };
   };
 }

@@ -13,7 +13,7 @@
         "flakes"
       ];
     };
-    optimise.automatic = true;
+    # optimise.automatic = true; # Turn on after fix of https://github.com/NixOS/nix/issues/7273/
   };
   nixpkgs = {
     overlays = [

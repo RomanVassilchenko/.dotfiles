@@ -7,12 +7,85 @@
     userName = "Roman Vassilchenko";
     userEmail = "roman.vassilchenko.work@gmail.com";
 
+    aliases = {
+      ga = "add";
+      gaa = "add --all";
+      gs = "status";
+      gb = "branch";
+      gm = "merge";
+      gd = "diff";
+      gpl = "pull";
+      gplo = "pull origin";
+      gps = "push";
+      gpso = "push origin";
+      gpst = "push --follow-tags";
+      gcl = "clone";
+      gc = "commit";
+      gcm = "commit -m";
+      gcma = "add --all && git commit -m";
+      gtag = "tag -ma";
+      gch = "checkout";
+      gchb = "checkout -b";
+      glog = "log --oneline --decorate --graph";
+      glol = "log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset'";
+      glola = "log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --all";
+      glols = "log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --stat";
+    };
+
     extraConfig = {
       init.defaultBranch = "main";
       credential.helper = "store";
       merge.conflictstyle = "diff3";
       diff.colorMoved = "default";
-      push.autoSetupRemote = true;
+      lfs = {
+        enable = true;
+      };
+
+      core = {
+        editor = "nvim";
+        compression = -1;
+        autocrlf = "input";
+        whitespace = "trailing-space,space-before-tab";
+        precomposeunicode = true;
+      };
+      color = {
+        diff = "auto";
+        status = "auto";
+        branch = "auto";
+        ui = true;
+      };
+      advice = {
+        addEmptyPathspec = false;
+      };
+      apply = {
+        whitespace = "nowarn";
+      };
+      help = {
+        autocorrect = 1;
+      };
+      grep = {
+        extendRegexp = true;
+        lineNumber = true;
+      };
+      push = {
+        autoSetupRemote = true;
+        default = "simple";
+      };
+      submodule = {
+        fetchJobs = 4;
+      };
+      log = {
+        showSignature = false;
+      };
+      format = {
+        signOff = true;
+      };
+      rerere = {
+        enabled = true;
+      };
+      pull = {
+        ff = "only";
+      };
     };
 
     delta = {
@@ -30,27 +103,5 @@
   programs.zsh.shellAliases = {
     g = "lazygit";
     gf = "onefetch --number-of-file-churns 0 --no-color-palette";
-    ga = "git add";
-    gaa = "git add --all";
-    gs = "git status";
-    gb = "git branch";
-    gm = "git merge";
-    gd = "git diff";
-    gpl = "git pull";
-    gplo = "git pull origin";
-    gps = "git push";
-    gpso = "git push origin";
-    gpst = "git push --follow-tags";
-    gcl = "git clone";
-    gc = "git commit";
-    gcm = "git commit -m";
-    gcma = "git add --all && git commit -m";
-    gtag = "git tag -ma";
-    gch = "git checkout";
-    gchb = "git checkout -b";
-    glog = "git log --oneline --decorate --graph";
-    glol = "git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset'";
-    glola = "git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --all";
-    glols = "git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --stat";
   };
 }
