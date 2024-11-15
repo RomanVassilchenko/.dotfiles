@@ -23,7 +23,7 @@
       lazygit
       man-pages
       nano
-      ncdu
+      # ncdu
       nixd
       nixfmt-rfc-style
       obsidian

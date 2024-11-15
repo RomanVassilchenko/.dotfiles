@@ -18,7 +18,7 @@
     ./kitty.nix
     ./micro.nix
     ./nix-packages.nix
-    ./nvchad.nix
+    # ./nvchad.nix
     ./obs.nix
     ./p10k/p10k.nix
     ./starship.nix

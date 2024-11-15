@@ -946,44 +946,6 @@
         "type": "github"
       }
     },
-    "nvchad-starter": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1728129783,
-        "narHash": "sha256-SVpep7lVX0isYsUtscvgA7Ga3YXt/2jwQQCYkYadjiM=",
-        "owner": "NvChad",
-        "repo": "starter",
-        "rev": "d0c602f5f155d4d1261609219e9b8a61e936d681",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NvChad",
-        "ref": "main",
-        "repo": "starter",
-        "type": "github"
-      }
-    },
-    "nvchad4nix": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "nvchad-starter": "nvchad-starter"
-      },
-      "locked": {
-        "lastModified": 1731034194,
-        "narHash": "sha256-4JV6ts3oc1CvqMze4K5jinkGAkLoux8WMt4ViGzze58=",
-        "owner": "nix-community",
-        "repo": "nix4nvchad",
-        "rev": "070710659c2a220f81316d0eed353ebf721d9666",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "nix4nvchad",
-        "type": "github"
-      }
-    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": [
@@ -1102,7 +1064,6 @@
         "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs_9",
         "nur": "nur",
-        "nvchad4nix": "nvchad4nix",
         "zen-browser": "zen-browser"
       }
     },

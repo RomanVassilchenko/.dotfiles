@@ -15,11 +15,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nvchad4nix = {
-      url = "github:nix-community/nix4nvchad";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # lanzaboote = {
     #   url = "github:nix-community/lanzaboote/v0.4.1";
     #   inputs.nixpkgs.follows = "nixpkgs";

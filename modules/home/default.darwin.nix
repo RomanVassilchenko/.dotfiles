@@ -19,7 +19,7 @@
     ./git.nix
     ./kitty.nix
     ./micro.nix
-    ./nvchad.nix
+    # ./nvchad.nix
     ./p10k/p10k.nix
     ./starship.nix
     ./tmux.nix
