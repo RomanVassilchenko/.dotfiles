@@ -64,9 +64,6 @@
       # gcc
       gnumake
 
-      # Go
-      go
-
       # Python
       python3
       # python312Packages.ipython

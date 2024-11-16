@@ -17,9 +17,11 @@
     ./fastfetch.nix
     ./fzf.nix
     ./git.nix
+    ./go.nix
+    ./home.nix
     ./kitty.nix
     ./micro.nix
-    ./neovim
+    # ./neovim
     ./p10k/p10k.nix
     ./starship.nix
     ./tmux.nix

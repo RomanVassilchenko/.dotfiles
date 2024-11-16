@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  khanelivim,
+  ...
+}:
 {
   imports = [
     ./hardware-configuration.nix
@@ -7,6 +12,7 @@
   ];
 
   environment.systemPackages = with pkgs; [
+    khanelivim.packages.${system}.default
     inputs.zen-browser.packages."${system}".specific
     v4l-utils
   ];

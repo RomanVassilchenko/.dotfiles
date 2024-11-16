@@ -15,10 +15,12 @@
     ./gaming.nix
     ./git.nix
     ./gnome.nix
+    ./go.nix
+    ./home.nix
     ./kitty.nix
     ./micro.nix
     ./nix-packages.nix
-    ./neovim
+    # ./neovim
     ./obs.nix
     ./p10k/p10k.nix
     ./starship.nix

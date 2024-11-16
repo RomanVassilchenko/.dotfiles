@@ -15,6 +15,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    khanelivim.url = "github:khaneliman/khanelivim";
+
     # lanzaboote = {
     #   url = "github:nix-community/lanzaboote/v0.4.1";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -44,6 +46,7 @@
       home-manager,
       nix-flatpak,
       # plasma-manager,
+      khanelivim,
       mac-app-util,
       nh_darwin,
       ...
@@ -70,7 +73,12 @@
           ];
           specialArgs = {
             host = nixosHost;
-            inherit self inputs username;
+            inherit
+              self
+              inputs
+              username
+              khanelivim
+              ;
           };
         };
       };
@@ -85,6 +93,7 @@
               _module.args.self = self;
               _module.args.host = darwinHost;
               _module.args.inputs = inputs;
+              _module.args.khanelivim = khanelivim;
             }
             home-manager.darwinModules.home-manager
             {
@@ -102,6 +111,7 @@
                 _module.args.host = darwinHost;
                 _module.args.inputs = inputs;
                 _module.args.username = username;
+                _module.args.khanelivim = khanelivim;
                 home.stateVersion = "24.11";
               };
             }
