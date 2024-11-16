@@ -16,6 +16,8 @@
       menuExtraClock.Show24Hour = true;
 
       dock = {
+        enable-spring-load-actions-on-all-items = true;
+        mouse-over-hilite-stack = true;
         autohide = true;
         autohide-delay = 0.0;
         orientation = "bottom";

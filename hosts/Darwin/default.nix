@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  khanelivim,
   ...
 }:
 {
@@ -10,9 +9,7 @@
     ./../../modules/darwin
   ];
 
-  environment.systemPackages = with pkgs; [
-    khanelivim.packages.${system}.default
-  ];
+  environment.systemPackages = with pkgs; [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "aarch64-darwin";
 }

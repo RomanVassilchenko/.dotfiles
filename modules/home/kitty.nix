@@ -19,14 +19,13 @@
 
       ## Tabs
       tab_title_template = "{index}";
-      active_tab_font_style = "normal";
-      inactive_tab_font_style = "normal";
+      active_tab_font_style = "bold";
+      inactive_tab_font_style = "italic";
       tab_bar_style = "powerline";
       tab_powerline_style = "angled";
-      # active_tab_foreground = "#FBF1C7";
-      # active_tab_background = "#7C6F64";
-      # inactive_tab_foreground = "#FBF1C7";
-      # inactive_tab_background = "#3C3836";
+
+      fast_tab_switching = true;
+      clipboard_control = "none";
     };
 
     keybindings = {
@@ -38,6 +37,11 @@
 
       "ctrl+shift+left" = "no_op";
       "ctrl+shift+right" = "no_op";
+
+      "ctrl+shift+t" = "new_tab";
+      "ctrl+shift+w" = "close_tab";
+      "ctrl+alt+left" = "move_tab -1"; # Move tab left
+      "ctrl+alt+right" = "move_tab +1"; # Move tab right
     };
   };
 }

@@ -20,7 +20,7 @@
     ./kitty.nix
     ./micro.nix
     ./nix-packages.nix
-    # ./neovim
+    ./helix.nix
     ./obs.nix
     ./p10k/p10k.nix
     ./starship.nix

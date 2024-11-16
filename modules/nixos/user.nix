@@ -20,7 +20,10 @@
     backupFileExtension = "hm-backup";
 
     users.${username} = {
-      imports = [ ./../home ];
+      imports = [
+        ./../home
+        inputs.nixvim.homeManagerModules.nixvim
+      ];
       home.username = "${username}";
       home.homeDirectory = "/home/${username}";
       home.stateVersion = "24.11";

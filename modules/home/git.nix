@@ -42,7 +42,7 @@
       };
 
       core = {
-        editor = "nvim";
+        editor = "hx";
         compression = -1;
         autocrlf = "input";
         whitespace = "trailing-space,space-before-tab";

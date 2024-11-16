@@ -21,7 +21,7 @@
     ./home.nix
     ./kitty.nix
     ./micro.nix
-    # ./neovim
+    ./helix.nix
     ./p10k/p10k.nix
     ./starship.nix
     ./tmux.nix

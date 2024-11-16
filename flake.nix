@@ -10,12 +10,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    khanelivim.url = "github:khaneliman/khanelivim";
+    apple-silicon-support = {
+      url = "github:camuward/nixos-apple-silicon";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # lanzaboote = {
     #   url = "github:nix-community/lanzaboote/v0.4.1";
@@ -46,7 +54,6 @@
       home-manager,
       nix-flatpak,
       # plasma-manager,
-      khanelivim,
       mac-app-util,
       nh_darwin,
       ...
@@ -77,7 +84,6 @@
               self
               inputs
               username
-              khanelivim
               ;
           };
         };
@@ -93,7 +99,6 @@
               _module.args.self = self;
               _module.args.host = darwinHost;
               _module.args.inputs = inputs;
-              _module.args.khanelivim = khanelivim;
             }
             home-manager.darwinModules.home-manager
             {
@@ -105,13 +110,13 @@
               home-manager.users.${username} = {
                 imports = [
                   mac-app-util.homeManagerModules.default
+                  inputs.nixvim.homeManagerModules.nixvim
                   ./modules/home/default.darwin.nix
                 ];
                 _module.args.self = self;
                 _module.args.host = darwinHost;
                 _module.args.inputs = inputs;
                 _module.args.username = username;
-                _module.args.khanelivim = khanelivim;
                 home.stateVersion = "24.11";
               };
             }
