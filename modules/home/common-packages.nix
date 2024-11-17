@@ -11,11 +11,12 @@
       file
       gcc
       gimp
-      go
       goose
       gnumake
       gtrash
       inkscape
+      # jetbrains.datagrip
+      # jetbrains.goland
       jq
       killall
       kubectl
@@ -46,28 +47,6 @@
       yazi
       yt-dlp-light
       zed
-
-      ## CLI
-      # cbonsai # terminal screensaver
-      # cmatrix
-
-      ## GUI Apps
-      jetbrains.datagrip
-      jetbrains.goland
-      gimp
-      inkscape
-      obsidian
-      postman
-      zed
-
-      # C / C++
-      # gcc
-      gnumake
-
-      # Python
-      python3
-      # python312Packages.ipython
-
     ]
   );
 }
