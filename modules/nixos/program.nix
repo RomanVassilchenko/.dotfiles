@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ ... }:
 {
   programs.dconf.enable = true;
   programs.gnupg.agent = {
@@ -6,7 +6,6 @@
     enableSSHSupport = true;
   };
   programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [ ];
 
   environment.variables = {
     OZONE_PLATFORM = "wayland";

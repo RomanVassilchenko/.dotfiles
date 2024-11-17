@@ -1,11 +1,4 @@
-{
-  inputs,
-  nixpkgs,
-  self,
-  username,
-  host,
-  ...
-}:
+{ inputs, ... }:
 {
   imports = [
     ./nh.nix

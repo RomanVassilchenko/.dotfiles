@@ -1,9 +1,4 @@
-{
-  pkgs,
-  username,
-  lib,
-  ...
-}:
+{ pkgs, ... }:
 {
   programs.fastfetch = {
     enable = true;

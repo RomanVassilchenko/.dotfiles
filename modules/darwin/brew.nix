@@ -1,13 +1,4 @@
-{
-  inputs,
-  nixpkgs,
-  pkgs,
-  config,
-  self,
-  username,
-  host,
-  ...
-}:
+{ ... }:
 {
   system.activationScripts.preUserActivation.text = ''
     if ! xcode-select --version 2>/dev/null; then

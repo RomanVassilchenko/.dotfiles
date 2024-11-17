@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   hardware.pulseaudio.enable = false;
   services.pipewire = {
@@ -7,8 +7,4 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-  environment.systemPackages =
-    with pkgs;
-    [
-    ];
 }

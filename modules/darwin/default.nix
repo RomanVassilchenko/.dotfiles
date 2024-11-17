@@ -1,11 +1,6 @@
 {
   inputs,
-  nixpkgs,
   pkgs,
-  config,
-  self,
-  username,
-  host,
   ...
 }:
 {

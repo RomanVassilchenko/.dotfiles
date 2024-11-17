@@ -1,14 +1,4 @@
-{
-  inputs,
-  nixpkgs,
-  pkgs,
-  config,
-  self,
-  username,
-  host,
-  lib,
-  ...
-}:
+{ ... }:
 {
   system = {
     stateVersion = 4;

@@ -1,9 +1,4 @@
-{
-  inputs,
-  pkgs,
-  host,
-  ...
-}:
+{ pkgs, host, ... }:
 {
   programs.wezterm = {
     enable = true;
