@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   programs.fzf = {
     enable = true;
@@ -12,7 +12,6 @@
     changeDirWidgetCommand = "fd --type=d --hidden --strip-cwd-prefix --exclude .git";
     changeDirWidgetOptions = [ "--preview 'eza --tree --color=always {} | head -200'" ];
 
-    # Theme settings for VS Code Dark+ look
     defaultOptions = [
       "--color=fg:#D4D4D4,bg:#1E1E1E,fg+:#FFFFFF,bg+:#3A3D41"
       "--color=hl:#569CD6,hl+:#9CDCFE,info:#C586C0,marker:#D7BA7D"

@@ -1,10 +1,9 @@
-{ ... }:
 {
   programs.micro = {
     enable = true;
 
     settings = {
-      # "colorscheme" = "gruvbox";
+      "colorscheme" = "vscode-dark";
       "*.nix" = {
         "tabsize" = 2;
       };
@@ -35,33 +34,31 @@
     }
   '';
 
-  # xdg.configFile."micro/colorschemes/gruvbox.micro".text = ''
-  #   color-link default "#ebdbb2"
-  #   color-link comment "#928374"
-  #   color-link symbol "#d79921"
-  #   color-link constant "#d3869b"
-  #   color-link constant.string "#b8bb26"
-  #   color-link constant.string.char "#b8bb26"
-  #   color-link identifier "#8ec07c"
-  #   color-link statement "#fb4934"
-  #   color-link preproc "#fb4934,235"
-  #   color-link type "#fb4934"
-  #   color-link special "#d79921"
-  #   color-link underlined "underline #1d2021"
-  #   color-link error "#9d0006"
-  #   color-link hlsearch "#1d2021,#fabd2f"
-  #   color-link diff-added "#00AF00"
-  #   color-link diff-modified "#FFAF00"
-  #   color-link diff-deleted "#D70000"
-  #   color-link gutter-error "#fb4934"
-  #   color-link gutter-warning "#d79921"
-  #   color-link line-number "#665c54"
-  #   color-link current-line-number "#8ec07c"
-  #   color-link cursor-line "#3c3836"
-  #   color-link color-column "#665c54"
-  #   color-link statusline "#8ec07c"
-  #   color-link tabbar "#ebdbb2,#665c54"
-  #   color-link type "#fe8019"
-  #   color-link todo "#ffcc00"
-  # '';
+  xdg.configFile."micro/colorschemes/vscode-dark.micro".text = ''
+    color-link default "#D4D4D4"            # Default text
+    color-link comment "#6A9955"           # Comments
+    color-link constant "#CE9178"          # Constants
+    color-link constant.string "#D69D85"   # Strings
+    color-link constant.string.char "#D69D85" # Character strings
+    color-link identifier "#9CDCFE"        # Identifiers
+    color-link statement "#569CD6"         # Statements (e.g., keywords)
+    color-link preproc "#C586C0"           # Preprocessor
+    color-link type "#4EC9B0"              # Types
+    color-link special "#C586C0"           # Special keywords
+    color-link underlined "underline #D4D4D4" # Underlined
+    color-link error "#F44747"             # Errors
+    color-link hlsearch "#264F78,#569CD6"  # Search highlights
+    color-link diff-added "#587C0C"        # Diff added
+    color-link diff-modified "#0C7D9D"     # Diff modified
+    color-link diff-deleted "#A31515"      # Diff deleted
+    color-link gutter-error "#F44747"      # Gutter errors
+    color-link gutter-warning "#CCA700"    # Gutter warnings
+    color-link line-number "#858585"       # Line numbers
+    color-link current-line-number "#D4D4D4" # Current line number
+    color-link cursor-line "#2D2D2D"       # Cursor line
+    color-link color-column "#858585"      # Color column
+    color-link statusline "#007ACC"        # Status line
+    color-link tabbar "#252526,#3C3C3C"    # Tab bar
+    color-link todo "#FFD700"              # TODO items
+  '';
 }

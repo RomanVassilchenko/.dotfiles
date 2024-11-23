@@ -6,7 +6,6 @@
 {
   imports = [
     ./brew.nix
-    ./packages.nix
     ./system.nix
     ./user.nix
     inputs.nh_darwin.nixDarwinModules.prebuiltin

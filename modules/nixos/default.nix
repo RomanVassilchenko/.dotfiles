@@ -1,4 +1,3 @@
-{ ... }:
 {
   imports = [
     ./gnome.nix
@@ -8,7 +7,6 @@
     ./flatpak.nix
     ./hardware.nix
     ./network.nix
-    ./packages.nix
     ./pipewire.nix
     ./program.nix
     ./security.nix

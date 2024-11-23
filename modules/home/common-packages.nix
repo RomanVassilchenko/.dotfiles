@@ -3,6 +3,7 @@
   home.packages = (
     with pkgs;
     [
+      colima
       docker
       docker-compose
       eza
@@ -11,12 +12,14 @@
       file
       gcc
       gimp
+      gnumake
+      go
       goose
       gnumake
       gtrash
       inkscape
-      # jetbrains.datagrip
-      # jetbrains.goland
+      jetbrains.datagrip
+      jetbrains.goland
       jq
       killall
       kubectl
@@ -24,7 +27,6 @@
       lazygit
       man-pages
       nano
-      # ncdu
       nixd
       nixfmt-rfc-style
       obsidian
@@ -34,8 +36,8 @@
       programmer-calculator
       protobuf
       python3
-      python312Packages.ipython
       python312Packages.googleapis-common-protos
+      python312Packages.ipython
       ripgrep
       tldr
       todo

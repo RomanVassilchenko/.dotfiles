@@ -1,7 +1,7 @@
 { lib, ... }:
 {
   programs.starship = {
-    enable = false;
+    enable = true;
 
     enableBashIntegration = true;
     enableZshIntegration = true;
@@ -23,19 +23,19 @@
         "[](fg:color_bg3) "
       ];
 
-      # palette = "gruvbox_dark";
-      # palettes.gruvbox_dark = {
-      #   color_fg0 = "#fbf1c7";
-      #   color_bg1 = "#3c3836";
-      #   color_bg3 = "#665c54";
-      #   color_blue = "#458588";
-      #   color_aqua = "#689d6a";
-      #   color_green = "#98971a";
-      #   color_orange = "#d65d0e";
-      #   color_purple = "#b16286";
-      #   color_red = "#cc241d";
-      #   color_yellow = "#d79921";
-      # };
+      palette = "vscode_dark";
+      palettes.vscode_dark = {
+        color_fg0 = "#D4D4D4";
+        color_bg1 = "#1E1E1E";
+        color_bg3 = "#252526";
+        color_blue = "#569CD6";
+        color_aqua = "#4EC9B0";
+        color_green = "#6A9955";
+        color_orange = "#CE9178";
+        color_purple = "#C586C0";
+        color_red = "#F44747";
+        color_yellow = "#DCDCAA";
+      };
 
       os = {
         disabled = false;

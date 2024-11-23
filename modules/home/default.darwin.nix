@@ -36,10 +36,8 @@
 
   programs.home-manager.enable = true;
 
-  # Define PATH and session variables
   home.sessionVariables = lib.mkMerge [
     {
-      # Define XDG and Go paths
       XDG_DATA_HOME = "${config.home.homeDirectory}/.local/share";
       XDG_CONFIG_HOME = "${config.home.homeDirectory}/.config";
       XDG_STATE_HOME = "${config.home.homeDirectory}/.local/state";

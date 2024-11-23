@@ -1,4 +1,3 @@
-{ ... }:
 {
   system.activationScripts.preUserActivation.text = ''
     if ! xcode-select --version 2>/dev/null; then

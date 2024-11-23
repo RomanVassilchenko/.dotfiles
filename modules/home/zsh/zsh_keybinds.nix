@@ -1,4 +1,8 @@
 {
+  hostname,
+  config,
+  pkgs,
+  host,
   ...
 }:
 {
