@@ -16,8 +16,8 @@
 
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     # plasma-browser-integration
-    # konsole
-    # oxygen
+    konsole
+    oxygen
   ];
 
   qt = {
@@ -33,7 +33,7 @@
 
   # System packages, including KDE applications
   environment.systemPackages = with pkgs; [
-    pkgs.haruna
+    haruna
     # pkgs.elisa
     # kdeApplications.dolphin # File manager
     # kdeApplications.konsole # Terminal emulator

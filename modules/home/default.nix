@@ -8,7 +8,7 @@
     ./fzf.nix
     ./gaming.nix
     ./git.nix
-    ./gnome.nix
+    # ./gnome.nix
     ./go.nix
     ./home.nix
     ./kitty.nix
@@ -17,6 +17,7 @@
     ./helix.nix
     ./obs.nix
     ./p10k/p10k.nix
+    ./plasma.nix
     ./starship.nix
     ./tmux.nix
     ./vscode.nix
