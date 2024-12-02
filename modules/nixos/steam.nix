@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+# { pkgs, ... }:
 {
   programs = {
     steam = {
@@ -22,7 +22,7 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    adwsteamgtk
-  ];
+  # environment.systemPackages = with pkgs; [
+  #   adwsteamgtk
+  # ];
 }

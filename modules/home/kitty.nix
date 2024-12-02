@@ -26,6 +26,10 @@
 
       fast_tab_switching = true;
       clipboard_control = "none";
+
+      ## Padding
+      window_padding_width = 5;
+      window_padding_height = 5;
     };
 
     keybindings = {

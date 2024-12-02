@@ -12,7 +12,7 @@
     bottles
     cartridges
     ryujinx
-    itch
+#    itch
     osu-lazer
   ];
 }
