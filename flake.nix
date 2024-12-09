@@ -30,11 +30,11 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
 
-    # plasma-manager = {
-    #   url = "github:nix-community/plasma-manager";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    #   inputs.home-manager.follows = "home-manager";
-    # };
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
@@ -43,7 +43,6 @@
     mac-app-util = {
       url = "github:hraban/mac-app-util";
     };
-    nh_darwin.url = "github:ToyVo/nh_darwin";
   };
 
   outputs =
@@ -53,9 +52,8 @@
       nix-darwin,
       home-manager,
       nix-flatpak,
-      # plasma-manager,
+      plasma-manager,
       mac-app-util,
-      nh_darwin,
       ...
     }@inputs:
     let

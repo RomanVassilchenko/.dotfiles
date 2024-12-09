@@ -1,5 +1,4 @@
 {
-  inputs,
   pkgs,
   ...
 }:
@@ -8,11 +7,10 @@
     ./brew.nix
     ./system.nix
     ./user.nix
-    inputs.nh_darwin.nixDarwinModules.prebuiltin
   ];
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    nerd-fonts.jetbrains-mono
   ];
 
   nixpkgs.config.allowUnfree = true;

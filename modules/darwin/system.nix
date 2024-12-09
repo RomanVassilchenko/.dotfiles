@@ -13,7 +13,7 @@
         show-recents = false;
         showhidden = true;
         mru-spaces = false;
-        expose-group-by-app = true;
+        expose-group-apps = true;
         tilesize = 64;
         show-process-indicators = true;
         expose-animation-duration = 0.1;
@@ -33,7 +33,7 @@
         QuitMenuItem = true;
         ShowPathbar = true;
         ShowStatusBar = true;
-        FXPreferredViewStyle = "Nlsv";
+        # FXPreferredViewStyle = "Nlsv";
         AppleShowAllFiles = true;
       };
 
@@ -87,7 +87,7 @@
         NSGlobalDomain = {
           WebKitDeveloperExtras = true;
           NSNavPanelExpandedStateForSaveMode = true;
-          NSTableViewDefaultSizeMode = 1;
+          NSTableViewDefaultSizeMode = 2;
         };
         "com.apple.finder" = {
           AppleShowAllFiles = true;

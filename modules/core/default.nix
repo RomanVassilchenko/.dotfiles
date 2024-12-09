@@ -4,7 +4,7 @@
 }:
 {
   imports = [
-    ./nh.nix
+    # ./nh.nix
     ./network.nix
     ./program.nix
     ./system.nix

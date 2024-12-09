@@ -25,6 +25,7 @@
       kubectl
       lazydocker
       lazygit
+      lsof
       man-pages
       nano
       nixd

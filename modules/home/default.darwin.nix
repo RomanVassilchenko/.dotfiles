@@ -7,25 +7,8 @@
 }:
 {
   imports = [
-    ./bat.nix
-    ./btop.nix
-    ./common-packages.nix
+    ./default.nix
     ./darwin-packages.nix
-    ./discord.nix
-    ./fastfetch.nix
-    ./fzf.nix
-    ./git.nix
-    ./go.nix
-    ./home.nix
-    ./kitty.nix
-    ./micro.nix
-    ./helix.nix
-    ./p10k/p10k.nix
-    ./starship.nix
-    ./tmux.nix
-    ./vscode.nix
-    ./zellij.nix
-    ./zsh
   ];
 
   programs.git = {

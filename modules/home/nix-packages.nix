@@ -21,7 +21,6 @@
       nix-prefetch-github
       openvpn3
       telegram-desktop
-      # thunderbird
       tdf
       tpm2-tss
       valgrind
