@@ -144,45 +144,45 @@
           WarnOnEmptyTrash = false;
         };
 
-        "com.apple.mail" = {
-          DisableReplyAnimations = true;
-          DisableSendAnimations = true;
-          DisableInlineAttachmentViewing = true;
-          AddressesIncludeNameOnPasteboard = true;
-          InboxViewerAttributes = {
-            DisplayInThreadedMode = "yes";
-            SortedDescending = "yes";
-            SortOrder = "received-date";
-          };
-          NSUserKeyEquivalents = {
-            Send = "@\U21a9";
-            Archive = "@$e";
-          };
-        };
+        # "com.apple.mail" = {
+        #   DisableReplyAnimations = true;
+        #   DisableSendAnimations = true;
+        #   DisableInlineAttachmentViewing = true;
+        #   AddressesIncludeNameOnPasteboard = true;
+        #   InboxViewerAttributes = {
+        #     DisplayInThreadedMode = "yes";
+        #     SortedDescending = "yes";
+        #     SortOrder = "received-date";
+        #   };
+        #   NSUserKeyEquivalents = {
+        #     Send = "@\U21a9";
+        #     Archive = "@$e";
+        #   };
+        # };
 
         "com.apple.dock" = {
           size-immutable = true;
         };
-        "com.apple.Safari" = {
-          IncludeInternalDebugMenu = true;
-          IncludeDevelopMenu = true;
-          WebKitDeveloperExtrasEnabledPreferenceKey = true;
-          ShowFullURLInSmartSearchField = true;
-          AutoOpenSafeDownloads = false;
-          HomePage = "";
-          AutoFillCreditCardData = false;
-          AutoFillFromAddressBook = false;
-          AutoFillMiscellaneousForms = false;
-          AutoFillPasswords = false;
-          "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" = true;
-          AlwaysRestoreSessionAtLaunch = 1;
-          ExcludePrivateWindowWhenRestoringSessionAtLaunch = 1;
-          ShowBackgroundImageInFavorites = 0;
-          ShowFrequentlyVisitedSites = 1;
-          ShowHighlightsInFavorites = 1;
-          ShowPrivacyReportInFavorites = 1;
-          ShowRecentlyClosedTabsPreferenceKey = 1;
-        };
+        # "com.apple.Safari" = {
+        #   IncludeInternalDebugMenu = true;
+        #   IncludeDevelopMenu = true;
+        #   WebKitDeveloperExtrasEnabledPreferenceKey = true;
+        #   ShowFullURLInSmartSearchField = true;
+        #   AutoOpenSafeDownloads = false;
+        #   HomePage = "";
+        #   AutoFillCreditCardData = false;
+        #   AutoFillFromAddressBook = false;
+        #   AutoFillMiscellaneousForms = false;
+        #   AutoFillPasswords = false;
+        #   "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" = true;
+        #   AlwaysRestoreSessionAtLaunch = 1;
+        #   ExcludePrivateWindowWhenRestoringSessionAtLaunch = 1;
+        #   ShowBackgroundImageInFavorites = 0;
+        #   ShowFrequentlyVisitedSites = 1;
+        #   ShowHighlightsInFavorites = 1;
+        #   ShowPrivacyReportInFavorites = 1;
+        #   ShowRecentlyClosedTabsPreferenceKey = 1;
+        # };
       };
 
       # loginwindow = {
