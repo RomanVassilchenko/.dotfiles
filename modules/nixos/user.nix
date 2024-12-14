@@ -12,7 +12,7 @@
     useUserPackages = true;
     useGlobalPkgs = true;
     sharedModules = [
-      # inputs.plasma-manager.homeManagerModules.plasma-manager
+      inputs.plasma-manager.homeManagerModules.plasma-manager
     ];
     extraSpecialArgs = {
       inherit inputs username host;
@@ -21,8 +21,7 @@
 
     users.${username} = {
       imports = [
-        ./../home
-        inputs.nixvim.homeManagerModules.nixvim
+        ./../home/default.nixos.nix
       ];
       home.username = "${username}";
       home.homeDirectory = "/home/${username}";

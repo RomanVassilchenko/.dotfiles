@@ -10,11 +10,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -108,7 +103,6 @@
               home-manager.users.${username} = {
                 imports = [
                   mac-app-util.homeManagerModules.default
-                  inputs.nixvim.homeManagerModules.nixvim
                   ./modules/home/default.darwin.nix
                 ];
                 _module.args.self = self;

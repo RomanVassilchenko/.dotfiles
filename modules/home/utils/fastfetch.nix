@@ -24,7 +24,7 @@
       logo =
         if pkgs.stdenv.hostPlatform.isLinux then
           {
-            source = "${../../.github/assets/logo/nixos-logo.png}";
+            source = "${../../../.github/assets/logo/nixos-logo.png}";
             type = "kitty-direct";
             width = 33;
             padding = {
