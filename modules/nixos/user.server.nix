@@ -48,6 +48,8 @@
     keep-derivations = true;
   };
 
+  services.getty.autologinUser = "${username}";
+
   system.autoUpgrade.enable = false;
   system.autoUpgrade.allowReboot = false;
 }
