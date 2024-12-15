@@ -11,9 +11,6 @@
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
-    sharedModules = [
-      inputs.plasma-manager.homeManagerModules.plasma-manager
-    ];
     extraSpecialArgs = {
       inherit inputs username host;
     };
@@ -21,7 +18,7 @@
 
     users.${username} = {
       imports = [
-        ./../home/default.nixos.nix
+        ./../home/default.homeserver.nix
       ];
       home.username = "${username}";
       home.homeDirectory = "/home/${username}";
@@ -36,7 +33,6 @@
     extraGroups = [
       "networkmanager"
       "wheel"
-      "tss"
     ];
     shell = pkgs.zsh;
     hashedPassword = "$y$j9T$t7/JTjBH4SPvXAT0hgCaA1$lbdcOEjaAVBBMaym8PMJpv/RVoUAsnbzCRuYO7ZgTo4"; # Created using mkpasswd

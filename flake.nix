@@ -80,6 +80,20 @@
               ;
           };
         };
+        HomeServer = lib.nixosSystem {
+          system = nixosSystem;
+          modules = [
+            ./hosts/HomeServer
+          ];
+          specialArgs = {
+            host = "HomeServer";
+            inherit
+              self
+              inputs
+              username
+              ;
+          };
+        };
       };
 
       darwinConfigurations = {

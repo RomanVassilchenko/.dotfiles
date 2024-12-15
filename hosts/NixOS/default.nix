@@ -7,7 +7,7 @@
   imports = [
     ./hardware-configuration.nix
     ./../../modules/core
-    ./../../modules/nixos
+    ./../../modules/nixos/default.xiaoxinpro.nix
   ];
 
   environment.systemPackages = with pkgs; [
