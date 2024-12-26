@@ -7,5 +7,7 @@
     ./git.nix
     ./tmux.nix
     ./zellij.nix
+    ./nix-index.nix
+    ./gc.nix
   ];
 }
