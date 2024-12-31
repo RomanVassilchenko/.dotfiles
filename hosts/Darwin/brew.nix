@@ -28,14 +28,9 @@
       "jetpackduba/apps/gitnuro"
       "krita"
       "obs"
-      "telegram"
       "whatsapp"
       "zen-browser"
     ];
     brews = [ ];
-
-    masApps = {
-      Xcode = 497799835;
-    };
   };
 }

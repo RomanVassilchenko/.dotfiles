@@ -3,6 +3,8 @@
   home.packages = (
     with pkgs;
     [
+      aerc
+      cachix
       colima
       docker
       docker-compose
@@ -15,21 +17,27 @@
       gnumake
       go
       goose
-      gnumake
+      google-chrome
       gtrash
       inkscape
       jetbrains.datagrip
       jetbrains.goland
       jq
+      just
       killall
       kubectl
       lazydocker
       lazygit
+      less
       lsof
       man-pages
+      mkalias
       nano
+      nil
+      nix-info
       nixd
       nixfmt-rfc-style
+      nixpkgs-fmt
       obsidian
       onefetch
       openssl
@@ -39,10 +47,15 @@
       python3
       python312Packages.googleapis-common-protos
       python312Packages.ipython
+      raycast
       ripgrep
+      sd
+      telegram-desktop
       tldr
+      tmate
       todo
       toipe
+      tree
       ttyper
       unzip
       wget
@@ -50,33 +63,6 @@
       yazi
       yt-dlp-light
       zed
-
-      google-chrome
-      mkalias
-      raycast
-      # whatsapp-for-mac
-
-      just
-      nixd
-
-      ripgrep # Better `grep`
-      fd
-      sd
-      tree
-      gnumake
-
-      # Nix dev
-      cachix
-      nil # Nix language server
-      nix-info
-      nixpkgs-fmt
-
-      # Dev
-      tmate
-
-      # On ubuntu, we need this less for `man home-configuration.nix`'s pager to
-      # work.
-      less
     ]
   );
 }
