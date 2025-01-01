@@ -101,6 +101,11 @@
       zstyle ':fzf-tab:*' fzf-pad 4
       zstyle ':fzf-tab:*' fzf-min-height 100
       zstyle ':fzf-tab:*' switch-group ',' '.'
+
+      # Add custom fpath for completion
+      fpath=(/Users/rovasilchenko/.o3-cli/completion $fpath)
+      autoload -U compinit
+      compinit
     '';
 
     initExtraFirst = ''

@@ -15,7 +15,6 @@
       gcc
       gimp
       gnumake
-      go
       goose
       google-chrome
       gtrash
