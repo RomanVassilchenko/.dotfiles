@@ -1,11 +1,18 @@
 { pkgs, ... }:
 {
+
+  # programs.git = {
+  #   userName = lib.mkForce "rovasilchenko";
+  #   userEmail = lib.mkForce "rovasilchenko@ozon.ru";
+  #   extraConfig.init.defaultBranch = lib.mkForce "master";
+  # };
+
   programs.git = {
     enable = true;
     lfs.enable = true;
 
-    userName = "Roman Vassilchenko";
-    userEmail = "roman.vassilchenko.work@gmail.com";
+    userName = "rovasilchenko";
+    userEmail = "rovasilchenko@ozon.ru";
 
     aliases = {
       ga = "add";
@@ -33,7 +40,7 @@
     };
 
     extraConfig = {
-      init.defaultBranch = "main";
+      init.defaultBranch = "master";
       credential.helper = "store";
       merge.conflictstyle = "diff3";
       diff.colorMoved = "default";

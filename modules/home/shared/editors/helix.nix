@@ -5,7 +5,7 @@
     defaultEditor = true;
     extraPackages = [
       bash-language-server
-      # biome
+      biome
       clang-tools
       docker-compose-language-service
       dockerfile-language-server-nodejs
@@ -17,8 +17,8 @@
       marksman
       nil
       nixpkgs-fmt
-      # nodePackages.prettier
-      # nodePackages.typescript-language-server
+      nodePackages.prettier
+      nodePackages.typescript-language-server
       pgformatter
       (python3.withPackages (
         p:
@@ -32,8 +32,8 @@
       rust-analyzer
       taplo
       taplo-lsp
-      # terraform-ls
-      # typescript
+      terraform-ls
+      typescript
       vscode-langservers-extracted
       yaml-language-server
     ];
@@ -218,9 +218,9 @@
         kubernetes = "k8s/*.yaml";
       };
 
-      # language-server.typescript-language-server.config.tsserver = {
-      #   path = "${pkgs.typescript}/lib/node_modules/typescript/lib/tsserver.js";
-      # };
+      language-server.typescript-language-server.config.tsserver = {
+        path = "${pkgs.typescript}/lib/node_modules/typescript/lib/tsserver.js";
+      };
 
       language = [
         {
@@ -323,28 +323,28 @@
           ];
           auto-format = true;
         }
-        # {
-        #   name = "jsx";
-        #   language-servers = [
-        #     {
-        #       name = "typescript-language-server";
-        #       except-features = [ "format" ];
-        #     }
-        #     "biome"
-        #     "gpt"
-        #   ];
-        #   formatter = {
-        #     command = "biome";
-        #     args = [
-        #       "format"
-        #       "--indent-style"
-        #       "space"
-        #       "--stdin-file-path"
-        #       "file.jsx"
-        #     ];
-        #   };
-        #   auto-format = true;
-        # }
+        {
+          name = "jsx";
+          language-servers = [
+            {
+              name = "typescript-language-server";
+              except-features = [ "format" ];
+            }
+            "biome"
+            "gpt"
+          ];
+          formatter = {
+            command = "biome";
+            args = [
+              "format"
+              "--indent-style"
+              "space"
+              "--stdin-file-path"
+              "file.jsx"
+            ];
+          };
+          auto-format = true;
+        }
         {
           name = "markdown";
           language-servers = [
@@ -432,50 +432,50 @@
           };
           auto-format = true;
         }
-        # {
-        #   name = "tsx";
-        #   language-servers = [
-        #     {
-        #       name = "typescript-language-server";
-        #       except-features = [ "format" ];
-        #     }
-        #     "biome"
-        #     "gpt"
-        #   ];
-        #   formatter = {
-        #     command = "biome";
-        #     args = [
-        #       "format"
-        #       "--indent-style"
-        #       "space"
-        #       "--stdin-file-path"
-        #       "file.tsx"
-        #     ];
-        #   };
-        #   auto-format = true;
-        # }
-        # {
-        #   name = "typescript";
-        #   language-servers = [
-        #     {
-        #       name = "typescript-language-server";
-        #       except-features = [ "format" ];
-        #     }
-        #     "biome"
-        #     "gpt"
-        #   ];
-        #   formatter = {
-        #     command = "biome";
-        #     args = [
-        #       "format"
-        #       "--indent-style"
-        #       "space"
-        #       "--stdin-file-path"
-        #       "file.ts"
-        #     ];
-        #   };
-        #   auto-format = true;
-        # }
+        {
+          name = "tsx";
+          language-servers = [
+            {
+              name = "typescript-language-server";
+              except-features = [ "format" ];
+            }
+            "biome"
+            "gpt"
+          ];
+          formatter = {
+            command = "biome";
+            args = [
+              "format"
+              "--indent-style"
+              "space"
+              "--stdin-file-path"
+              "file.tsx"
+            ];
+          };
+          auto-format = true;
+        }
+        {
+          name = "typescript";
+          language-servers = [
+            {
+              name = "typescript-language-server";
+              except-features = [ "format" ];
+            }
+            "biome"
+            "gpt"
+          ];
+          formatter = {
+            command = "biome";
+            args = [
+              "format"
+              "--indent-style"
+              "space"
+              "--stdin-file-path"
+              "file.ts"
+            ];
+          };
+          auto-format = true;
+        }
         {
           name = "yaml";
           language-servers = [ "yaml-language-server" ];

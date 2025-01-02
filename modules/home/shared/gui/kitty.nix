@@ -6,7 +6,7 @@
     themeFile = "VSCode_Dark";
 
     font = {
-      name = "CaskaydiaCove Nerd Font";
+      name = "JetBrainsMono Nerd Font";
       size = if (host == "laptop") then 15 else 16;
     };
 
