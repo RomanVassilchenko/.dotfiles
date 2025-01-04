@@ -113,5 +113,16 @@
           };
         };
       };
+
+      apps.${linuxSystem} = {
+        Ninkear = {
+          type = "app";
+          program = "${self.packages.${linuxSystem}.Ninkear.activationPackage}/activate";
+        };
+      };
+
+      packages.${linuxSystem} = {
+        Ninkear = self.serverConfigurations.Ninkear.activationPackage;
+      };
     };
 }
