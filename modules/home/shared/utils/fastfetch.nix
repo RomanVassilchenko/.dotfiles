@@ -21,18 +21,18 @@
         };
       };
 
-      logo =
-        if pkgs.stdenv.hostPlatform.isLinux then
-          {
-            source = "${../../../.github/assets/logo/nixos-logo.png}";
-            type = "kitty-direct";
-            width = 33;
-            padding = {
-              top = 2;
-            };
-          }
-        else
-          { };
+      # logo =
+      #   if pkgs.stdenv.hostPlatform.isLinux then
+      #     {
+      #       source = "${../../../.github/assets/logo/nixos-logo.png}";
+      #       type = "kitty-direct";
+      #       width = 33;
+      #       padding = {
+      #         top = 2;
+      #       };
+      #     }
+      #   else
+      #     { };
 
       modules =
         [
