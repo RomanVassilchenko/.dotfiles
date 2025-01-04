@@ -25,7 +25,6 @@
     casks = [
       "betterdisplay"
       "dbeaver-community"
-      "jetpackduba/apps/gitnuro"
       "krita"
       "obs"
       "whatsapp"

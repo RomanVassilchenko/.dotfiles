@@ -1,5 +1,5 @@
 {
-  description = "Roman Vassilchenko's darwin configuration";
+  description = "Roman Vassilchenko's nix configuration for macOS and Linux servers";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -44,7 +44,9 @@
     let
       username = "rovasilchenko";
       darwinSystem = "aarch64-darwin";
+      linuxSystem = "x86_64-linux";
       darwinHost = "mbp-rovasilchenko-OZON-W0HDJTC2M5";
+      serverHost = "Ninkear";
     in
     {
       darwinConfigurations = {
@@ -69,7 +71,7 @@
                 imports = [
                   mac-app-util.homeManagerModules.default
                   nixvim.homeManagerModules.nixvim
-                  ./modules/home
+                  ./modules/home/darwin
                 ];
                 _module.args.self = self;
                 _module.args.host = darwinHost;
@@ -81,6 +83,32 @@
           ];
           specialArgs = {
             host = darwinHost;
+            inherit self inputs username;
+          };
+        };
+      };
+
+      serverConfigurations = {
+        Ninkear = home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs { system = linuxSystem; };
+          modules = [
+            {
+              home.username = username;
+              home.homeDirectory = "/home/${username}";
+              home.stateVersion = "24.11";
+
+              imports = [
+                nixvim.homeManagerModules.nixvim
+                ./modules/home/ninkear
+              ];
+              _module.args.self = self;
+              _module.args.host = serverHost;
+              _module.args.inputs = inputs;
+              _module.args.username = username;
+            }
+          ];
+          extraSpecialArgs = {
+            host = serverHost;
             inherit self inputs username;
           };
         };
