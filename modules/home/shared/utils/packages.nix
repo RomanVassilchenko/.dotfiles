@@ -35,7 +35,6 @@ let
     less
     lsof
     man-pages
-    mkalias
     nano
     nil
     onefetch
