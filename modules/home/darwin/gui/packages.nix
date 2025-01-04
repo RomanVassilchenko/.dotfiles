@@ -10,6 +10,7 @@
       jetbrains.goland
       obsidian
       raycast
+      postman
       telegram-desktop
       zed
     ]

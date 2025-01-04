@@ -15,7 +15,6 @@ let
     nixd
     nixfmt-rfc-style
     nixpkgs-fmt
-    postman
     protobuf
     python3
     python312Packages.googleapis-common-protos
