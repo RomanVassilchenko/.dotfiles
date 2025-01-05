@@ -6,5 +6,8 @@
     ./obs.nix
     ../shared/utilities.nix
     ../shared/gui.nix
+    ./plasma.nix
   ];
+
+  programs.zsh.enable = true;
 }

@@ -36,9 +36,7 @@
     };
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
-
     nix-flatpak.url = "github:gmodena/nix-flatpak";
-
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     nixvim.url = "github:nix-community/nixvim";
@@ -79,14 +77,14 @@
         XiaoXinPro = lib.nixosSystem {
           system = nixosSystem;
           modules = [
-            ./hosts/NixOS # NixOS configuration for XiaoXinPro
+            ./hosts/NixOS
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.${username} = {
                 imports = [
-                  ./modules/home/nixos # Home Manager modules for XiaoXinPro
+                  ./modules/home/nixos
                   nixvim.homeManagerModules.nixvim
                 ];
                 _module.args.self = self;
@@ -153,7 +151,6 @@
               home.username = username;
               home.homeDirectory = "/home/${username}";
               home.stateVersion = "24.11";
-
               imports = [
                 nixvim.homeManagerModules.nixvim
                 ./modules/home/ninkear
