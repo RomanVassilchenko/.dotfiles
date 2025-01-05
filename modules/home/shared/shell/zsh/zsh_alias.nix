@@ -44,7 +44,12 @@
       nix-test = "nh os test ~/.dotfiles";
 
       # darwin
-      up = "darwin-rebuild switch --flake ~/.dotfiles#mbp-rovasilchenko-OZON-W0HDJTC2M5";
+      up = ''${
+        if pkgs.stdenv.isDarwin then
+          "darwin-rebuild switch --flake ~/.dotfiles#mbp-rovasilchenko-OZON-W0HDJTC2M5"
+        else
+          "sudo nixos-rebuild switch --flake ~/.dotfiles#XiaoXinPro"
+      }'';
 
       # python
       piv = "python -m venv .venv";

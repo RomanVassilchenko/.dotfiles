@@ -1,9 +1,10 @@
 {
   imports = [
-    ./home.nix
     ../shared
+    ./gaming.nix
+    ./packages.nix
+    ./obs.nix
     ../shared/utilities.nix
     ../shared/gui.nix
-    ./packages.nix
   ];
 }
