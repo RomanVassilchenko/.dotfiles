@@ -20,9 +20,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    mac-app-util = {
-      url = "github:hraban/mac-app-util";
-    };
+    # mac-app-util = {
+    #   url = "github:hraban/mac-app-util";
+    # };
 
     # lanzaboote = {
     #   url = "github:nix-community/lanzaboote/v0.4.1";
@@ -51,7 +51,7 @@
       home-manager,
       apple-silicon-support,
       nixvim,
-      mac-app-util,
+      # mac-app-util,
       nix-flatpak,
       plasma-manager,
       ...
@@ -108,7 +108,7 @@
         mbp-rovasilchenko-OZON-W0HDJTC2M5 = nix-darwin.lib.darwinSystem {
           system = darwinSystem;
           modules = [
-            mac-app-util.darwinModules.default
+            # mac-app-util.darwinModules.default
             {
               imports = [ ./hosts/Darwin ];
               _module.args.self = self;
@@ -124,7 +124,7 @@
               };
               home-manager.users.${username} = {
                 imports = [
-                  mac-app-util.homeManagerModules.default
+                  # mac-app-util.homeManagerModules.default
                   nixvim.homeManagerModules.nixvim
                   ./modules/home/darwin
                 ];

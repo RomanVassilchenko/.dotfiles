@@ -2,7 +2,7 @@
   imports = [
     ./bat.nix
     ./btop.nix
-    ./fastfetch.nix
+    ./fastfetch
     ./fzf.nix
     ./gc.nix
     ./git.nix

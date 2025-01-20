@@ -10,5 +10,10 @@
   users.users.${username} = {
     shell = pkgs.zsh;
   };
-  nix.settings.allowed-users = [ "${username}" ];
+  nix = {
+    settings = {
+      allowed-users = [ "${username}" ];
+      use-xdg-base-directories = true;
+    };
+  };
 }

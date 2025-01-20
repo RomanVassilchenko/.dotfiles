@@ -48,6 +48,7 @@
         autocrlf = "input";
         whitespace = "trailing-space,space-before-tab";
         precomposeunicode = true;
+        xdgConfigHome = true;
       };
       color = {
         diff = "auto";

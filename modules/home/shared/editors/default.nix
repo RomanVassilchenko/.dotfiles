@@ -1,6 +1,6 @@
 {
   imports = [
-#    ./neovim.nix
+    ./neovim.nix
     ./micro.nix
     ./helix.nix
   ];

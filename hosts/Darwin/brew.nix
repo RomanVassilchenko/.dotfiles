@@ -25,6 +25,7 @@
     casks = [
       "betterdisplay"
       "dbeaver-community"
+      "ghostty"
       "krita"
       "obs"
       "whatsapp"

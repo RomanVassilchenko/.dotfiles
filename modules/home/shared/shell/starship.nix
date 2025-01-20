@@ -3,9 +3,9 @@
   programs.starship = {
     enable = true;
 
-    enableBashIntegration = true;
+    # enableBashIntegration = true;
     enableZshIntegration = true;
-    enableNushellIntegration = true;
+    # enableNushellIntegration = true;
 
     settings = {
       format = lib.concatStrings [

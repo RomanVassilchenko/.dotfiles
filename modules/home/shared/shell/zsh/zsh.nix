@@ -9,6 +9,8 @@
   programs.zsh = {
     enable = true;
     # enableCompletion = true;
+    dotDir = ".config/zsh";
+    history.path = "~/.config/zsh/history";
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
@@ -35,15 +37,12 @@
       autoload -Uz colors
       colors
 
-      # Initialize completion system
-      # autoload -U compinit
-      # compinit
-      _comp_options+=(globdots)
+      # Add custom fpath for completion
+      fpath=(/Users/rovasilchenko/.o3-cli/completion $fpath)
 
-      # Load edit-command-line for ZLE
-      autoload -Uz edit-command-line
-      zle -N edit-command-line
-      bindkey "^e" edit-command-line
+      # Completion setup
+      autoload -Uz compinit
+      compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 
       # General completion behavior
       zstyle ':completion:*' completer _extensions _complete _approximate
@@ -93,8 +92,8 @@
       zstyle ':completion:complete:*:options' sort false
       zstyle ':completion:files' sort false
 
-      # fzf-tab
-      zstyle ':fzf-tab:complete:*:*' fzf-preview 'eza --icons  -a --group-directories-first -1 --color=always $realpath'
+      # fzf-tab integration
+      zstyle ':fzf-tab:complete:*:*' fzf-preview 'eza --icons -a --group-directories-first -1 --color=always $realpath'
       zstyle ':fzf-tab:complete:kill:argument-rest' fzf-preview 'ps --pid=$word -o cmd --no-headers -w -w'
       zstyle ':fzf-tab:complete:kill:argument-rest' fzf-flags '--preview-window=down:3:wrap'
       zstyle ':fzf-tab:*' fzf-command fzf
@@ -102,10 +101,13 @@
       zstyle ':fzf-tab:*' fzf-min-height 100
       zstyle ':fzf-tab:*' switch-group ',' '.'
 
-      # Add custom fpath for completion
-      fpath=(/Users/rovasilchenko/.o3-cli/completion $fpath)
-      autoload -U compinit
-      compinit
+      # ZLE settings
+      autoload -Uz edit-command-line
+      zle -N edit-command-line
+      bindkey "^e" edit-command-line
+
+      # Ensure required directories exist
+      mkdir -p "$XDG_CACHE_HOME/zsh"
     '';
 
     initExtraFirst = ''
@@ -129,7 +131,7 @@
       setopt hist_expire_dups_first
       setopt hist_verify
 
-      source ~/.p10k.zsh
+      source ~/.config/zsh/.p10k.zsh
 
       # Use fd (https://github.com/sharkdp/fd) for listing path candidates.
       # - The first argument to the function ($1) is the base path to start traversal

@@ -49,6 +49,7 @@ let
     ttyper
     unzip
     wget
+    xdg-ninja
     xdg-utils
     yazi
     yt-dlp-light
