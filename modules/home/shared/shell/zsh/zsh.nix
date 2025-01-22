@@ -10,7 +10,7 @@
     enable = true;
     # enableCompletion = true;
     dotDir = ".config/zsh";
-    history.path = "~/.config/zsh/history";
+    history.path = ".config/zsh/history";
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
@@ -131,7 +131,7 @@
       setopt hist_expire_dups_first
       setopt hist_verify
 
-      source ~/.config/zsh/.p10k.zsh
+      source $HOME/.config/zsh/.p10k.zsh
 
       # Use fd (https://github.com/sharkdp/fd) for listing path candidates.
       # - The first argument to the function ($1) is the base path to start traversal
