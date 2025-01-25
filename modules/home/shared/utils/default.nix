@@ -7,6 +7,7 @@
     ./gc.nix
     ./git.nix
     ./go.nix
+    ./nh.nix
     ./nix-index.nix
     ./packages.nix
     ./tmux.nix
