@@ -2,11 +2,13 @@
 
 let
   dev = with pkgs; [
+    cloudflared
     docker
     docker-compose
     gcc
     gnumake
     goose
+    imagemagick
     jq
     kubectl
     lazydocker

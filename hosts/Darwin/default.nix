@@ -18,7 +18,7 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  services.nix-daemon.enable = true;
+  nix.enable = true;
 
   security.pam.enableSudoTouchIdAuth = true;
 
