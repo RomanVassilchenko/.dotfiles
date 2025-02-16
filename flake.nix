@@ -66,10 +66,6 @@
       serverHost = "Ninkear";
       laptopHost = "XiaoXinPro";
 
-      pkgs = import nixpkgs {
-        system = nixosSystem;
-        config.allowUnfree = true;
-      };
       lib = nixpkgs.lib;
     in
     {
@@ -80,6 +76,7 @@
             ./hosts/NixOS
             home-manager.nixosModules.home-manager
             {
+              nixpkgs.config.allowUnfree = true;
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.${username} = {
@@ -111,6 +108,7 @@
             mac-app-util.darwinModules.default
             {
               imports = [ ./hosts/Darwin ];
+              nixpkgs.config.allowUnfree = true;
               _module.args.self = self;
               _module.args.host = darwinHost;
               _module.args.inputs = inputs;
@@ -145,7 +143,10 @@
 
       serverConfigurations = {
         Ninkear = home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs { system = linuxSystem; };
+          pkgs = import nixpkgs {
+            system = linuxSystem;
+            config.allowUnfree = true;
+          };
           modules = [
             {
               home.username = username;

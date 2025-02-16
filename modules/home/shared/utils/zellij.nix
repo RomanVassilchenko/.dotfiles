@@ -2,7 +2,7 @@
 {
   programs.zellij = {
     enable = true;
-    # enableZshIntegration = true;
+    enableZshIntegration = true;
   };
 
   # # NOTE: the module only supports YAML config which is deprecated

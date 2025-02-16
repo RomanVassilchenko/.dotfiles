@@ -23,14 +23,14 @@
       ];
     };
     casks = [
-      "betterdisplay"
+      # "betterdisplay"
       # "datagrip"
       "dbeaver-community"
       "ghostty"
       # "goland"
       "krita"
-      "obs"
-      "whatsapp"
+      # "obs"
+      # "whatsapp"
       "zen-browser"
     ];
     brews = [ ];

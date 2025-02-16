@@ -53,7 +53,6 @@ let
     wget
     xdg-ninja
     xdg-utils
-    yazi
     yt-dlp-light
   ];
 in

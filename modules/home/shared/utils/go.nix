@@ -20,6 +20,15 @@
       ginkgo
       richgo
       gotestsum
+
+      gopls # Langserver
+      delve
+      gotools
+      gomodifytags
+      impl
+      go-tools
+      gotests
+      golangci-lint
     ]
   );
 }
